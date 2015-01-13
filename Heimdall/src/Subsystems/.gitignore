@@ -10,3 +10,11 @@
 /drive.cpp~
 /Chassis.h~
 /Chassis.cpp~
+/SlideRight.h~
+/SlideRight.cpp~
+/SlideOff.h~
+/SlideOff.cpp~
+/SlideLeft.h~
+/SlideLeft.cpp~
+/Slide.h~
+*.cpp~
