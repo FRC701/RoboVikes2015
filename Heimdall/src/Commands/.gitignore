@@ -1,4 +1,3 @@
-/Debug/
 /RobotMap.h~
 /RobotMap.cpp~
 /Robot.h~
@@ -15,5 +14,3 @@
 /build.properties~
 /AutonomousCommand.h~
 /AutonomousCommand.cpp~
-/.project~
-*.cproject~
