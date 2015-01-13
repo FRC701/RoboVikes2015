@@ -28,6 +28,10 @@ OI::OI() {
 
 	driver = new Joystick(0);
 	
+	dButtonRB = new JoystickButton(driver, 6);
+	dButtonRB->WhileHeld(new SlideRight());
+	dButtonLB = new JoystickButton(driver, 5);
+	dButtonLB->WhileHeld(new SlideLeft());
      
 
         // SmartDashboard Buttons
