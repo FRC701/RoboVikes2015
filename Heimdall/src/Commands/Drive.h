@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class drive: public Command {
+class Drive: public Command {
 public:
-	drive();
+	Drive();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
