@@ -44,10 +44,10 @@ void RobotMap::init() {
     chassisRobotDrive = new RobotDrive(chassisleftFrontMotor, chassisleftRearMotor,
                   chassisrightFrontMotor, chassisrightRearMotor);
 
-    chassisRobotDrive->SetSafetyEnabled(true);
-    chassisRobotDrive->SetExpiration(0.1);
-    chassisRobotDrive->SetSensitivity(0.5);
-    chassisRobotDrive->SetMaxOutput(1.0);
+    //chassisRobotDrive->SetSafetyEnabled(true);
+    //chassisRobotDrive->SetExpiration(0.1);
+    //chassisRobotDrive->SetSensitivity(0.5);
+    //chassisRobotDrive->SetMaxOutput(1.0);
 
 //    chassisrobotDrive = new RobotDrive(chassisleftFrontMotor, chassisleftRearMotor,
 //    					chassisrightFrontMotor, chassisrightRearMotor);
