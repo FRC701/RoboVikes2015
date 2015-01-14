@@ -10,6 +10,8 @@
 
 
 #include "Drive.h"
+#include "SmartDashboard/SmartDashboard.h"
+#include "../OI.h"
 
 Drive::Drive() {
 	// Use requires() here to declare subsystem dependencies
