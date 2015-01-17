@@ -15,6 +15,12 @@ Children:
         name: Default Command, type: Command, validators: null, value: SlideOff}
     Base: Subsystem
     Name: Slide
+  - Children: []
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: intakeOff}
+    Base: Subsystem
+    Name: Intake
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -69,6 +75,30 @@ Children:
           value: whileHeld
       Base: Joystick Button
       Name: dButtonRB
+    - Children: []
+      Properties:
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: driver}
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '1'
+          name: Button
+          validators: null
+          value: '1'
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id002
+          value: intakeOn
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whileHeld
+      Base: Joystick Button
+      Name: dButtonA
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: ['0', '1', '2', '3', '4', '5']
@@ -122,6 +152,22 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: SlideOff
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Intake}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: intakeOff
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Intake}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: intakeOn
   Properties: {}
   Base: Commands
   Name: Commands

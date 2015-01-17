@@ -10,6 +10,7 @@
 
 
 #include "SlideRight.h"
+#include "SmartDashboard/SmartDashboard.h"
 
 SlideRight::SlideRight() {
 	// Use requires() here to declare subsystem dependencies
@@ -27,9 +28,11 @@ void SlideRight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SlideRight::Execute() {
-	Robot::slide->slideFrontMotor1->Set(-1.0);
-	Robot::slide->slideFrontMotor2->Set(-1.0);
-	Robot::slide->slideRearMotor->Set(-1.0);
+	int speed = 1;
+	//speed = SmartDashboard::GetNumber("x");
+	Robot::slide->slideFrontMotor1->Set(speed * -1);
+	Robot::slide->slideFrontMotor2->Set(speed * -1);
+	Robot::slide->slideRearMotor->Set(speed * -1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
