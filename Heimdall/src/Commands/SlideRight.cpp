@@ -27,9 +27,9 @@ void SlideRight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SlideRight::Execute() {
-	Robot::slide->slideFrontMotor1->Set(1.0);
-	Robot::slide->slideFrontMotor2->Set(1.0);
-	Robot::slide->slideRearMotor->Set(1.0);
+	Robot::slide->slideFrontMotor1->Set(-1.0);
+	Robot::slide->slideFrontMotor2->Set(-1.0);
+	Robot::slide->slideRearMotor->Set(-1.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
