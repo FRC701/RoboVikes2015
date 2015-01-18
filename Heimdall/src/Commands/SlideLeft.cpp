@@ -11,6 +11,7 @@
 
 #include "SlideLeft.h"
 #include "SmartDashboard/SmartDashboard.h"
+#include "Preferences.h"
 
 SlideLeft::SlideLeft() {
 	// Use requires() here to declare subsystem dependencies
@@ -28,11 +29,11 @@ void SlideLeft::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SlideLeft::Execute() {
-	int speed= 1;
-	//speed = SmartDashboard::GetNumber("x");
-	Robot::slide->slideFrontMotor1->Set(speed);
-	Robot::slide->slideFrontMotor2->Set(speed);
-	Robot::slide->slideRearMotor->Set(speed);
+	Preferences prefs;
+	double slideSpeed = prefs.GetDouble("slideSpeed", 1.0);
+	Robot::slide->slideFrontMotor1->Set(slideSpeed);
+	Robot::slide->slideFrontMotor2->Set(slideSpeed);
+	Robot::slide->slideRearMotor->Set(slideSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
