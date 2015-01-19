@@ -30,7 +30,7 @@ void slideMaster::Execute() {
 	int leftTrigger = 2;
 	int rightTrigger = 3;
 	double slideSpeed = Robot::prefs->GetDouble("slideSpeed", 1.0);
-	
+	/*
 	if(Robot::oi->getdriver()->GetRawAxis(leftTrigger) > 0.0 && Robot::oi->getdriver()->
 														GetRawAxis(rightTrigger) == 0.0)
 	{
@@ -45,14 +45,14 @@ void slideMaster::Execute() {
 		Robot::slide->slideFrontMotor2->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger));
 		Robot::slide->slideRearMotor->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger) * -1);
 	}
-	else if(Robot::oi->getdButtonLB()->Get() == true)
+	else if(Robot::oi->getdButtonLB()->Get())
 
 	{
 		Robot::slide->slideFrontMotor1->Set(slideSpeed * -1);
 		Robot::slide->slideFrontMotor2->Set(slideSpeed * -1);
 		Robot::slide->slideRearMotor->Set(slideSpeed);
 	}
-	else if(Robot::oi->getdButtonRB()->Get() == true)
+	else if(Robot::oi->getdButtonRB()->Get())
 	{
 		Robot::slide->slideFrontMotor1->Set(slideSpeed);
 		Robot::slide->slideFrontMotor2->Set(slideSpeed);
@@ -64,6 +64,7 @@ void slideMaster::Execute() {
 		Robot::slide->slideFrontMotor2->Set(0.0);
 		Robot::slide->slideRearMotor->Set(0.0);
 	}
+	*/
 }
 
 // Make this return true when this Command no longer needs to run execute()
