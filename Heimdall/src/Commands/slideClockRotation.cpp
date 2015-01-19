@@ -27,10 +27,10 @@ void slideClockRotation::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void slideClockRotation::Execute() {
-	double slideSpeed = Robot::prefs->GetDouble("slideSpeed", 1.0);
-	Robot::slide->slideFrontMotor1->Set(slideSpeed * -1);
-	Robot::slide->slideFrontMotor2->Set(slideSpeed * -1);
-	Robot::slide->slideRearMotor->Set(slideSpeed);
+	int rightTrigger = 3;
+	Robot::slide->slideFrontMotor1->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger));
+	Robot::slide->slideFrontMotor2->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger));
+	Robot::slide->slideRearMotor->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger) * -1);
 }
 
 // Make this return true when this Command no longer needs to run execute()

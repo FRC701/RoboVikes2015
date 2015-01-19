@@ -32,7 +32,6 @@ void SlideLeft::Execute() {
 	Robot::slide->slideFrontMotor1->Set(slideSpeed);
 	Robot::slide->slideFrontMotor2->Set(slideSpeed);
 	Robot::slide->slideRearMotor->Set(slideSpeed);
-	SmartDashboard::PutNumber("SlideSpeed", slideSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()

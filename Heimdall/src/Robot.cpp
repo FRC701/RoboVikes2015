@@ -88,6 +88,7 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Accelerometer: X", accel->GetX());
 	SmartDashboard::PutNumber("Accelerometer: Y", accel->GetY());
 	SmartDashboard::PutNumber("Accelerometer: Z", accel->GetZ());
+	SmartDashboard::PutNumber("LeftTrigger", Robot::oi->getdriver()->GetRawAxis(2));
 }
 
 void Robot::TestPeriodic() {
