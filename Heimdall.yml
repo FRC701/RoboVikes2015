@@ -25,30 +25,30 @@ Children:
     - Children: []
       Properties:
         Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
-            '12', '13', '14', '15', '16', '17', '18', '19', '20']
+          choices: &id001 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
           default: '0'
           name: Forward PCM (Solenoid)
-          validators: [Solenoid]
+          validators: &id002 [Solenoid]
           value: '0'
         Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
-            '12', '13', '14', '15', '16', '17', '18', '19', '20']
+          choices: &id003 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
           default: '0'
           name: Reverse PCM (Solenoid)
-          validators: [Solenoid]
+          validators: &id004 [Solenoid]
           value: '0'
         Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['0', '1', '2', '3', '4', '5', '6', '7']
+          choices: &id005 ['0', '1', '2', '3', '4', '5', '6', '7']
           default: '0'
           name: Reverse Channel (Solenoid)
-          validators: [Solenoid]
+          validators: &id006 [Solenoid]
           value: '7'
         Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['0', '1', '2', '3', '4', '5', '6', '7']
+          choices: &id007 ['0', '1', '2', '3', '4', '5', '6', '7']
           default: '0'
           name: Forward Channel (Solenoid)
-          validators: [Solenoid]
+          validators: &id008 [Solenoid]
           value: '0'
       Base: Double Solenoid
       Name: intakeSolenoid
@@ -57,6 +57,40 @@ Children:
         name: Default Command, type: Command, validators: null, value: None}
     Base: Subsystem
     Name: PneIntake
+  - Children:
+    - Children: []
+      Properties:
+        Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '0'
+          name: Forward PCM (Solenoid)
+          validators: *id002
+          value: '0'
+        Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: '0'
+          name: Reverse PCM (Solenoid)
+          validators: *id004
+          value: '0'
+        Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id005
+          default: '0'
+          name: Reverse Channel (Solenoid)
+          validators: *id006
+          value: '6'
+        Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id007
+          default: '0'
+          name: Forward Channel (Solenoid)
+          validators: *id008
+          value: '1'
+      Base: Double Solenoid
+      Name: haySqueezerSolenoid
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+    Base: Subsystem
+    Name: HaySqueezer
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -67,7 +101,7 @@ Children:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: driver}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id001 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+          choices: &id009 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
             '12', '13', '14', '15', '16']
           default: '1'
           name: Button
@@ -77,10 +111,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: &id002 [TypeDropdownSelected]
+          validators: &id010 [TypeDropdownSelected]
           value: intakeOut
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id003 [whileHeld, whenPressed, whenReleased]
+          choices: &id011 [whileHeld, whenPressed, whenReleased]
           default: whileHeld
           name: When to Run
           validators: null
@@ -92,7 +126,7 @@ Children:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: driver}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
+          choices: *id009
           default: '1'
           name: Button
           validators: null
@@ -101,10 +135,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id002
+          validators: *id010
           value: PneIntakeOut
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id011
           default: whileHeld
           name: When to Run
           validators: null
@@ -116,7 +150,7 @@ Children:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: driver}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
+          choices: *id009
           default: '1'
           name: Button
           validators: null
@@ -125,10 +159,10 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id002
+          validators: *id010
           value: intakeIn
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id011
           default: whileHeld
           name: When to Run
           validators: null
@@ -140,7 +174,7 @@ Children:
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: driver}
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
+          choices: *id009
           default: '1'
           name: Button
           validators: null
@@ -149,16 +183,40 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: *id002
+          validators: *id010
           value: artificialShift
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
+          choices: *id011
           default: whileHeld
           name: When to Run
           validators: null
           value: whenReleased
       Base: Joystick Button
       Name: dButtonL3
+    - Children: []
+      Properties:
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: driver}
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id009
+          default: '1'
+          name: Button
+          validators: null
+          value: '3'
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id010
+          value: haySqueezerToggle
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id011
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenReleased
+      Base: Joystick Button
+      Name: dButtonX
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: ['0', '1', '2', '3', '4', '5']
@@ -236,6 +294,14 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: PneIntakeOut
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: haySqueezerToggle
   Properties: {}
   Base: Commands
   Name: Commands
