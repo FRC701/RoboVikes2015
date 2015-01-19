@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef SLIDEMASTER_H
-#define SLIDEMASTER_H
+#ifndef ARTIFICIALSHIFT_H
+#define ARTIFICIALSHIFT_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class slideMaster: public Command {
+class artificialShift: public Command {
 public:
-	slideMaster();
+	artificialShift();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

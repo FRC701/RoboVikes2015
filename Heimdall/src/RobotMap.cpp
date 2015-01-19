@@ -57,7 +57,4 @@ void RobotMap::init() {
     chassisRobotDrive->SetSensitivity(0.5);
     chassisRobotDrive->SetMaxOutput(1.0);
 
-//    chassisrobotDrive = new RobotDrive(chassisleftFrontMotor, chassisleftRearMotor,
-//    					chassisrightFrontMotor, chassisrightRearMotor);
-
 }

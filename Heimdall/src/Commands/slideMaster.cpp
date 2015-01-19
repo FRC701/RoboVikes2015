@@ -29,31 +29,40 @@ void slideMaster::Initialize() {
 void slideMaster::Execute() {
 	int leftTrigger = 2;
 	int rightTrigger = 3;
-	dButtonRB = new JoystickButton(Robot::oi->getdriver(), 6);
-	dButtonLB = new JoystickButton(Robot::oi->getdriver(), 5);
+	double slideSpeed = Robot::prefs->GetDouble("slideSpeed", 1.0);
 	
 	if(Robot::oi->getdriver()->GetRawAxis(leftTrigger) > 0.0 && Robot::oi->getdriver()->
-																GetRawAxis(rightTrigger) == 0.0)
+														GetRawAxis(rightTrigger) == 0.0)
 	{
 		Robot::slide->slideFrontMotor1->Set(Robot::oi->getdriver()->GetRawAxis(leftTrigger) * -1);
 		Robot::slide->slideFrontMotor2->Set(Robot::oi->getdriver()->GetRawAxis(leftTrigger) * -1);
 		Robot::slide->slideRearMotor->Set(Robot::oi->getdriver()->GetRawAxis(leftTrigger));
 	}
 	else if(Robot::oi->getdriver()->GetRawAxis(rightTrigger) > 0.0 && Robot::oi->getdriver()->
-																	  GetRawAxis(leftTrigger) == 0.0)
+														  GetRawAxis(leftTrigger) == 0.0)
 	{
 		Robot::slide->slideFrontMotor1->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger));
 		Robot::slide->slideFrontMotor2->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger));
 		Robot::slide->slideRearMotor->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger) * -1);
 	}
-	else if(dButtonRB->Get() == true)
+	else if(Robot::oi->getdButtonLB()->Get() == true)
 
 	{
-
+		Robot::slide->slideFrontMotor1->Set(slideSpeed * -1);
+		Robot::slide->slideFrontMotor2->Set(slideSpeed * -1);
+		Robot::slide->slideRearMotor->Set(slideSpeed);
 	}
-	else if(dButtonLB->Get() == true)
+	else if(Robot::oi->getdButtonRB()->Get() == true)
 	{
-		
+		Robot::slide->slideFrontMotor1->Set(slideSpeed);
+		Robot::slide->slideFrontMotor2->Set(slideSpeed);
+		Robot::slide->slideRearMotor->Set(slideSpeed * -1);
+	}
+	else
+	{
+		Robot::slide->slideFrontMotor1->Set(0.0);
+		Robot::slide->slideFrontMotor2->Set(0.0);
+		Robot::slide->slideRearMotor->Set(0.0);
 	}
 }
 
