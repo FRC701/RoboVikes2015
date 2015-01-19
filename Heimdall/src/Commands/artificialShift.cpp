@@ -26,7 +26,7 @@ void artificialShift::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void artificialShift::Execute() {
-	/*
+
 	if(Robot::oi->getEnableMultiplier() == false)
 	{
 		Robot::oi->setEnableMultiplier(true);
@@ -35,7 +35,7 @@ void artificialShift::Execute() {
 	{
 		Robot::oi->setEnableMultiplier(false);
 	}
-	*/
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
