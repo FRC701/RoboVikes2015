@@ -62,7 +62,7 @@ void Drive::Interrupted() {
 
 }
 
-double Drive::getJoystickTriggerValue()
+double Drive::getJoystickTriggerValue()	//Combines triggers RT and LT to make one joystick for Mechanium
 {
 	int joystickRTLT = 0;
 	if(Robot::oi->getdriver()->GetRawAxis(Drive::leftTrigger) > 0.0 && Robot::oi->getdriver()->

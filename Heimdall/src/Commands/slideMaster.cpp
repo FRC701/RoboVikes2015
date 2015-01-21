@@ -47,19 +47,18 @@ void slideMaster::Execute() {
 		Robot::slide->slideRearMotor->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger));		//
 	}
 	else if(Robot::oi->getdButtonLB()->Get())	//Get if button(dButtonLB) is being pressed. Function getdButtonLB
-												// created in OI
-	{
-		Robot::slide->slideFrontMotor1->Set(slideSpeed * -1);	//Set Button to
-		Robot::slide->slideFrontMotor2->Set(slideSpeed * -1);
-		Robot::slide->slideRearMotor->Set(slideSpeed);
+	{											// created in OI
+		Robot::slide->slideFrontMotor1->Set(slideSpeed * -1);	//Set slide motors to go Left
+		Robot::slide->slideFrontMotor2->Set(slideSpeed * -1);	//
+		Robot::slide->slideRearMotor->Set(slideSpeed);			//
 	}
-	else if(Robot::oi->getdButtonRB()->Get())
-	{
-		Robot::slide->slideFrontMotor1->Set(slideSpeed);
-		Robot::slide->slideFrontMotor2->Set(slideSpeed);
-		Robot::slide->slideRearMotor->Set(slideSpeed * -1);
+	else if(Robot::oi->getdButtonRB()->Get())				//Get if button(dButtonLB) is being pressed. Function getdButtonLB
+	{														// created in OI
+		Robot::slide->slideFrontMotor1->Set(slideSpeed);	//Set slide motors to go Right
+		Robot::slide->slideFrontMotor2->Set(slideSpeed);	//
+		Robot::slide->slideRearMotor->Set(slideSpeed * -1);	//
 	}
-	else
+	else													//If no input set to zero
 	{
 		Robot::slide->slideFrontMotor1->Set(0.0);
 		Robot::slide->slideFrontMotor2->Set(0.0);
