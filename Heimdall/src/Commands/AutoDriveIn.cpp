@@ -19,7 +19,7 @@ AutoDriveIn::AutoDriveIn() {
 	//      AddSequential(new Command2());
 	// these will run in order.
 
-	AddSequential (AutoDriveForward ());
+	AddSequential (new AutoDriveForward ());
 
 
 	// To run multiple commands at the same time,
