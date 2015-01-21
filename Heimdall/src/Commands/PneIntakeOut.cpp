@@ -26,8 +26,8 @@ void PneIntakeOut::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PneIntakeOut::Execute() {
-	if(RobotMap::pneIntakeintakeSolenoid->Get() == DoubleSolenoid::kForward)
-	{
+	if(RobotMap::pneIntakeintakeSolenoid->Get() == DoubleSolenoid::kForward)		//Test current condition calling
+	{																				// Get(), inverts current state
 		Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kReverse);
 	}
 	else if(RobotMap::pneIntakeintakeSolenoid->Get() == DoubleSolenoid::kReverse)

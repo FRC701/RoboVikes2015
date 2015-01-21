@@ -26,9 +26,9 @@ void haySqueezerToggle::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void haySqueezerToggle::Execute() {
-	if(Robot::haySqueezer->haySqueezerSolenoid->Get() == DoubleSolenoid::kReverse)
-	{
-		Robot::haySqueezer->haySqueezerSolenoid->Set(DoubleSolenoid::kForward);
+	if(Robot::haySqueezer->haySqueezerSolenoid->Get() == DoubleSolenoid::kReverse)		//Test current condition of
+	{																					//	hayS. solenoid by calling Get()
+		Robot::haySqueezer->haySqueezerSolenoid->Set(DoubleSolenoid::kForward);			//Set opposite to test condition
 	}
 	else if(Robot::haySqueezer->haySqueezerSolenoid->Get() == DoubleSolenoid::kForward)
 	{

@@ -27,9 +27,9 @@ void artificialShift::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void artificialShift::Execute() {
 
-	if(Robot::oi->getEnableMultiplier() == false)
-	{
-		Robot::oi->setEnableMultiplier(true);
+	if(Robot::oi->getEnableMultiplier() == false)		//Calls function in oi. Toggles multiplier: full power = 1
+	{													//											multiplier
+		Robot::oi->setEnableMultiplier(true);			// multiplier is gotten from smartdashboard preferences
 	}
 	else
 	{

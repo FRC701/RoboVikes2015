@@ -28,28 +28,28 @@ void slideMaster::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void slideMaster::Execute() {
-	int leftTrigger = 2;
-	int rightTrigger = 3;
-	double slideSpeed = Robot::prefs->GetDouble("slideSpeed", 1.0);
-
+	const int leftTrigger = 2;		//Assigns button number to 2
+	const int rightTrigger = 3;		//Assigns button number to 3
+	double slideSpeed = Robot::prefs->GetDouble("slideSpeed", 1.0);		//Calls getDouble() which returns number set from preferences
+																		// on smartdashboard. Requires key name(slideSpeed), and value(default = 1.0)
 	if(Robot::oi->getdriver()->GetRawAxis(leftTrigger) > 0.0 && Robot::oi->getdriver()->
-														GetRawAxis(rightTrigger) == 0.0)
+														GetRawAxis(rightTrigger) == 0.0)	//Test if ONLY one trigger is being pressed(left trigger)
 	{
-		Robot::slide->slideFrontMotor1->Set(Robot::oi->getdriver()->GetRawAxis(leftTrigger));
-		Robot::slide->slideFrontMotor2->Set(Robot::oi->getdriver()->GetRawAxis(leftTrigger));
-		Robot::slide->slideRearMotor->Set(Robot::oi->getdriver()->GetRawAxis(leftTrigger)* -1);
+		Robot::slide->slideFrontMotor1->Set(Robot::oi->getdriver()->GetRawAxis(leftTrigger));		//Point turn Left
+		Robot::slide->slideFrontMotor2->Set(Robot::oi->getdriver()->GetRawAxis(leftTrigger));		//
+		Robot::slide->slideRearMotor->Set(Robot::oi->getdriver()->GetRawAxis(leftTrigger)* -1);		//
 	}
 	else if(Robot::oi->getdriver()->GetRawAxis(rightTrigger) > 0.0 && Robot::oi->getdriver()->
-														  GetRawAxis(leftTrigger) == 0.0)
+														  GetRawAxis(leftTrigger) == 0.0)	//Test if ONLY one trigger is being pressed(right trigger)
 	{
-		Robot::slide->slideFrontMotor1->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger) * -1);
-		Robot::slide->slideFrontMotor2->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger) * -1);
-		Robot::slide->slideRearMotor->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger));
+		Robot::slide->slideFrontMotor1->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger) * -1);	//Point turn right
+		Robot::slide->slideFrontMotor2->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger) * -1);	//
+		Robot::slide->slideRearMotor->Set(Robot::oi->getdriver()->GetRawAxis(rightTrigger));		//
 	}
-	else if(Robot::oi->getdButtonLB()->Get())
-
+	else if(Robot::oi->getdButtonLB()->Get())	//Get if button(dButtonLB) is being pressed. Function getdButtonLB
+												// created in OI
 	{
-		Robot::slide->slideFrontMotor1->Set(slideSpeed * -1);
+		Robot::slide->slideFrontMotor1->Set(slideSpeed * -1);	//Set Button to
 		Robot::slide->slideFrontMotor2->Set(slideSpeed * -1);
 		Robot::slide->slideRearMotor->Set(slideSpeed);
 	}

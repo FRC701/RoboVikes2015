@@ -24,11 +24,18 @@
 class Drive: public Command {
 public:
 	Drive();
+	double getJoystickTriggerValue();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	const int leftY = 1;						//Seting Axis Channel for xbox controller
+	const int rightY = 5;
+	const int leftX = 0;
+	const int rightX = 4;
+	const int leftTrigger = 2;
+	const int rightTrigger = 3;
 };
 
 #endif
