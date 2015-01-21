@@ -31,16 +31,19 @@ void artificialShift::Execute() {
 	{													//											multiplier
 		Robot::oi->setEnableMultiplier(true);			// multiplier is gotten from smartdashboard preferences
 	}
+	else if(Robot::oi->getEnableMultiplier() == true)
+	{
+		Robot::oi->setEnableMultiplier(false);
+	}
 	else
 	{
 		Robot::oi->setEnableMultiplier(false);
 	}
-
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool artificialShift::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true

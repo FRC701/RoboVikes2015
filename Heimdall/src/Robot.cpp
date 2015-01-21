@@ -92,15 +92,7 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Accelerometer: Z", accel->GetZ());
 	//SmartDashboard::PutNumber("LeftTrigger", Robot::oi->getdriver()->GetRawAxis(2));
 	SmartDashboard::PutNumber("Multiplier", Robot::oi->getMultiplier());
-	if (Robot::oi->getdButtonRB() == NULL)
-	{
-		SmartDashboard::PutString("Debug", "No RB Button?");
-	}
-	else
-	{
-		SmartDashboard::PutString("Debug", "Yes RB Button.");
-		SmartDashboard::PutBoolean("dButtonRB", Robot::oi->getdButtonRB()->Grab());
-	}
+	SmartDashboard::PutBoolean("EnableMultiplier", Robot::oi->getEnableMultiplier());
 }
 
 void Robot::TestPeriodic() {

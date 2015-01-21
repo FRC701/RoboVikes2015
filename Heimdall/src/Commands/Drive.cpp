@@ -39,11 +39,11 @@ void Drive::Execute() {
 	//												Robot::oi->getdriver()->GetRawAxis(leftY),
 	//												Robot::oi->getdriver()->GetRawAxis(rightX));
 
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(getJoystickTriggerValue(),
-														Robot::oi->getdriver()->GetRawAxis(Drive::leftY),
-														Robot::oi->getdriver()->GetRawAxis(Drive::rightX));
+	double xInput = getJoystickTriggerValue() * Robot::oi->getMultiplier();
+	double yInput = Robot::oi->getdriver()->GetRawAxis(Drive::leftY) * Robot::oi->getMultiplier();
+	double rotInput = Robot::oi->getdriver()->GetRawAxis(Drive::rightX) * Robot::oi->getMultiplier();
 
-
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(xInput, yInput, rotInput);
 }
 
 // Make this return true when this Command no longer needs to run execute()

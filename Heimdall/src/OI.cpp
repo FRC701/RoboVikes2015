@@ -35,8 +35,8 @@ OI::OI() {
 	
 	dButtonX = new JoystickButton(driver, 3);
 	dButtonX->WhenReleased(new haySqueezerToggle());
-	dButtonL3 = new JoystickButton(driver, 9);
-	dButtonL3->WhenReleased(new artificialShift());
+	dButtonR3 = new JoystickButton(driver, 10);
+	dButtonR3->WhenReleased(new artificialShift());
 	dButtonY = new JoystickButton(driver, 4);
 	dButtonY->WhileHeld(new intakeIn());
 	dButtonA = new JoystickButton(driver, 1);
