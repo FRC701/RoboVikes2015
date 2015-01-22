@@ -51,12 +51,17 @@ void Drive::Execute() {
 	Robot::chassis->robotDrive->MecanumDrive_Cartesian(xInput, yInput, rotInput);
 	SmartDashboard::PutNumber("Mulitplier", getMultiplier());
 
+	Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 1.0);
+	Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 1.0);
+
 	if(Robot::oi->getdButtonL3()->Get() == true)
 	{
 		if(enableBool)
 			enableBool = false;
 		else if(enableBool == false)
 			enableBool = true;
+		Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
+		Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 0.0);
 	}
 }
 
