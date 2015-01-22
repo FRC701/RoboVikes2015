@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef DRIVE_H
-#define DRIVE_H
+#ifndef SPOOLCLOCKWISE_H
+#define SPOOLCLOCKWISE_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,29 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class Drive: public Command {
+class spoolClockwise: public Command {
 public:
-	void setEnableMultiplier(bool isEnable);
-	bool getEnableMultiplier();
-	Drive();
-	double getJoystickTriggerValue();
+	spoolClockwise();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	const int leftY = 1;						//Seting Axis Channel for xbox controller
-	const int rightY = 5;
-	const int leftX = 0;
-	const int rightX = 4;
-	const int leftTrigger = 2;
-	const int rightTrigger = 3;
-	double getMultiplier();
-private:
-	bool enableMultiplier;
-	double fullPower;
-	double multiplier;
-	bool enableBool;
 };
 
 #endif
