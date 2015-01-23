@@ -33,6 +33,7 @@
 
 class Robot : public IterativeRobot {
 public:
+	PowerDistributionPanel* PDP;
 	Accelerometer* accel;
 	Command *autonomousCommand;
 	static OI *oi;

@@ -39,11 +39,12 @@ public:
 	const int leftTrigger = 2;
 	const int rightTrigger = 3;
 	double getMultiplier();
+	void toggleL3();
 private:
 	bool enableMultiplier;
 	double fullPower;
 	double multiplier;
-	bool enableBool;
+	bool check;
 };
 
 #endif

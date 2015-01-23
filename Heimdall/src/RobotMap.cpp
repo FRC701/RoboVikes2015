@@ -23,9 +23,11 @@ CANTalon* RobotMap::chassisleftRearMotor = NULL;
 CANTalon* RobotMap::chassisrightFrontMotor = NULL;
 CANTalon* RobotMap::chassisrightRearMotor = NULL;
 RobotDrive* RobotMap::chassisRobotDrive = NULL;
+/*//Slide Motors.....................................................................
 CANTalon* RobotMap::slideFrontMotor1 = NULL;
 CANTalon* RobotMap::slideFrontMotor2 = NULL;
 CANTalon* RobotMap::slideRearMotor = NULL;
+*/
 CANTalon* RobotMap::intakeRightMotor = NULL;
 CANTalon* RobotMap::intakeLeftMotor = NULL;
 CANTalon* RobotMap::spoolLeftMotor = NULL;
@@ -51,9 +53,11 @@ void RobotMap::init() {
     chassisleftRearMotor = new CANTalon(11);
     chassisrightFrontMotor = new CANTalon(6);
     chassisrightRearMotor = new CANTalon(12);
+/*	//Slide Motors.................................................................................
     slideFrontMotor1 = new CANTalon(4);
     slideFrontMotor2 = new CANTalon(2);
     slideRearMotor = new CANTalon(10);
+*/
     spoolLeftMotor = new CANTalon(1);
     spoolRightMotor = new CANTalon(9);
 
