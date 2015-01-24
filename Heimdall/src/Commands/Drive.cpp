@@ -33,21 +33,28 @@ void Drive::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void Drive::Execute() {
 
-	multiplier = Robot::prefs->GetDouble("multiplier", 1.0);
-
+//Tank Drive.................................................................................................
 	//Robot::chassis->robotDrive->TankDrive(Robot::oi->getdriver(),
 	//				                      leftY,
 	//				                      Robot::oi->getdriver(),
 	//				                      rightY);
+
+
+//Raw Mecanum Drive..........................................................................................
 	//Robot::chassis->robotDrive->MecanumDrive_Cartesian(Robot::oi->getdriver()->GetRawAxis(leftX),
 	//												Robot::oi->getdriver()->GetRawAxis(leftY),
 	//												Robot::oi->getdriver()->GetRawAxis(rightX));
 
+//Mecanum Drive...............................................................................................
 	double xInput = getJoystickTriggerValue() * getMultiplier();
 	double yInput = Robot::oi->getdriver()->GetRawAxis(Drive::leftY) * getMultiplier();
 	double rotInput = Robot::oi->getdriver()->GetRawAxis(Drive::rightX) * getMultiplier();
 
 	Robot::chassis->robotDrive->MecanumDrive_Cartesian(xInput, yInput, rotInput);
+
+//Software Shifting...........................................................................................
+	multiplier = Robot::prefs->GetDouble("multiplier", 1.0);
+	toggleL3();
 
 
 //Debugging SmartDashboard Outputs.............................................................................

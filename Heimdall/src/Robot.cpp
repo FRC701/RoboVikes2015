@@ -95,6 +95,7 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Accelerometer: Y", accel->GetY());
 	SmartDashboard::PutNumber("Accelerometer: Z", accel->GetZ());
 	SmartDashboard::PutNumber("Motor", PDP->GetCurrent(0));
+	SmartDashboard::PutNumber("Encoder", Robot::intake->intakeLeftMotor->GetEncVel());
 }
 
 void Robot::TestPeriodic() {

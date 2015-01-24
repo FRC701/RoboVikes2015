@@ -33,9 +33,11 @@ public:
 	static CANTalon* chassisrightFrontMotor;
 	static CANTalon* chassisrightRearMotor;
 	static RobotDrive* chassisRobotDrive;
+/*//Slide Motors........................................................................................
 	static CANTalon* slideFrontMotor1;
 	static CANTalon* slideFrontMotor2;
 	static CANTalon* slideRearMotor;
+*/
 	static CANTalon* intakeRightMotor;
 	static CANTalon* intakeLeftMotor;
 	static void init();
