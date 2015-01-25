@@ -44,7 +44,8 @@ private:
 	bool enableMultiplier;
 	double fullPower;
 	double multiplier;
-	bool check;
+	bool currentCondition;
+	bool lastCondition;
 };
 
 #endif

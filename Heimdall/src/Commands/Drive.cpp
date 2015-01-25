@@ -22,7 +22,9 @@ Drive::Drive() {
 	fullPower = 1.0;
 	multiplier = 0.0;
 	enableMultiplier = false;
-	check = false;
+	currentCondition = false;
+	lastCondition = false;
+	Robot::prefs->PutDouble("multiplier", 0.5); //Initialize multiplier
 }
 
 // Called just before this Command runs the first time
@@ -45,17 +47,16 @@ void Drive::Execute() {
 	//												Robot::oi->getdriver()->GetRawAxis(leftY),
 	//												Robot::oi->getdriver()->GetRawAxis(rightX));
 
+//Software Shifting...........................................................................................
+	multiplier = Robot::prefs->GetDouble("multiplier");
+	toggleL3();
+
 //Mecanum Drive...............................................................................................
 	double xInput = getJoystickTriggerValue() * getMultiplier();
 	double yInput = Robot::oi->getdriver()->GetRawAxis(Drive::leftY) * getMultiplier();
 	double rotInput = Robot::oi->getdriver()->GetRawAxis(Drive::rightX) * getMultiplier();
 
 	Robot::chassis->robotDrive->MecanumDrive_Cartesian(xInput, yInput, rotInput);
-
-//Software Shifting...........................................................................................
-	multiplier = Robot::prefs->GetDouble("multiplier", 1.0);
-	toggleL3();
-
 
 //Debugging SmartDashboard Outputs.............................................................................
 	SmartDashboard::PutNumber("Mulitplier", getMultiplier());
@@ -117,20 +118,18 @@ bool Drive::getEnableMultiplier()
 
 void Drive::toggleL3()
 {
-	if(Robot::oi->getdButtonL3()->Get() == true)
+	currentCondition = Robot::oi->getdButtonL3()->Get();
+	if(currentCondition != lastCondition)
+	{
+		if(currentCondition)
 		{
-			check = true;
-		}
-		if (check == true)
-		{
-			if(enableMultiplier)
-				enableMultiplier = false;
-			else if(enableMultiplier == false)
-				enableMultiplier = true;
-			check = false;
+			getEnableMultiplier() ? setEnableMultiplier(false) : setEnableMultiplier(true);
+			//setEnableMultiplier(getEnableMultiplier() ? false : true);
 			Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 1.0);
 			Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 1.0);
 			Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
 			Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 0.0);
 		}
+		currentCondition = lastCondition;
+	}
 }

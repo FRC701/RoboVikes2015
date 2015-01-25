@@ -49,23 +49,22 @@ void RobotMap::init() {
 
 	intakeLeftMotor = new CANTalon(8);
 	intakeRightMotor = new CANTalon(7);
+
+	spoolLeftMotor = new CANTalon(2);
+    spoolRightMotor = new CANTalon(4);
+
     chassisleftFrontMotor = new CANTalon(5);
     chassisleftRearMotor = new CANTalon(11);
     chassisrightFrontMotor = new CANTalon(6);
     chassisrightRearMotor = new CANTalon(12);
-/*	//Slide Motors.................................................................................
-    slideFrontMotor1 = new CANTalon(4);
-    slideFrontMotor2 = new CANTalon(2);
-    slideRearMotor = new CANTalon(10);
-*/
-    spoolLeftMotor = new CANTalon(2);
-    spoolRightMotor = new CANTalon(4);
+
+
 
     chassisRobotDrive = new RobotDrive(chassisleftFrontMotor, chassisleftRearMotor,
                   chassisrightFrontMotor, chassisrightRearMotor);
 
-    chassisRobotDrive->SetSafetyEnabled(false);
-    //chassisRobotDrive->SetExpiration(0.1);
+    chassisRobotDrive->SetSafetyEnabled(true);
+    chassisRobotDrive->SetExpiration(0.1);
     chassisRobotDrive->SetSensitivity(0.5);
     chassisRobotDrive->SetMaxOutput(1.0);
 
