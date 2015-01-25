@@ -21,7 +21,7 @@ PneIntakeOut::PneIntakeOut() {
 
 // Called just before this Command runs the first time
 void PneIntakeOut::Initialize() {
-	
+	Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kReverse);
 }
 
 // Called repeatedly when this Command is scheduled to run

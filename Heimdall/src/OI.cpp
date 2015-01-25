@@ -21,7 +21,6 @@
 #include "Commands/intakeIn.h"
 #include "Commands/intakeOff.h"
 #include "Commands/intakeOut.h"
-#include "Commands/slideMaster.h"
 #include "Commands/spoolClockwise.h"
 #include "Commands/spoolCounterClockwise.h"
 #include "Commands/spoolOff.h"
@@ -55,8 +54,6 @@ OI::OI() {
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 
 	SmartDashboard::PutData("Drive", new Drive());
-
-	SmartDashboard::PutData("slideMaster", new slideMaster());
 
 	SmartDashboard::PutData("intakeOut", new intakeOut());
 

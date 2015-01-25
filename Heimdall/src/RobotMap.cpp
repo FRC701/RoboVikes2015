@@ -58,8 +58,8 @@ void RobotMap::init() {
     slideFrontMotor2 = new CANTalon(2);
     slideRearMotor = new CANTalon(10);
 */
-    spoolLeftMotor = new CANTalon(1);
-    spoolRightMotor = new CANTalon(9);
+    spoolLeftMotor = new CANTalon(2);
+    spoolRightMotor = new CANTalon(4);
 
     chassisRobotDrive = new RobotDrive(chassisleftFrontMotor, chassisleftRearMotor,
                   chassisrightFrontMotor, chassisrightRearMotor);
