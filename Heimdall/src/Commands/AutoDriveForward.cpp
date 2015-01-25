@@ -27,12 +27,15 @@ void AutoDriveForward::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoDriveForward::Execute() {
-	Robot::chassis->robotDrive->Drive(0.8 , 0.0);
+	Robot::chassis->robotDrive->Drive(
+				Robot::prefs->GetDouble("driveSpeed", 0.0),
+				Robot::prefs->GetDouble("driveAngle", 0.0));
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutoDriveForward::IsFinished() {
-	return timer.HasPeriodPassed(0.2);
+	return timer.HasPeriodPassed(
+			Robot::prefs->GetDouble("AutoDriveForwardDelay", 0.0));
 }
 
 // Called once after isFinished returns true
