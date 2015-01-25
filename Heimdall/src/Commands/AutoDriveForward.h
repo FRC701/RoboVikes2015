@@ -31,7 +31,10 @@ public:
 	virtual void Interrupted();
 
 private:
-	Timer timer;
+//	Timer timer;
+
+double driveDistance;
+double goalDistance;
 };
 
 #endif
