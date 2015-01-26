@@ -27,6 +27,7 @@ Drive::Drive() {
 	currentCondition = false;
 	lastCondition = false;
 	Robot::prefs->PutDouble("multiplier", 0.5); //Initialize multiplier
+	multiplier = Robot::prefs->GetDouble("multiplier");
 }
 
 // Called just before this Command runs the first time
@@ -50,7 +51,6 @@ void Drive::Execute() {
 	//												Robot::oi->getdriver()->GetRawAxis(rightX));
 
 //Software Shifting...........................................................................................
-	multiplier = Robot::prefs->GetDouble("multiplier");
 	toggleL3();
 
 //Mecanum Drive...............................................................................................
@@ -124,19 +124,16 @@ void Drive::toggleL3()
 	currentCondition = Robot::oi->getdButtonL3()->Get();
 	if(currentCondition != lastCondition)
 	{
+		Robot::oi->singleRumbleTime(0.5);
 		cout << "L3 Changed State!";
 		if(currentCondition)
 		{
 			cout << "L3 Retrieved as True!";
 			getEnableMultiplier() ? setEnableMultiplier(false) : setEnableMultiplier(true);
-			//setEnableMultiplier(getEnableMultiplier() ? false : true);
-			Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 1.0);
-			Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 1.0);
-			Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
-			Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 0.0);
 		}
 		else
-			cout << "L3 Retrieved as False!";
-		currentCondition = lastCondition;
+			cout << "L3 Changed to False!";
 	}
+	currentCondition = lastCondition;
 }
+

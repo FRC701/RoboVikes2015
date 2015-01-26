@@ -77,7 +77,32 @@ OI::OI() {
 	dButtonRB = new JoystickButton(driver, 6);
 	dButtonLB = new JoystickButton(driver, 5);
 	dButtonL3 = new JoystickButton(driver, 9);
+	rumbleTimer = new Timer;
 
+}
+
+void OI::singleRumbleTime(int x)
+{
+	if(rumbleTimer->Get() > 0)
+		{
+		rumbleTimer->Stop();
+		rumbleTimer->Reset();
+		}
+	rumbleTimer->Start();
+	singleRumbleForSomeTime(x);
+}
+
+void OI::singleRumbleForSomeTime(int x)
+{
+	getdriver()->SetRumble(Joystick::kLeftRumble, 1.0);
+	getdriver()->SetRumble(Joystick::kRightRumble, 1.0);
+	if(!rumbleTimer->HasPeriodPassed(x))
+		singleRumbleForSomeTime(x);
+	else if(rumbleTimer->HasPeriodPassed(x))
+	{
+		getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
+		getdriver()->SetRumble(Joystick::kRightRumble, 0.0);
+	}
 }
 
 JoystickButton* OI::getdButtonRB()
