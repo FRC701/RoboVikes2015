@@ -12,6 +12,8 @@
 #include "Drive.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "../OI.h"
+using namespace std;
+
 Drive::Drive() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -118,11 +120,14 @@ bool Drive::getEnableMultiplier()
 
 void Drive::toggleL3()
 {
+	//cout << "Toggle Testing Started!";
 	currentCondition = Robot::oi->getdButtonL3()->Get();
 	if(currentCondition != lastCondition)
 	{
+		cout << "L3 Changed State!";
 		if(currentCondition)
 		{
+			cout << "L3 Retrieved as True!";
 			getEnableMultiplier() ? setEnableMultiplier(false) : setEnableMultiplier(true);
 			//setEnableMultiplier(getEnableMultiplier() ? false : true);
 			Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 1.0);
@@ -130,6 +135,8 @@ void Drive::toggleL3()
 			Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
 			Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 0.0);
 		}
+		else
+			cout << "L3 Retrieved as False!";
 		currentCondition = lastCondition;
 	}
 }
