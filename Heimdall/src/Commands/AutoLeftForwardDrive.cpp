@@ -21,7 +21,7 @@ AutoLeftForwardDrive::AutoLeftForwardDrive() {
 
 // Called just before this Command runs the first time
 void AutoLeftForwardDrive::Initialize() {
-	
+	timer.Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -31,16 +31,18 @@ void AutoLeftForwardDrive::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutoLeftForwardDrive::IsFinished() {
-	return false;
+	return timer.HasPeriodPassed(0.0);
 }
 
 // Called once after isFinished returns true
 void AutoLeftForwardDrive::End() {
-	
+	timer.Stop();
+	timer.Reset();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void AutoLeftForwardDrive::Interrupted() {
-
+	timer.Stop();
+	timer.Reset();
 }
