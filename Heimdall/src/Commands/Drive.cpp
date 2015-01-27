@@ -132,6 +132,7 @@ void Drive::toggleL3()
 		{
 			cout << "L3 Retrieved as True!\n";
 			getEnableMultiplier() ? setEnableMultiplier(false) : setEnableMultiplier(true);
+			Robot::oi->singleRumbleTime(0.5);
 			//Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
 			//Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 0.0);
 		}
