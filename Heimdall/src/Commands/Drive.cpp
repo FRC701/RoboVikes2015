@@ -134,6 +134,6 @@ void Drive::toggleL3()
 		else
 			cout << "L3 Changed to False!";
 	}
-	currentCondition = lastCondition;
+	lastCondition = currentCondition;
 }
 
