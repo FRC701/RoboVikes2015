@@ -83,12 +83,7 @@ OI::OI() {
 
 void OI::singleRumbleTime(int x)
 {
-	if(rumbleTimer->Get() > 0)
-		{
-		rumbleTimer->Stop();
-		rumbleTimer->Reset();
-		}
-	rumbleTimer->Start();
+	rumbleTimer->Reset();
 	singleRumbleForSomeTime(x);
 }
 
