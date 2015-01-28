@@ -72,7 +72,7 @@ OI::OI() {
 	driverRumbler = new Rumbler(driver);
 	coDriverRumbler = new Rumbler(coDriver);
 
-	if(Robot::prefs->GetString("coDriver") == "Connor")
+	if(Robot::user == "Connor")
 	{
 		coButtonA = new JoystickButton(coDriver, 1);
 		coButtonA->WhenReleased(new PneIntakeOut());
@@ -83,7 +83,7 @@ OI::OI() {
 		coButtonRB = new JoystickButton(coDriver, 6);
 		coButtonRB->WhileHeld(new spoolClockwise());
 	}
-	else if(Robot::prefs->GetString("coDriver") == "Fish")
+	else if(Robot::user == "Fish")
 	{
 		coButtonA = new JoystickButton(coDriver, 1);
 		coButtonA->WhenReleased(new intakeIn());

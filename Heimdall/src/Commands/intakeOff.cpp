@@ -27,7 +27,7 @@ void intakeOff::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void intakeOff::Execute() {
-	if(Robot::prefs->GetString("coDriver") == "Connor")
+	if(Robot::user == "Connor")
 	{
 		if(Robot::oi->getcoDriver()->GetRawAxis(1) != 0.0
 				&& Robot::oi->getcoDriver()->GetRawAxis(0) == 0.0)
@@ -42,7 +42,7 @@ void intakeOff::Execute() {
 			Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(0) * -1);
 		}
 	}
-	else if(Robot::prefs->GetString("coDriver") == "Fish")
+	else if(Robot::user == "Fish")
 	{
 		Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
 		Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4) * -1);
