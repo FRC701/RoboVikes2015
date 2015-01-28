@@ -44,8 +44,8 @@ void intakeOff::Execute() {
 	}
 	else if(Robot::prefs->GetString("coDriver") == "Fish")
 	{
-		Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1));
-		Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * -1);
+		Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
+		Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4) * -1);
 	}
 	else
 	{

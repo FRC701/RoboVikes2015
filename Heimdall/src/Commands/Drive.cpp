@@ -120,21 +120,15 @@ bool Drive::getEnableMultiplier()
 
 void Drive::toggleL3()
 {
-	//cout << "Toggle Testing Started!";
 	currentCondition = Robot::oi->getdButtonL3()->Get();
 	if(currentCondition != lastCondition)
 	{
-		//Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 1.0);
-		//Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 1.0);
-		//Robot::oi->singleRumbleTime(0.5);
 		cout << "L3 Changed State!\n";
 		if(currentCondition)
 		{
 			cout << "L3 Retrieved as True!\n";
 			getEnableMultiplier() ? setEnableMultiplier(false) : setEnableMultiplier(true);
-			Robot::oi->singleRumbleTime(0.5);
-			//Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
-			//Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 0.0);
+			Robot::oi->driverRumbler->start(Joystick::kLeftRumble, 0.3);
 		}
 		else if(!currentCondition)
 		{
