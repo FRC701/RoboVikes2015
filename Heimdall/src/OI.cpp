@@ -72,7 +72,7 @@ OI::OI() {
 	driverRumbler = new Rumbler(driver);
 	coDriverRumbler = new Rumbler(coDriver);
 
-	if(Robot::user == "Connor")
+	if(Robot::prefs->GetString("coDrive") == "Connor")
 	{
 		coButtonA = new JoystickButton(coDriver, 1);
 		coButtonA->WhenReleased(new PneIntakeOut());
@@ -83,18 +83,18 @@ OI::OI() {
 		coButtonRB = new JoystickButton(coDriver, 6);
 		coButtonRB->WhileHeld(new spoolClockwise());
 	}
-	else if(Robot::user == "Fish")
+	else if(Robot::prefs->GetString("coDriver") == "Fish")
 	{
 		coButtonA = new JoystickButton(coDriver, 1);
-		coButtonA->WhenReleased(new intakeIn());
+		coButtonA->WhileHeld(new intakeIn());
 		coButtonB = new JoystickButton(coDriver, 2);
 		coButtonB->WhileHeld(new intakeOut());
 		coButtonX = new JoystickButton(coDriver, 3);
 		coButtonX->WhenReleased(new PneIntakeOut());
 		coButtonLB = new JoystickButton(coDriver, 5);
-		coButtonLB->WhileHeld(new haySqueezerOpen());
-		coButtonRB = new JoystickButton(coDriver, 6);
-		coButtonRB->WhileHeld(new haySqueezerClose());
+		coButtonLB->WhenReleased(new haySqueezerToggle());
+		//coButtonRB = new JoystickButton(coDriver, 6);
+		//coButtonRB->WhenReleased(new haySqueezerClose());
 
 	}
 

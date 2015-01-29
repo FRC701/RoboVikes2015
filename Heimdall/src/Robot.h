@@ -33,7 +33,6 @@ using namespace std;
 
 class Robot : public IterativeRobot {
 public:
-	static string user;
 	PowerDistributionPanel* PDP;
 	Accelerometer* accel;
 	Command *autonomousCommand;
