@@ -11,6 +11,9 @@
 
 
 #include "oneLevelTote.h"
+#include "haySqueezerClose.h"
+#include "PneIntakeOut.h"
+#include "oneLevel.h"
 
 oneLevelTote::oneLevelTote() {
 	// Add Commands here:

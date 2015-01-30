@@ -32,7 +32,8 @@ void oneLevel::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool oneLevel::IsFinished() {
-	return false;
+	if(Robot::intake->intakeLeftMotor->GetEncPosition() < 10)
+		return false;
 }
 
 // Called once after isFinished returns true
