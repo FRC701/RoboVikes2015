@@ -28,5 +28,6 @@ private:
     Notifier notifier;
 
     static void callback(void* param);
+
 };
 
