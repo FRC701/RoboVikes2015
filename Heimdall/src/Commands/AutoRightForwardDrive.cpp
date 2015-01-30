@@ -27,13 +27,18 @@ void AutoRightForwardDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoRightForwardDrive::Execute() {
-	Robot::chassis->robotDrive->Drive(0.5,0.0);
+	Robot::chassis->robotDrive->m_rearLeftMotor->Set(1.0);
+	Robot::chassis->robotDrive->m_frontLeftMotor->Set(-1.0);
+	Robot::chassis->robotDrive->m_rearRightMotor->Set(-1.0);
+	Robot::chassis->robotDrive->m_frontRightMotor->Set(1.0);
+	//Robot::chassis->robotDrive->Drive(Robot::prefs->GetDouble ("RightForwardDriveDistance" , 0.0),0.0);
 }
+
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutoRightForwardDrive::IsFinished() {
-	return timer.HasPeriodPassed(3.0);
-
+	return timer.HasPeriodPassed(Robot::prefs->GetDouble("TimeToDriveRightForward",0.0));
+}
 // Called once after isFinished returns true
 void AutoRightForwardDrive::End() {
 	timer.Stop();
