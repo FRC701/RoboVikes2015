@@ -105,7 +105,7 @@ OI::OI() {
 		coButtonB = new JoystickButton(coDriver, 2);
 		coButtonB->WhileHeld(new intakeOut());
 		coButtonX = new JoystickButton(coDriver, 3);
-		coButtonX->WhenReleased(new PneIntakeOut());
+		coButtonX->WhenReleased(new pneIntakeToggle());
 		coButtonLB = new JoystickButton(coDriver, 5);
 		coButtonLB->WhenReleased(new haySqueezerToggle());
 		coButtonRB = new JoystickButton(coDriver, 6);
