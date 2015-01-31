@@ -27,13 +27,14 @@ void oneLevel::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void oneLevel::Execute() {
-	
+	Robot::spool->spoolLeftMotor->Set(-1.0);
+	Robot::spool->spoolRightMotor->Set(-1.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool oneLevel::IsFinished() {
 	bool test;
-	if(Robot::intake->intakeLeftMotor->GetEncPosition() < 10)
+	if(Robot::spool->spoolRightMotor->GetEncPosition() >= 396)
 		test = true;
 	return test;
 }

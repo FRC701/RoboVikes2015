@@ -112,7 +112,7 @@ OI::OI() {
 		coButtonLB = new JoystickButton(coDriver, 5);
 		coButtonLB->WhenReleased(new haySqueezerToggle());
 		coButtonRB = new JoystickButton(coDriver, 6);
-		coButtonRB->WhenReleased(new oneLevelTote());
+		coButtonRB->WhenReleased(new oneLevel());
 
 
 	}

@@ -21,9 +21,9 @@ oneLevelTote::oneLevelTote() {
 	//      AddSequential(new Command2());
 	// these will run in order.
 
-	AddSequential(new haySqueezerClose());
-	AddSequential(new PneIntakeOut());
-	AddSequential(new oneLevel());
+	//AddSequential(new haySqueezerClose());
+	//AddSequential(new PneIntakeOut());
+	//AddSequential(new oneLevel());
 
 
 	// To run multiple commands at the same time,
