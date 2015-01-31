@@ -36,6 +36,8 @@ bool rumble::IsFinished() {
 
 // Called once after isFinished returns true
 void rumble::End() {
+	timeForRumble->Stop();
+	timeForRumble->Reset();
 	Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
 }
 
