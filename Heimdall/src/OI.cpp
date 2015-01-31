@@ -26,6 +26,7 @@ using namespace std;
 #include "Commands/intakeOut.h"
 #include "Commands/oneLevel.h"
 #include "Commands/oneLevelTote.h"
+#include "Commands/pneIntakeDefault.h"
 #include "Commands/pneIntakeIn.h"
 #include "Commands/pneIntakeToggle.h"
 #include "Commands/rumble.h"
@@ -68,6 +69,8 @@ OI::OI() {
 	SmartDashboard::PutData("haySqueezerClose", new haySqueezerClose());
 
 	SmartDashboard::PutData("haySqueezerOpen", new haySqueezerOpen());
+
+	SmartDashboard::PutData("pneIntakeDefault", new pneIntakeDefault());
 
 	SmartDashboard::PutData("pneIntakeIn", new pneIntakeIn());
 
