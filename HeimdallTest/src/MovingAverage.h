@@ -12,8 +12,8 @@
 class MovingAverage {
 public:
 	explicit MovingAverage(size_t size);
-
-	double returnAverage(); //const;
+	double	returnSize();
+	double returnAverage() const;
 	double returnSum();
 	void sumOfValues();
 	void push(double value);

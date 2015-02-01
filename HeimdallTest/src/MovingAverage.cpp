@@ -13,16 +13,18 @@ MovingAverage::MovingAverage(size_t size)
 	sum = 0.0;
 }
 
-double MovingAverage::returnAverage() //const
+double MovingAverage::returnAverage() const
 {
-	sumOfValues();
 	double average = sum / maxSize;
 	return average;
 }
 
 void MovingAverage::push(double value)
 {
-	values.push_front(value);
+		values.push_front(value);
+		if(values.size() > maxSize)
+			values.pop_back();
+		sumOfValues();
 }
 
 double MovingAverage::returnSum()
@@ -36,5 +38,12 @@ double MovingAverage::returnIndex(int index)
 
 void MovingAverage::sumOfValues()
 {
-	sum = values[0];
+	sum = 0.0;
+	for(size_t i = 0; i <= maxSize; i++)
+		sum += values[i];
+}
+
+double MovingAverage::returnSize()
+{
+	return values.size();
 }

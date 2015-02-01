@@ -17,9 +17,10 @@
 TEST(MovingAverage, average_with_no_samples)
 {
 	// Arrange
-	MovingAverage average(3);
+	MovingAverage average(1);
 	// Act
-	double result = average.average();
+	average.push(3.0);
+	double result = average.returnAverage();
 	// Assert
 	EXPECT_EQ(0.0, result);
 }
@@ -42,9 +43,24 @@ TEST(MovingAverage, average_of_3)
 	// Arrange
 	MovingAverage average(3);
 	// Act
-	double result = average.returnSum();
+	average.push(3.0);
+	average.push(5.0);
+	average.push(7.0);
+	double result = average.returnAverage();
 	// Assert
-	EXPECT_EQ(4.0, result);
+	EXPECT_EQ(5.0, result);
+}
+
+TEST(MovingAverage, pushing_more_average_then_buffer)
+{
+	// Arrange
+	MovingAverage average(3);
+	// Act
+	for(double x = 1; x < 10; x++)
+		average.push(x);
+	double result = average.returnSize();
+	// Assert
+	EXPECT_EQ(3, result);
 }
 
 int main(int argc, char **argv) {
