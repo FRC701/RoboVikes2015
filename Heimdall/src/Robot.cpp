@@ -25,7 +25,6 @@ OI* Robot::oi = 0;
 
 void Robot::RobotInit() {
 	RobotMap::init();
-
 	PDP = new PowerDistributionPanel();
 	prefs = Preferences::GetInstance();
 

@@ -39,10 +39,12 @@ private:
 
 public:
 	OI();
+
+	double encoderStartingValue;
+
 //Rumble "Bad" code
 	//void singleRumbleTime(int x);
 	//void singleRumbleForSomeTime(int x);
-
 	Rumbler* driverRumbler;
 	Rumbler* coDriverRumbler;
 
