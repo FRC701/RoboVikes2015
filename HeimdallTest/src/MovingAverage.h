@@ -15,7 +15,6 @@ public:
 	double	returnSize();
 	double returnAverage() const;
 	double returnSum();
-	void sumOfValues();
 	void push(double value);
 	double returnIndex(int index);
 private:

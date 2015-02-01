@@ -8,39 +8,39 @@
 #include "MovingAverage.h"
 
 MovingAverage::MovingAverage(size_t size)
+: maxSize(size),
+  sum(0.0)
 {
-	maxSize = size;
-	sum = 0.0;
 }
 
 double MovingAverage::returnAverage() const
 {
-	double average = sum / maxSize;
+	if (values.size() == 0)
+		return 0;
+
+	double average = sum / values.size();
 	return average;
 }
 
 void MovingAverage::push(double value)
 {
 		values.push_front(value);
+		sum += value;
 		if(values.size() > maxSize)
+		{
+			sum -= values.back();
 			values.pop_back();
-		sumOfValues();
+		}
 }
 
 double MovingAverage::returnSum()
 {
 	return sum;
 }
+
 double MovingAverage::returnIndex(int index)
 {
 	return values[index];
-}
-
-void MovingAverage::sumOfValues()
-{
-	sum = 0.0;
-	for(size_t i = 0; i <= maxSize; i++)
-		sum += values[i];
 }
 
 double MovingAverage::returnSize()

@@ -14,7 +14,17 @@
 
 // Red, Green, Refactor
 
-TEST(MovingAverage, average_with_no_samples)
+TEST(MovingAverage, average_of_none)
+{
+	// Arrange
+	MovingAverage average(3);
+	// Act
+	double result = average.returnAverage();
+	// Assert
+	EXPECT_EQ(0.0, result);
+}
+
+TEST(MovingAverage, average_of_1)
 {
 	// Arrange
 	MovingAverage average(1);
@@ -22,7 +32,7 @@ TEST(MovingAverage, average_with_no_samples)
 	average.push(3.0);
 	double result = average.returnAverage();
 	// Assert
-	EXPECT_EQ(0.0, result);
+	EXPECT_EQ(3.0, result);
 }
 
 TEST(MovingAverage, sum_of_values)
@@ -36,6 +46,19 @@ TEST(MovingAverage, sum_of_values)
 
 	// Assert
 	EXPECT_EQ(1.0, result);
+}
+
+TEST(MovingAverage, average_of_less_than)
+{
+	// Arrange
+	MovingAverage average(5);
+	// Act
+	average.push(3.0);
+	average.push(5.0);
+	average.push(7.0);
+	double result = average.returnAverage();
+	// Assert
+	EXPECT_EQ(5.0, result);
 }
 
 TEST(MovingAverage, average_of_3)
@@ -59,8 +82,10 @@ TEST(MovingAverage, pushing_more_average_then_buffer)
 	for(double x = 1; x < 10; x++)
 		average.push(x);
 	double result = average.returnSize();
+
 	// Assert
 	EXPECT_EQ(3, result);
+	EXPECT_EQ(8, average.returnAverage());
 }
 
 int main(int argc, char **argv) {
