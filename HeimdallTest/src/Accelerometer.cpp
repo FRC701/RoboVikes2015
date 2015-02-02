@@ -17,6 +17,11 @@ Accelerometer::Accelerometer()
 {
 }
 
+void Accelerometer::stopFeedingCompensator()
+{
+
+}
+
 double Accelerometer::getAcceleration() const
 {
 	return acceleration;
@@ -24,7 +29,7 @@ double Accelerometer::getAcceleration() const
 
 double Accelerometer::getVelocity() const
 {
-	return 0.0;
+	return 	velocity.get();
 }
 
 double Accelerometer::getPositiion() const
@@ -39,6 +44,8 @@ void Accelerometer::reset()
 
 void Accelerometer::push(double value)
 {
-
+	compenstation.push(value);
+	sampler.push(value);
+	acceleration = sampler.returnAverage() - compenstation.returnAverage();
 }
 

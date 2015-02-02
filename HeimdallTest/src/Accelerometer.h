@@ -8,6 +8,9 @@
 #ifndef ACCELEROMETER_H_
 #define ACCELEROMETER_H_
 
+#include "MovingAverage.h"
+#include "Integrator.h"
+
 class Accelerometer {
 public:
 	Accelerometer();
@@ -15,6 +18,8 @@ public:
 	double getAcceleration() const;
 	double getVelocity() const;
 	double getPositiion() const;
+
+	void stopFeedingCompensator();
 
 	void reset();
 	void push(double value);

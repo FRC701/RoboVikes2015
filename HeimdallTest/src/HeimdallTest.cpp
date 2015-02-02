@@ -11,6 +11,8 @@
 
 
 #include "MovingAverage.h"
+#include "Integrator.h"
+#include "Accelerometer.h"
 
 // Red, Green, Refactor
 
@@ -86,6 +88,91 @@ TEST(MovingAverage, pushing_more_average_then_buffer)
 	// Assert
 	EXPECT_EQ(3, result);
 	EXPECT_EQ(8, average.returnAverage());
+}
+
+//.........................................Integrator......................................
+
+TEST(Integrator, integrating_one_values)
+{
+	// Arrange
+	Integrator integrator;
+	// Act
+	integrator.push(1);
+	double result = integrator.get();
+	// Assert
+	EXPECT_EQ(0.5, result);
+}
+
+TEST(Integrator, integrating_two_values)
+{
+	// Arrange
+	Integrator integrator;
+	// Act
+	integrator.push(1);
+	integrator.push(2);
+	double result = integrator.get();
+	// Assert
+	EXPECT_EQ(2.0, result);
+}
+
+TEST(Integrator, integrating_no_values)
+{
+	// Arrange
+	Integrator integrator;
+	// Act
+	double result = integrator.get();
+	// Assert
+	EXPECT_EQ(0.0, result);
+}
+
+TEST(Integrator, integrating_test_rest_values)
+{
+	// Arrange
+	Integrator integrator;
+	// Act
+	integrator.push(1);
+	integrator.push(2);
+	double result = integrator.get();
+	// Assert
+	EXPECT_EQ(2.0, result);
+	integrator.reset();
+	result = integrator.get();
+	EXPECT_EQ(0.0, result);
+}
+
+//.........................................Accelerometer......................................
+
+TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos)
+{
+	// Arrange
+	Accelerometer heimAccel;
+	// Act
+	double result = heimAccel.getAcceleration();
+	// Assert
+	EXPECT_EQ(0.0, result);
+	result = heimAccel.getVelocity();
+	// Assert
+	EXPECT_EQ(0.0, result);
+	result = heimAccel.getPositiion();
+	// Assert
+	EXPECT_EQ(0.0, result);
+}
+
+TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos_one_value)
+{
+	// Arrange
+	Accelerometer heimAccel;
+	// Act
+	heimAccel.push(1.0);
+	double result = heimAccel.getAcceleration();
+	// Assert
+	EXPECT_EQ(1.0, result);
+	result = heimAccel.getVelocity();
+	// Assert
+	EXPECT_EQ(0.5, result);
+	result = heimAccel.getPositiion();
+	// Assert
+	EXPECT_EQ(0.0, result);
 }
 
 int main(int argc, char **argv) {
