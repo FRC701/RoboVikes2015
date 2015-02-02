@@ -108,6 +108,7 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Encoder Position", Robot::spool->spoolRightMotor->GetEncPosition());
 	SmartDashboard::PutNumber("Encoder Vel", Robot::chassis->rightFront->GetEncVel());
 	SmartDashboard::PutNumber("Forward Limit Switch", Robot::chassis->rightFront->IsFwdLimitSwitchClosed());
+	SmartDashboard::PutNumber("Starting Encoder Value", Robot::oi->encoderStartingValue);
 }
 
 void Robot::TestPeriodic() {
