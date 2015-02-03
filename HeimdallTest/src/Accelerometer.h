@@ -16,13 +16,13 @@ public:
 	Accelerometer();
 
 	double getAcceleration() const;
-	double getVelocity() const;
-	double getPositiion() const;
+	double getVelocity(); //const;
+	double getPositiion(); //const;
 
 	void stopFeedingCompensator();
 
 	void reset();
-	void push(double value);
+	void push(double value, double test);
 private:
 	MovingAverage compenstation;
 	MovingAverage sampler;

@@ -27,25 +27,27 @@ double Accelerometer::getAcceleration() const
 	return acceleration;
 }
 
-double Accelerometer::getVelocity() const
+double Accelerometer::getVelocity() //const
 {
-	return 	velocity.get();
+	velocity.push(acceleration);
+	return velocity.get();
 }
 
-double Accelerometer::getPositiion() const
+double Accelerometer::getPositiion() //const
 {
-	return 0.0;
+	position.push(velocity.get());
+	return position.get();
 }
 
 void Accelerometer::reset()
 {
-
+	acceleration = 0.0;
 }
 
-void Accelerometer::push(double value)
+void Accelerometer::push(double value, double test)
 {
 	compenstation.push(value);
-	sampler.push(value);
+	sampler.push(test);
 	acceleration = sampler.returnAverage() - compenstation.returnAverage();
 }
 

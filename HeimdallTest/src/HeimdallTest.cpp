@@ -142,7 +142,7 @@ TEST(Integrator, integrating_test_rest_values)
 
 //.........................................Accelerometer......................................
 
-TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos)
+TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos_no_values)
 {
 	// Arrange
 	Accelerometer heimAccel;
@@ -163,16 +163,34 @@ TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos_one_value)
 	// Arrange
 	Accelerometer heimAccel;
 	// Act
-	heimAccel.push(1.0);
+	heimAccel.push(0.1, 1.1 );
+	double result = heimAccel.getAcceleration();
+	EXPECT_EQ(1.0, result);
+
+	result = heimAccel.getVelocity();
+	EXPECT_EQ(0.5, result);
+
+	result = heimAccel.getPositiion();
+	EXPECT_EQ(0.0, result);
+	heimAccel.reset();
+}
+
+TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos_two_value)
+{
+	// Arrange
+	Accelerometer heimAccel;
+	// Act
+	heimAccel.push(0.1, 1.1 );
+	heimAccel.push(0.1, 2.1);
 	double result = heimAccel.getAcceleration();
 	// Assert
-	EXPECT_EQ(1.0, result);
+	EXPECT_EQ(1.5, result);
 	result = heimAccel.getVelocity();
 	// Assert
-	EXPECT_EQ(0.5, result);
+	EXPECT_EQ(0.75, result);
 	result = heimAccel.getPositiion();
 	// Assert
-	EXPECT_EQ(0.0, result);
+	EXPECT_EQ(0.375, result);
 }
 
 int main(int argc, char **argv) {
