@@ -22,13 +22,13 @@ intakeIn::intakeIn() {
 
 // Called just before this Command runs the first time
 void intakeIn::Initialize() {
-	
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void intakeIn::Execute() {
 	Robot::intake->intakeRightMotor->Set(1.0);		//Set intake motors to turn on to full power
-	Robot::intake->intakeLeftMotor->Set(-1.0);		// (inverted because mirrored, might need changing)
+	Robot::intake->intakeLeftMotor->Set(1.0);		// (inverted because mirrored, might need changing)
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -38,7 +38,7 @@ bool intakeIn::IsFinished() {
 
 // Called once after isFinished returns true
 void intakeIn::End() {
-	
+
 }
 
 // Called when another command which requires one or more of the same
