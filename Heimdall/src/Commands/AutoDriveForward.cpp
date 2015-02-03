@@ -32,14 +32,9 @@ void AutoDriveForward::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoDriveForward::Execute() {
-	Robot::chassis->robotDrive->Drive(
-				Robot::prefs->GetDouble("driveSpeed", 0.0),
-				Robot::prefs->GetDouble("driveAngle", 0.0));
-driveDistance = Robot::chassis->rightFront->GetEncPosition();
 
-SmartDashboard::PutNumber("EncoderValue" , driveDistance);
+Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0 , 0.5 , 0.0);
 
-goalDistance = Robot::prefs->GetDouble("goalDistance", 0.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
