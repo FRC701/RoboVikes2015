@@ -30,7 +30,7 @@ void Delay::End()
 	mTimer.Reset();
 	
 	// For testing purposes:
-	SmartDashboard::PutNumber("Delay Timer", mTimer.Get());
+	SmartDashboard::PutNumber("Delay Duration", Robot::prefs->GetDouble("DelayTestDelay", 0.0));
 }
 
 void Delay::Interrupted()
@@ -39,5 +39,5 @@ void Delay::Interrupted()
 	mTimer.Reset();
 	
 	// For testing purposes:
-	SmartDashboard::PutNumber("Delay Timer", mTimer.Get());
+	SmartDashboard::PutNumber("Delay Duration", Robot::prefs->GetDouble("DelayTestDelay", 0.0));
 }
