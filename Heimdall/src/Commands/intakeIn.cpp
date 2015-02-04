@@ -27,8 +27,8 @@ void intakeIn::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void intakeIn::Execute() {
-	Robot::intake->intakeRightMotor->Set(1.0);
-	Robot::intake->intakeLeftMotor->Set(-1.0);
+	Robot::intake->intakeRightMotor->Set(1.0);		//Set intake motors to turn on to full power
+	Robot::intake->intakeLeftMotor->Set(-1.0);		// (inverted because mirrored, might need changing)
 }
 
 // Make this return true when this Command no longer needs to run execute()

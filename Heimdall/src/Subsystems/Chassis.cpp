@@ -29,6 +29,11 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	rightRear = RobotMap::chassisrightRearMotor;
 	robotDrive = RobotMap::chassisRobotDrive;
 
+	leftFront->SetVoltageRampRate(0.5);
+	leftRear->SetVoltageRampRate(0.5);
+	rightFront->SetVoltageRampRate(0.5);
+	rightRear->SetVoltageRampRate(0.5);
+
 }
     
 void Chassis::InitDefaultCommand() {

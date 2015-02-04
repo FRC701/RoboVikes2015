@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef SLIDEMASTER_H
-#define SLIDEMASTER_H
+#ifndef HAYSQUEEZERTOGGLE_H
+#define HAYSQUEEZERTOGGLE_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class slideMaster: public Command {
+class haySqueezerToggle: public Command {
 public:
-	slideMaster();
+	haySqueezerToggle();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
