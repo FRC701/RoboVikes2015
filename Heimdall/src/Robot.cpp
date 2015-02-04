@@ -98,7 +98,15 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Left Plot Motor", PDP->GetCurrent(3));
 	SmartDashboard::PutNumber("Right Motor", PDP->GetCurrent(12));
 	SmartDashboard::PutNumber("Left Motor", PDP->GetCurrent(3));
+//Talons...............................................................................................
+	SmartDashboard::PutNumber("Spool Left Motor", Robot::spool->spoolLeftMotor->GetOutputCurrent());
+	SmartDashboard::PutNumber("Spool Right Motor",  Robot::spool->spoolRightMotor->GetOutputCurrent());
 
+	SmartDashboard::PutNumber("Chassis Front Left Motor", Robot::chassis->leftFront->GetOutputCurrent());
+	SmartDashboard::PutNumber("Chassis Front Right Motor",  Robot::chassis->rightFront->GetOutputCurrent());
+	SmartDashboard::PutNumber("Chassis Rear Right Motor", Robot::chassis->rightRear->GetOutputCurrent());
+	SmartDashboard::PutNumber("Chassis Rear Left Motor",  Robot::chassis->leftRear->GetOutputCurrent());
+//Encoder...............................................................................................
 	SmartDashboard::PutNumber("Encoder Position", Robot::chassis->rightFront->GetEncPosition());
 	SmartDashboard::PutNumber("Encoder Vel", Robot::chassis->rightFront->GetEncVel());
 	SmartDashboard::PutNumber("Forward Limit Switch", Robot::chassis->rightFront->IsFwdLimitSwitchClosed());
