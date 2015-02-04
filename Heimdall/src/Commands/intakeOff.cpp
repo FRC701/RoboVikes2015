@@ -27,7 +27,7 @@ void intakeOff::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void intakeOff::Execute() {
-	Robot::intake->intakeRightMotor->Set(0.0);
+	Robot::intake->intakeRightMotor->Set(0.0);		//sets intake motors to default state of zero
 	Robot::intake->intakeLeftMotor->Set(0.0);
 }
 

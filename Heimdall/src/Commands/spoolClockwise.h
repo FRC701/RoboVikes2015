@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef ARTIFICIALSHIFT_H
-#define ARTIFICIALSHIFT_H
+#ifndef SPOOLCLOCKWISE_H
+#define SPOOLCLOCKWISE_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class artificialShift: public Command {
+class spoolClockwise: public Command {
 public:
-	artificialShift();
+	spoolClockwise();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
