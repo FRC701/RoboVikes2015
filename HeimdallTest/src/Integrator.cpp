@@ -24,7 +24,7 @@ void Integrator::reset()
 	sum = 0.0;
 }
 
-double Integrator::get()
+double Integrator::get() const
 {
 	return sum;
 }

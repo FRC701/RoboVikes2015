@@ -13,22 +13,24 @@
 
 class Accelerometer {
 public:
-	Accelerometer();
+	Accelerometer(size_t compensationSize = 1000, size_t samplerSize = 5);
 
 	double getAcceleration() const;
-	double getVelocity(); //const;
-	double getPositiion(); //const;
+	double getVelocity() const;
+	double getPositiion() const;
 
 	void stopFeedingCompensator();
 
 	void reset();
-	void push(double value, double test);
+	void push(double value);
 private:
-	MovingAverage compenstation;
+	MovingAverage compensation;
 	MovingAverage sampler;
 	double acceleration;
 	Integrator velocity;
 	Integrator position;
+	bool feedCompensator;
+	double compensate;
 };
 
 #endif /* ACCELEROMETER_H_ */

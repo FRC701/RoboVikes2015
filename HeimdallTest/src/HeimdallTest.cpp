@@ -161,9 +161,11 @@ TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos_no_values)
 TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos_one_value)
 {
 	// Arrange
-	Accelerometer heimAccel;
+	Accelerometer heimAccel(1,1);
 	// Act
-	heimAccel.push(0.1, 1.1 );
+	heimAccel.push(0.1);
+	heimAccel.stopFeedingCompensator();
+	heimAccel.push(1.1);
 	double result = heimAccel.getAcceleration();
 	EXPECT_EQ(1.0, result);
 
@@ -171,26 +173,103 @@ TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos_one_value)
 	EXPECT_EQ(0.5, result);
 
 	result = heimAccel.getPositiion();
-	EXPECT_EQ(0.0, result);
+	EXPECT_EQ(0.25, result);
 	heimAccel.reset();
 }
 
 TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos_two_value)
 {
 	// Arrange
-	Accelerometer heimAccel;
+	Accelerometer heimAccel(1,1);
 	// Act
-	heimAccel.push(0.1, 1.1 );
-	heimAccel.push(0.1, 2.1);
+	heimAccel.push(0.1);
+	heimAccel.stopFeedingCompensator();
+	heimAccel.push(1.1);
+	heimAccel.push(2.1);
 	double result = heimAccel.getAcceleration();
 	// Assert
-	EXPECT_EQ(1.5, result);
+	EXPECT_EQ(2, result);
 	result = heimAccel.getVelocity();
 	// Assert
-	EXPECT_EQ(0.75, result);
+	EXPECT_EQ(2, result);
 	result = heimAccel.getPositiion();
 	// Assert
-	EXPECT_EQ(0.375, result);
+	EXPECT_EQ(1.5, result);
+}
+
+TEST(Accelerometer, Accelerometer_GetAccel_GetVel_GetPos_five_value)
+{
+	// Arrange
+	Accelerometer heimAccel(1,1);
+	// Act
+	heimAccel.push(0.1);
+	heimAccel.stopFeedingCompensator();
+	heimAccel.reset();
+	heimAccel.push(1);
+	heimAccel.push(2);
+	heimAccel.push(3);
+	heimAccel.push(4);
+	heimAccel.push(5);
+	double result = heimAccel.getAcceleration();
+	// Assert
+	EXPECT_EQ(5, result);
+	result = heimAccel.getVelocity();
+	// Assert
+	EXPECT_EQ(12.5, result);
+	result = heimAccel.getPositiion();
+	// Assert
+	EXPECT_EQ(21.25, result);
+}
+
+TEST(Accelerometer, Accelerometer_Compensator)
+{
+	// Arrange
+	Accelerometer heimAccel(3,1);
+	// Act
+	heimAccel.push(1.1);
+	heimAccel.push(0.9);
+	heimAccel.push(1);
+	heimAccel.stopFeedingCompensator();
+	heimAccel.push(2);
+	heimAccel.push(3);
+	heimAccel.push(4);
+	heimAccel.push(5);
+	heimAccel.push(6);
+	double result = heimAccel.getAcceleration();
+	// Assert
+	EXPECT_EQ(5, result);
+	result = heimAccel.getVelocity();
+	// Assert
+	EXPECT_EQ(12.4, result);
+	result = heimAccel.getPositiion();
+	// Assert
+	EXPECT_EQ(20.65, result);
+}
+
+TEST(Accelerometer, Accelerometer_Sampler)
+{
+	// Arrange
+	Accelerometer heimAccel(3,3);
+	// Act
+	heimAccel.push(1.1);
+	heimAccel.push(0.9);
+	heimAccel.push(1);
+	heimAccel.stopFeedingCompensator();
+	heimAccel.push(2);
+	heimAccel.push(3);
+	heimAccel.push(4);
+	heimAccel.push(5);
+	heimAccel.push(6);
+	heimAccel.push(7);
+	double result = heimAccel.getAcceleration();
+	// Assert
+	EXPECT_EQ(5, result);
+	result = heimAccel.getVelocity();
+	// Assert
+	EXPECT_EQ(12.8, result);
+	result = heimAccel.getPositiion();
+	// Assert
+	EXPECT_EQ(22.75, result);
 }
 
 int main(int argc, char **argv) {

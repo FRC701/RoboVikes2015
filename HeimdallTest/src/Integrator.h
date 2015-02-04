@@ -13,7 +13,7 @@ public:
 	Integrator();
 	void push(double val);
 	void reset();
-	double get();
+	double get() const;
 private:
 	double sum;
 	double previous;

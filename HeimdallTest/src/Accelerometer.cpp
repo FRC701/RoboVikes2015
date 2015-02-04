@@ -7,19 +7,21 @@
 
 #include "Accelerometer.h"
 
-static const size_t kCompenstionSize = 1000;
+static const size_t kCompensationSize = 1000;
 static const size_t kSamplerSize = 5;
 
-Accelerometer::Accelerometer()
-	: compenstation(kCompenstionSize)
-	, sampler(kSamplerSize)
+Accelerometer::Accelerometer(size_t compensationSize, size_t samplerSize)
+	: compensation(compensationSize)
+	, sampler(samplerSize)
 	, acceleration(0.0)
+	, feedCompensator(true)
+	, compensate(0.0)
 {
 }
 
 void Accelerometer::stopFeedingCompensator()
 {
-
+	feedCompensator = false;
 }
 
 double Accelerometer::getAcceleration() const
@@ -27,27 +29,35 @@ double Accelerometer::getAcceleration() const
 	return acceleration;
 }
 
-double Accelerometer::getVelocity() //const
+double Accelerometer::getVelocity() const
 {
-	velocity.push(acceleration);
 	return velocity.get();
 }
 
-double Accelerometer::getPositiion() //const
+double Accelerometer::getPositiion() const
 {
-	position.push(velocity.get());
 	return position.get();
 }
 
 void Accelerometer::reset()
 {
 	acceleration = 0.0;
+	sampler.reset();
+	velocity.reset();
+	position.reset();
 }
 
-void Accelerometer::push(double value, double test)
+void Accelerometer::push(double value)
 {
-	compenstation.push(value);
-	sampler.push(test);
-	acceleration = sampler.returnAverage() - compenstation.returnAverage();
+	if (feedCompensator)
+	{
+		compensation.push(value);
+		compensate = compensation.returnAverage();
+	}
+	sampler.push(value);
+	acceleration = sampler.returnAverage() - compensate;
+	velocity.push(acceleration);
+	position.push(velocity.get());
 }
+
 

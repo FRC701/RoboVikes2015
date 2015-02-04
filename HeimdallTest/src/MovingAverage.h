@@ -17,6 +17,7 @@ public:
 	double returnSum();
 	void push(double value);
 	double returnIndex(int index);
+	void reset();
 private:
 	size_t maxSize;
 	std::deque<double> values;

@@ -47,3 +47,8 @@ double MovingAverage::returnSize()
 {
 	return values.size();
 }
+
+void MovingAverage::reset()
+{
+	values.clear();
+}
