@@ -12,6 +12,7 @@
 
 #include "AutoDriveIn.h"
 #include "AutoDriveForward.h"
+#include "PneIntakeOut.h"
 
 AutoDriveIn::AutoDriveIn() {
 	// Add Commands here:
@@ -19,6 +20,7 @@ AutoDriveIn::AutoDriveIn() {
 	//      AddSequential(new Command2());
 	// these will run in order.
 
+	AddSequential (new PneIntakeOut ());
 	AddSequential (new AutoDriveForward ());
 
 
