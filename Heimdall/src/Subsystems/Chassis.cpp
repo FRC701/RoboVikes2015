@@ -29,8 +29,14 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	rightRear = RobotMap::chassisrightRearMotor;
 	robotDrive = RobotMap::chassisRobotDrive;
 
+	accelerometerX = new robovikes::Accelerometer();
+	accelerometerY = new robovikes::Accelerometer();
+	builtinAccelerometer = new BuiltInAccelerometer();
+	accelerometerNotifier = new Notifier(accelerometerCallback, this);
+
+	accelerometerNotifier->StartPeriodic(0.1);
 }
-    
+
 void Chassis::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
@@ -44,3 +50,19 @@ void Chassis::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+void Chassis::stopFeedingCompensator()
+{
+	accelerometerX->stopFeedingCompensator();
+	accelerometerY->stopFeedingCompensator();
+}
+
+void Chassis::accelerometerCallback(void* param)
+{
+	Chassis* This = reinterpret_cast<Chassis*>(param);
+	// These 4 lines are in a specific order to ensure that the samples
+	// from the accelerometer are always on the same time interval.
+	double x = This->builtinAccelerometer->GetX();
+	double y = This->builtinAccelerometer->GetY();
+	This->accelerometerX->push(x);
+	This->accelerometerY->push(y);
+}

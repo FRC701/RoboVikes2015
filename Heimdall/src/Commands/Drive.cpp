@@ -31,7 +31,7 @@ Drive::Drive() {
 
 // Called just before this Command runs the first time
 void Drive::Initialize() {
-	
+
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -74,7 +74,7 @@ bool Drive::IsFinished() {
 
 // Called once after isFinished returns true
 void Drive::End() {
-	
+
 }
 
 // Called when another command which requires one or more of the same

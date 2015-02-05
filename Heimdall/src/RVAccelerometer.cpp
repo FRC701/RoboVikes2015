@@ -5,10 +5,12 @@
  *      Author: duane
  */
 
-#include "Accelerometer.h"
+#include "RVAccelerometer.h"
 
 static const size_t kCompensationSize = 1000;
 static const size_t kSamplerSize = 5;
+
+namespace robovikes {
 
 Accelerometer::Accelerometer(size_t compensationSize, size_t samplerSize)
 	: compensation(compensationSize)
@@ -34,9 +36,14 @@ double Accelerometer::getVelocity() const
 	return velocity.get();
 }
 
-double Accelerometer::getPositiion() const
+double Accelerometer::getPosition() const
 {
 	return position.get();
+}
+
+double Accelerometer::getCompensation() const
+{
+	return compensate;
 }
 
 void Accelerometer::reset()
@@ -60,4 +67,4 @@ void Accelerometer::push(double value)
 	position.push(velocity.get());
 }
 
-
+} // end namespace robovikes

@@ -11,13 +11,16 @@
 #include "MovingAverage.h"
 #include "Integrator.h"
 
+namespace robovikes {
+
 class Accelerometer {
 public:
 	Accelerometer(size_t compensationSize = 1000, size_t samplerSize = 5);
 
 	double getAcceleration() const;
 	double getVelocity() const;
-	double getPositiion() const;
+	double getPosition() const;
+	double getCompensation() const;
 
 	void stopFeedingCompensator();
 
@@ -32,5 +35,7 @@ private:
 	bool feedCompensator;
 	double compensate;
 };
+
+} // end namespace robovikes
 
 #endif /* ACCELEROMETER_H_ */
