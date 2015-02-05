@@ -18,6 +18,8 @@ Accelerometer::Accelerometer(size_t compensationSize, size_t samplerSize)
 	, acceleration(0.0)
 	, feedCompensator(true)
 	, compensate(0.0)
+	, speed(0.0)
+	, distance(0.0)
 {
 }
 
@@ -31,14 +33,21 @@ double Accelerometer::getAcceleration() const
 	return acceleration;
 }
 
-double Accelerometer::getVelocity() const
+double Accelerometer::getVelocity(/*double a /*This is the variable for average acceleration.*/) const
 {
-	return velocity.get();
+	//This is assuming that the average acceleration is of a time interval of 1 second.
+	//double speed;
+	//speed = speed + a;
+	return speed;
 }
 
-double Accelerometer::getPosition() const
+double Accelerometer::getPosition(/*double v*/) const
 {
-	return position.get();
+	//This is assuming that the the velocity is the current velocity.
+	//THis takes all the assumptions in the acceleration method as well.
+	//double distance;
+	//distance = distance + v;
+	return distance;
 }
 
 double Accelerometer::getCompensation() const
@@ -63,8 +72,12 @@ void Accelerometer::push(double value)
 	}
 	sampler.push(value);
 	acceleration = sampler.returnAverage() - compensate;
-	velocity.push(acceleration);
-	position.push(velocity.get());
+
+	speed = speed + acceleration;
+	distance = distance + speed;
+
+	//velocity.push(acceleration);
+	//position.push(velocity.get());
 }
 
 } // end namespace robovikes

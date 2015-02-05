@@ -18,7 +18,7 @@ public:
 	Accelerometer(size_t compensationSize = 1000, size_t samplerSize = 5);
 
 	double getAcceleration() const;
-	double getVelocity() const;
+	double getVelocity(/*double a*/) const;
 	double getPosition() const;
 	double getCompensation() const;
 
@@ -34,6 +34,8 @@ private:
 	Integrator position;
 	bool feedCompensator;
 	double compensate;
+	double speed;
+	double distance;
 };
 
 } // end namespace robovikes
