@@ -25,15 +25,12 @@ void PneIntakeOut::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PneIntakeOut::Execute() {
-	if(Robot::pneIntake->intakeSolenoid->Get()==DoubleSolenoid::kReverse)
-		Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kForward);
-	else if(Robot::pneIntake->intakeSolenoid->Get()==DoubleSolenoid::kForward)
-		Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kReverse);
+	
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool PneIntakeOut::IsFinished() {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true
