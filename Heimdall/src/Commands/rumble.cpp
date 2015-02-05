@@ -24,7 +24,7 @@ rumble::rumble() {
 
 // Called just before this Command runs the first time
 void rumble::Initialize() {
-	cout << "Starting Commmand\n";
+	//cout << "Starting Commmand\n";
 	timeForRumble->Start();
 
 }
@@ -32,20 +32,20 @@ void rumble::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void rumble::Execute() {
 	Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 1.0);
-	cout << "Running Execute!\n";
+	//cout << "Running Execute!\n";
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool rumble::IsFinished() {
-	cout << "Testing for finish conditions\n";
-	return timeForRumble->HasPeriodPassed(0.5);
+	//cout << "Testing for finish conditions\n";
+	return timeForRumble->HasPeriodPassed(0.2);
 }
 
 // Called once after isFinished returns true
 void rumble::End() {
 	timeForRumble->Stop();
 	timeForRumble->Reset();
-	cout << "Finishing Rumble!\n";
+	//cout << "Finishing Rumble!\n";
 	Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 0.0);
 }
 

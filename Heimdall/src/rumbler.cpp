@@ -20,7 +20,7 @@ void Rumbler::start(RumbleType type, double seconds)
 void Rumbler::stop()
 {
     notifier.Stop();
-    joystick->SetRumble(Joystick::kLeftRumble, 0.0);
+    joystick->SetRumble(Joystick::kRightRumble, 0.0);
 }
 
 void Rumbler::callback (void* param)
