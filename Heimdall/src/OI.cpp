@@ -116,8 +116,8 @@ OI::OI() {
 		coButtonRB = new JoystickButton(coDriver, 6);
 		coButtonRB->WhileHeld(new spoolClockwise());
 	}
-	else if(Robot::prefs->GetString("coDriver") == "Fish")
-	{
+	/*else if(Robot::prefs->GetString("coDriver") == "Fish")
+	{*/
 		coButtonA = new JoystickButton(coDriver, 1);
 		coButtonA->WhileHeld(new intakeIn());
 		coButtonB = new JoystickButton(coDriver, 2);
@@ -126,11 +126,11 @@ OI::OI() {
 		coButtonX->WhenReleased(new pneIntakeToggle());
 		coButtonLB = new JoystickButton(coDriver, 5);
 		coButtonLB->WhenReleased(new haySqueezerToggle());
-		coButtonRB = new JoystickButton(coDriver, 6);
-		coButtonRB->WhenReleased(new oneLevel());
+		//coButtonRB = new JoystickButton(coDriver, 6);
+		//coButtonRB->WhenReleased(new twoLevel());
 
 
-	}
+	//}
 
 
 //Not really being used any more......................................

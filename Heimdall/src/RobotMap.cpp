@@ -52,18 +52,12 @@ void RobotMap::init() {
 
 	spoolLeftMotor = new CANTalon(2);
     spoolRightMotor = new CANTalon(4);
+    spoolRightMotor->SetSensorDirection(true);
 
     chassisleftFrontMotor = new CANTalon(5);
     chassisleftRearMotor = new CANTalon(11);
     chassisrightFrontMotor = new CANTalon(6);
     chassisrightRearMotor = new CANTalon(12);
-
-    chassisleftFrontMotor->SetVoltageRampRate(0.1);
-    chassisleftRearMotor->SetVoltageRampRate(0.1);
-    chassisrightFrontMotor->SetVoltageRampRate(0.1);
-    chassisrightRearMotor->SetVoltageRampRate(0.1);
-
-
 
     chassisRobotDrive = new RobotDrive(chassisleftFrontMotor, chassisleftRearMotor,
                   chassisrightFrontMotor, chassisrightRearMotor);

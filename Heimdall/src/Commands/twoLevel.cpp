@@ -26,13 +26,19 @@ void twoLevel::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void twoLevel::Execute() {
-	
+	//Robot::spool->spoolRightMotor->Set()
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool twoLevel::IsFinished() {
-	bool test;
+	bool test = false;
+	/*
 	if(Robot::spool->spoolRightMotor->GetEncPosition() <= -1116)
+		test = true;
+	return test;
+	*/
+	if(Robot::spool->spoolRightMotor->GetPosition() == -1000)
+		cout << "you are there!";
 		test = true;
 	return test;
 }
