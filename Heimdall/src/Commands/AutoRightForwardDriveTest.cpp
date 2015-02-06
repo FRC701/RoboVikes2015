@@ -18,7 +18,9 @@ AutoRightForwardDriveTest::AutoRightForwardDriveTest() {
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
+	AddSequential(new AutoPneumaticIntakeIn());
 	AddSequential(new AutoRightForwardDrive());
+
 	// To run multiple commands at the same time,
 	// use AddParallel()
 	// e.g. AddParallel(new Command1());
