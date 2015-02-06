@@ -23,6 +23,7 @@ using namespace std;
 #include "Commands/AutonomousCommand.h"
 #include "Subsystems/BreakElevator.h"
 #include "Subsystems/Chassis.h"
+#include "Subsystems/Elevator.h"
 #include "Subsystems/HaySqueezer.h"
 #include "Subsystems/Intake.h"
 #include "Subsystems/PneIntake.h"
