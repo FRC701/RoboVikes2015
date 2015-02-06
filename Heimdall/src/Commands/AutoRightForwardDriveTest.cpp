@@ -12,6 +12,7 @@
 
 #include "AutoRightForwardDriveTest.h"
 #include "AutoRightForwardDrive.h"
+#include "AutoPneumaticIntakeIn.h"
 
 AutoRightForwardDriveTest::AutoRightForwardDriveTest() {
 	// Add Commands here:
