@@ -18,7 +18,7 @@ AutoLeftForwardDriveTest::AutoLeftForwardDriveTest() {
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-	AddSequential(new AutoLeftForwardDrive());
+
 	// To run multiple commands at the same time,
 	// use AddParallel()
 	// e.g. AddParallel(new Command1());
@@ -30,4 +30,6 @@ AutoLeftForwardDriveTest::AutoLeftForwardDriveTest() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
+
+	AddSequential(new AutoLeftForwardDrive());
 }

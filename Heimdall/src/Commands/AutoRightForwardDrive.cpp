@@ -27,7 +27,7 @@ void AutoRightForwardDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoRightForwardDrive::Execute() {
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.5,0.0,0.0);
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.5, 0.0, 0.0);
 	//Robot::chassis->robotDrive->Drive(Robot::prefs->GetDouble ("RightForwardDriveDistance" , 0.0),0.0);
 }
 

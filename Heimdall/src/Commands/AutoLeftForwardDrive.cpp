@@ -27,12 +27,12 @@ void AutoLeftForwardDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoLeftForwardDrive::Execute() {
-	Robot::chassis->robotDrive->Drive(0.5,0.0);
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(-0.5, 0.0, 0.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutoLeftForwardDrive::IsFinished() {
-	return timer.HasPeriodPassed(3.0);
+	return timer.HasPeriodPassed(Robot::prefs->GetDouble("TimeToDriveLeftForward",0.0));
 }
 
 // Called once after isFinished returns true
