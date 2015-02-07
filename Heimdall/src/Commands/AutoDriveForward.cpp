@@ -32,7 +32,7 @@ void AutoDriveForward::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutoDriveForward::Execute() {
 
-Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0 , 0.5 , 0.0);
+Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0 , -0.5 , 0.0);
 
 }
 
