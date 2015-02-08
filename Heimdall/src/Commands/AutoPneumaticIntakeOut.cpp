@@ -27,6 +27,7 @@ void AutoPneumaticIntakeOut::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutoPneumaticIntakeOut::Execute() {
 	Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kForward);
+	Robot::pneIntake->sendableChooserTestValue = 1.0;
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -36,11 +37,13 @@ bool AutoPneumaticIntakeOut::IsFinished() {
 
 // Called once after isFinished returns true
 void AutoPneumaticIntakeOut::End() {
-	
+	SmartDashboard::PutNumber("sendableChooserTestValue",
+			Robot::pneIntake->sendableChooserTestValue);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void AutoPneumaticIntakeOut::Interrupted() {
-
+	SmartDashboard::PutNumber("sendableChooserTestValue",
+				Robot::pneIntake->sendableChooserTestValue);
 }
