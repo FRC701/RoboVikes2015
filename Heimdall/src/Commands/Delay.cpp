@@ -17,6 +17,10 @@ void Delay::Initialize()
 void Delay::Execute()
 {
 	// Do nothing but delay
+
+	// For testing purposes:
+	SmartDashboard::PutNumber("mDelayTime", mDelayTime);
+	SmartDashboard::PutNumber("mTimer", mTimer.Get());
 }
 
 bool Delay::IsFinished()
