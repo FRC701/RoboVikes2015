@@ -28,31 +28,10 @@ void intakeOff::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void intakeOff::Execute() {
-	if(Robot::prefs->GetString("coDriver") == "Connor")
-	{
-		if(Robot::oi->getcoDriver()->GetRawAxis(1) != 0.0
-				&& Robot::oi->getcoDriver()->GetRawAxis(0) == 0.0)
-		{
-			Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1));
-			Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1));
-		}
-		if(Robot::oi->getcoDriver()->GetRawAxis(0) != 0.0
-				&& Robot::oi->getcoDriver()->GetRawAxis(1) == 0.0)
-		{
-			Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(0));
-			Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(0) * -1);
-		}
-	}
-	else if(Robot::prefs->GetString("coDriver") == "Fish")
-	{
-		Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
-		Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
-	}
-	else
-	{
-		Robot::intake->intakeRightMotor->Set(0.0);		//sets intake motors to default
-		Robot::intake->intakeLeftMotor->Set(0.0);		// state of zero
-	}
+
+	Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
+	Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4) * -1);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()

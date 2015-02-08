@@ -91,6 +91,40 @@ Children:
         name: Default Command, type: Command, validators: null, value: spoolOff}
     Base: Subsystem
     Name: Spool
+  - Children:
+    - Children: []
+      Properties:
+        Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '0'
+          name: Forward PCM (Solenoid)
+          validators: *id002
+          value: '0'
+        Reverse PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: '0'
+          name: Reverse PCM (Solenoid)
+          validators: *id004
+          value: '0'
+        Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id005
+          default: '0'
+          name: Reverse Channel (Solenoid)
+          validators: *id006
+          value: '5'
+        Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id007
+          default: '0'
+          name: Forward Channel (Solenoid)
+          validators: *id008
+          value: '2'
+      Base: Double Solenoid
+      Name: breakSolenoid
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+    Base: Subsystem
+    Name: BreakElevator
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -295,6 +329,14 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: maxLevel
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: BreakElevator}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: breakToggle
   Properties: {}
   Base: Commands
   Name: Commands
