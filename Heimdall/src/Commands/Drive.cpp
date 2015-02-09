@@ -26,13 +26,12 @@ Drive::Drive() {
 	enableMultiplier = false;
 	currentCondition = false;
 	lastCondition = false;
-	Robot::prefs->PutDouble("multiplier", 0.5); //Initialize multiplier
-	multiplier = Robot::prefs->GetDouble("multiplier");
+	multiplier = Robot::prefs->GetDouble("multiplier", 0.3);
 }
 
 // Called just before this Command runs the first time
 void Drive::Initialize() {
-	
+
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -52,9 +51,10 @@ void Drive::Execute() {
 
 //Software Shifting...........................................................................................
 	toggleL3();
+	Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
 
 //Mecanum Drive...............................................................................................
-	double xInput = getJoystickTriggerValue() * getMultiplier();
+	double xInput = /*getJoystickTriggerValue()*/ Robot::oi->getdriver()->GetRawAxis(0) * getMultiplier();
 	double yInput = Robot::oi->getdriver()->GetRawAxis(Drive::leftY) * getMultiplier();
 	double rotInput = Robot::oi->getdriver()->GetRawAxis(Drive::rightX) * getMultiplier();
 
@@ -74,7 +74,7 @@ bool Drive::IsFinished() {
 
 // Called once after isFinished returns true
 void Drive::End() {
-	
+
 }
 
 // Called when another command which requires one or more of the same
@@ -120,19 +120,22 @@ bool Drive::getEnableMultiplier()
 
 void Drive::toggleL3()
 {
-	//cout << "Toggle Testing Started!";
 	currentCondition = Robot::oi->getdButtonL3()->Get();
 	if(currentCondition != lastCondition)
 	{
-		Robot::oi->singleRumbleTime(0.5);
-		cout << "L3 Changed State!";
+		cout << "L3 Changed State!\n";
 		if(currentCondition)
 		{
-			cout << "L3 Retrieved as True!";
+			cout << "L3 Retrieved as True!\n";
 			getEnableMultiplier() ? setEnableMultiplier(false) : setEnableMultiplier(true);
+			Robot::oi->driverRumbler->start(Joystick::kLeftRumble, 0.3);
 		}
-		else
-			cout << "L3 Changed to False!";
+		else if(!currentCondition)
+		{
+			cout << "L3 Changed to False!\n";
+			//Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
+			//Robot::oi->getdriver()->SetRumble(Joystick::kRightRumble, 0.0);
+		}
 	}
 	lastCondition = currentCondition;
 }
