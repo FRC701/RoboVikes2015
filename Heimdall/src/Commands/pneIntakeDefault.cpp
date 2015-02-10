@@ -27,8 +27,8 @@ void pneIntakeDefault::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void pneIntakeDefault::Execute() {
-	if(Robot::oi->getcoDriver()->GetRawAxis(1) < 0.0)
-		Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kForward);
+	//if(Robot::oi->getcoDriver()->GetRawAxis(1) < 0.0)
+		//Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kForward);
 }
 
 // Make this return true when this Command no longer needs to run execute()
