@@ -129,11 +129,13 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Chassis Rear Right Motor", Robot::chassis->rightRear->GetOutputCurrent());
 	SmartDashboard::PutNumber("Chassis Rear Left Motor",  Robot::chassis->leftRear->GetOutputCurrent());
 //Encoder...............................................................................................
-	SmartDashboard::PutNumber("Encoder Position", Robot::spool->spoolRightMotor->GetEncPosition());
-	SmartDashboard::PutNumber("Encoder Vel", Robot::chassis->rightFront->GetEncVel());
-	SmartDashboard::PutNumber("Forward Limit Switch", Robot::chassis->rightFront->IsFwdLimitSwitchClosed());
+	//SmartDashboard::PutNumber("Encoder Position", Robot::spool->spoolRightMotor->GetEncPosition());
+	//SmartDashboard::PutNumber("Encoder Vel", Robot::chassis->rightFront->GetEncVel());
+	//SmartDashboard::PutNumber("Forward Limit Switch", Robot::chassis->rightFront->IsFwdLimitSwitchClosed());
 	SmartDashboard::PutNumber("Starting Encoder Value", Robot::oi->encoderStartingValue);
+	SmartDashboard::PutNumber("Drive Encoder", Robot::chassis->leftRear->GetEncPosition());
 
+//LightSensor...........................................................................................
 	SmartDashboard::PutBoolean("Left LightSensor", Robot::chassis->leftLightSensor->Get());
 	SmartDashboard::PutBoolean("Right LightSensor", Robot::chassis->rightLightSensor->Get());
 }
