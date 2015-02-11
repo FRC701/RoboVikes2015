@@ -37,6 +37,57 @@ void Drive::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void Drive::Execute() {
 
+//Mecanum TankDrive..........................................................................................
+
+	//Left Side................................................
+	if(!Robot::oi->getdriver()->GetRawAxis(leftX) == 0.0) 				//Going Straight
+	{
+		Robot::chassis->leftFront->Set(Robot::oi->getdriver()->GetRawAxis(leftY));
+		Robot::chassis->leftRear->Set(Robot::oi->getdriver()->GetRawAxis(leftY));
+	}
+	else if(Robot::oi->getdriver()->GetRawAxis(leftX) < 0.0 &&
+			Robot::oi->getdriver()->GetRawAxis(leftY) == 0.0)	//Going Left
+	{
+		Robot::chassis->leftFront->Set(Robot::oi->getdriver()->GetRawAxis(leftX) * -1);
+		Robot::chassis->leftRear->Set(Robot::oi->getdriver()->GetRawAxis(leftX));
+	}
+	else if(Robot::oi->getdriver()->GetRawAxis(leftX) > 0.0 &&
+			Robot::oi->getdriver()->GetRawAxis(leftY) == 0.0)	//Going Right
+	{
+		Robot::chassis->leftFront->Set(Robot::oi->getdriver()->GetRawAxis(leftX));
+		Robot::chassis->leftRear->Set(Robot::oi->getdriver()->GetRawAxis(leftX) * -1);
+	}
+	else
+	{
+		Robot::chassis->leftFront->Set(0.0);
+		Robot::chassis->leftRear->Set(0.0);
+	}
+
+	//Right Side..............................................
+	if(!Robot::oi->getdriver()->GetRawAxis(rightX) == 0.0)
+	{
+		Robot::chassis->rightFront->Set(Robot::oi->getdriver()->GetRawAxis(rightY));
+		Robot::chassis->rightRear->Set(Robot::oi->getdriver()->GetRawAxis(rightY));
+	}
+	else if(Robot::oi->getdriver()->GetRawAxis(rightX) < 0.0 &&
+			Robot::oi->getdriver()->GetRawAxis(rightY) == 0.0)	//Going Left
+	{
+		Robot::chassis->rightFront->Set(Robot::oi->getdriver()->GetRawAxis(rightX));
+		Robot::chassis->rightRear->Set(Robot::oi->getdriver()->GetRawAxis(rightX) * -1);
+	}
+	else if(Robot::oi->getdriver()->GetRawAxis(leftX) > 0.0 &&
+			Robot::oi->getdriver()->GetRawAxis(leftY) == 0.0)	//Going Right
+	{
+		Robot::chassis->rightFront->Set(Robot::oi->getdriver()->GetRawAxis(rightX) * -1);
+		Robot::chassis->rightRear->Set(Robot::oi->getdriver()->GetRawAxis(rightX));
+	}
+	else
+	{
+		Robot::chassis->rightFront->Set(0.0);
+		Robot::chassis->rightRear->Set(0.0);
+	}
+}
+
 //Tank Drive.................................................................................................
 	//Robot::chassis->robotDrive->TankDrive(Robot::oi->getdriver(),
 	//				                      leftY,
@@ -48,24 +99,25 @@ void Drive::Execute() {
 	//Robot::chassis->robotDrive->MecanumDrive_Cartesian(Robot::oi->getdriver()->GetRawAxis(leftX),
 	//												Robot::oi->getdriver()->GetRawAxis(leftY),
 	//												Robot::oi->getdriver()->GetRawAxis(rightX));
-
+/*
 //Software Shifting...........................................................................................
 	toggleL3();
 	Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
-
+*/
 //Mecanum Drive...............................................................................................
-	double xInput = /*getJoystickTriggerValue()*/ Robot::oi->getdriver()->GetRawAxis(0) * getMultiplier();
-	double yInput = Robot::oi->getdriver()->GetRawAxis(Drive::leftY) * getMultiplier();
-	double rotInput = Robot::oi->getdriver()->GetRawAxis(Drive::rightX) * getMultiplier();
+	//double xInput = /*getJoystickTriggerValue()*/ Robot::oi->getdriver()->GetRawAxis(0) * getMultiplier();
+	//double yInput = Robot::oi->getdriver()->GetRawAxis(Drive::leftY) * getMultiplier();
+	//double rotInput = Robot::oi->getdriver()->GetRawAxis(Drive::rightX) * getMultiplier();
 
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(xInput, yInput, rotInput);
-
+	//Robot::chassis->robotDrive->MecanumDrive_Cartesian(xInput, yInput, rotInput);
+/*
 //Debugging SmartDashboard Outputs.............................................................................
 	SmartDashboard::PutNumber("Mulitplier", getMultiplier());
 	SmartDashboard::PutNumber("xInput", xInput);
 	SmartDashboard::PutNumber("yInput", yInput);
 	SmartDashboard::PutNumber("rotInput", rotInput);
 }
+*/
 
 // Make this return true when this Command no longer needs to run execute()
 bool Drive::IsFinished() {
