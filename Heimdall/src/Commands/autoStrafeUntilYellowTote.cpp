@@ -26,12 +26,19 @@ void autoStrafeUntilYellowTote::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void autoStrafeUntilYellowTote::Execute() {
-	
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(1.0,0.0,0.0,0.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool autoStrafeUntilYellowTote::IsFinished() {
-	return false;
+	if(Robot::chassis->rightLightSensor->Get() == true && Robot::chassis->leftLightSensor->Get() == true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 // Called once after isFinished returns true
