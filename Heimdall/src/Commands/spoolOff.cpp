@@ -27,9 +27,12 @@ void spoolOff::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void spoolOff::Execute() {
+
 	Robot::spool->spoolLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * -1);
 	Robot::spool->spoolRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * -1);
+
 }
+
 
 // Make this return true when this Command no longer needs to run execute()
 bool spoolOff::IsFinished() {

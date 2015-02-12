@@ -21,19 +21,12 @@ PneIntakeOut::PneIntakeOut() {
 
 // Called just before this Command runs the first time
 void PneIntakeOut::Initialize() {
-	Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kReverse);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void PneIntakeOut::Execute() {
-	if(RobotMap::pneIntakeintakeSolenoid->Get() == DoubleSolenoid::kForward)		//Test current condition calling
-	{																				// Get(), inverts current state
-		Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kReverse);
-	}
-	else if(RobotMap::pneIntakeintakeSolenoid->Get() == DoubleSolenoid::kReverse)
-	{
-		Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kForward);
-	}
+	Robot::pneIntake->intakeSolenoid->Set(DoubleSolenoid::kForward);
 }
 
 // Make this return true when this Command no longer needs to run execute()
