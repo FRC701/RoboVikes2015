@@ -10,6 +10,7 @@
 
 
 #include "intakeOff.h"
+using namespace std;
 
 intakeOff::intakeOff() {
 	// Use requires() here to declare subsystem dependencies
@@ -27,8 +28,10 @@ void intakeOff::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void intakeOff::Execute() {
-	Robot::intake->intakeRightMotor->Set(0.0);		//sets intake motors to default state of zero
-	Robot::intake->intakeLeftMotor->Set(0.0);
+
+	Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
+	Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4) * -1);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()

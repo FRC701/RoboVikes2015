@@ -27,8 +27,8 @@ void spoolClockwise::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void spoolClockwise::Execute() {
-	Robot::spool->spoolLeftMotor->Set(1.0);
-	Robot::spool->spoolRightMotor->Set(1.0);
+	Robot::spool->spoolLeftMotor->Set(0.3);
+	Robot::spool->spoolRightMotor->Set(0.3);
 }
 
 // Make this return true when this Command no longer needs to run execute()
