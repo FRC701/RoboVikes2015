@@ -39,23 +39,53 @@ void Drive::Execute() {
 
 //Mecanum TankDrive..........................................................................................
 
-	//Left Side................................................
-	if(!Robot::oi->getdriver()->GetRawAxis(leftX) == 0.0) 				//Going Straight
+	int leftx = Robot::oi->getdriver()->GetRawAxis(leftX);
+	int lefty = Robot::oi->getdriver()->GetRawAxis(leftY);
+	int rightx = Robot::oi->getdriver()->GetRawAxis(rightX);
+	int righty = Robot::oi->getdriver()->GetRawAxis(rightY);
+
+	//.....................Left Side........................................
+	if(-0.383 < leftx < 0.383)				//Forwards-BackWards
 	{
-		Robot::chassis->leftFront->Set(Robot::oi->getdriver()->GetRawAxis(leftY));
-		Robot::chassis->leftRear->Set(Robot::oi->getdriver()->GetRawAxis(leftY));
+		if(lefty > 0.383 || lefty < -0.383)
+		{
+			Robot::chassis->leftFront->Set(lefty);
+			Robot::chassis->leftRear->Set(lefty);
+		}
 	}
-	else if(Robot::oi->getdriver()->GetRawAxis(leftX) < 0.0 &&
-			Robot::oi->getdriver()->GetRawAxis(leftY) == 0.0)	//Going Left
+	else if(-0.383 < lefty < 0.383)			//Strafing
 	{
-		Robot::chassis->leftFront->Set(Robot::oi->getdriver()->GetRawAxis(leftX) * -1);
-		Robot::chassis->leftRear->Set(Robot::oi->getdriver()->GetRawAxis(leftX));
+		if(leftx > 0.383 || leftx < -0.383)
+		{
+			Robot::chassis->leftFront->Set(leftx * -1);
+			Robot::chassis->leftRear->Set(leftx);
+		}
 	}
-	else if(Robot::oi->getdriver()->GetRawAxis(leftX) > 0.0 &&
-			Robot::oi->getdriver()->GetRawAxis(leftY) == 0.0)	//Going Right
+	else if(0.383 < leftx < 0.924) 			//Diagonal East
 	{
-		Robot::chassis->leftFront->Set(Robot::oi->getdriver()->GetRawAxis(leftX));
-		Robot::chassis->leftRear->Set(Robot::oi->getdriver()->GetRawAxis(leftX) * -1);
+		if(0.383 < lefty < 0.924)			//North
+		{
+			Robot::chassis->leftFront->Set(leftx * -1 * 0.5);
+			Robot::chassis->leftRear->Set(leftx);
+		}
+		else if(-0.924 < lefty < -0.383)	//South
+		{
+			Robot::chassis->leftFront->Set(leftx * -1);
+			Robot::chassis->leftRear->Set(leftx * 0.5);
+		}
+	}
+	else if(-0.924 < leftx < -0.383) 		//Diagonal West
+	{
+		if(0.383 < lefty < 0.924)			//North
+		{
+			Robot::chassis->leftFront->Set(leftx * -1);
+			Robot::chassis->leftRear->Set(leftx * 0.5);
+		}
+		else if(-0.924 < lefty < -0.383)	//South
+		{
+			Robot::chassis->leftFront->Set(leftx * -1 * 0.5);
+			Robot::chassis->leftRear->Set(leftx);
+		}
 	}
 	else
 	{
@@ -63,23 +93,48 @@ void Drive::Execute() {
 		Robot::chassis->leftRear->Set(0.0);
 	}
 
-	//Right Side..............................................
-	if(!Robot::oi->getdriver()->GetRawAxis(rightX) == 0.0)
+	//...................Right Side................................................
+	if(-0.383 < rightx < 0.383)				//Forwards-BackWards
 	{
-		Robot::chassis->rightFront->Set(Robot::oi->getdriver()->GetRawAxis(rightY));
-		Robot::chassis->rightRear->Set(Robot::oi->getdriver()->GetRawAxis(rightY));
+		if(righty > 0.383 || righty < -0.383)
+		{
+			Robot::chassis->rightFront->Set(righty);
+			Robot::chassis->rightRear->Set(righty);
+		}
 	}
-	else if(Robot::oi->getdriver()->GetRawAxis(rightX) < 0.0 &&
-			Robot::oi->getdriver()->GetRawAxis(rightY) == 0.0)	//Going Left
+	else if(-0.383 < righty < 0.383)		//Strafing
 	{
-		Robot::chassis->rightFront->Set(Robot::oi->getdriver()->GetRawAxis(rightX));
-		Robot::chassis->rightRear->Set(Robot::oi->getdriver()->GetRawAxis(rightX) * -1);
+		if(rightx > 0.383 || rightx < -0.383)
+		{
+			Robot::chassis->rightFront->Set(rightx);
+			Robot::chassis->rightRear->Set(rightx * -1);
+		}
 	}
-	else if(Robot::oi->getdriver()->GetRawAxis(leftX) > 0.0 &&
-			Robot::oi->getdriver()->GetRawAxis(leftY) == 0.0)	//Going Right
+	else if(0.383 < rightx < 0.924) 		//Diagonal East
 	{
-		Robot::chassis->rightFront->Set(Robot::oi->getdriver()->GetRawAxis(rightX) * -1);
-		Robot::chassis->rightRear->Set(Robot::oi->getdriver()->GetRawAxis(rightX));
+		if(0.383 < righty < 0.924)			//North
+		{
+			Robot::chassis->rightFront->Set(rightx);
+			Robot::chassis->rightRear->Set(rightx * -1 * 0.5);
+		}
+		else if(-0.924 < righty < -0.383)	//South
+		{
+			Robot::chassis->rightFront->Set(rightx * 0.5);
+			Robot::chassis->rightRear->Set(rightx * -1);
+		}
+	}
+	else if(-0.924 < rightx < -0.383) 		//Diagonal West
+	{
+		if(0.383 < righty < 0.924)			//North
+		{
+			Robot::chassis->rightFront->Set(rightx * 0.5);
+			Robot::chassis->rightRear->Set(rightx * -1);
+		}
+		else if(-0.924 < righty < -0.383)	//South
+		{
+			Robot::chassis->rightFront->Set(rightx);
+			Robot::chassis->rightRear->Set(rightx * -1 * 0.5);
+		}
 	}
 	else
 	{
