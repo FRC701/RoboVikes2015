@@ -159,7 +159,7 @@ void Drive::Execute() {
 	toggleL3();
 	Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
 */
-//Mecanum Drive...............................................................................................
+//Mecanum Drive Triggers........................................................................................
 	//double xInput = /*getJoystickTriggerValue()*/ Robot::oi->getdriver()->GetRawAxis(0) * getMultiplier();
 	//double yInput = Robot::oi->getdriver()->GetRawAxis(Drive::leftY) * getMultiplier();
 	//double rotInput = Robot::oi->getdriver()->GetRawAxis(Drive::rightX) * getMultiplier();
