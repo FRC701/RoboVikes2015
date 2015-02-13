@@ -1,10 +1,18 @@
 Version 1.5
 
 ---
+Name: Heimdall
+Base: Robot
 Children:
-- Children:
-  - Children:
-    - Children: []
+- Name: Subsystems
+  Base: Subsystems
+  Children:
+  - Name: Chassis
+    Base: Subsystem
+    Children:
+    - Name: leftLightSensor
+      Base: Digital Input
+      Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
           choices: &id001 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
@@ -14,9 +22,9 @@ Children:
           name: Input Channel (Digital)
           validators: &id002 [DigitalChannel]
           value: '0'
+    - Name: rightLightSensor
       Base: Digital Input
-      Name: leftLightSensor
-    - Children: []
+      Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id001
@@ -24,21 +32,21 @@ Children:
           name: Input Channel (Digital)
           validators: *id002
           value: '1'
-      Base: Digital Input
-      Name: rightLightSensor
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: Drive}
+  - Name: Intake
     Base: Subsystem
-    Name: Chassis
-  - Children: []
+    Children: []
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: intakeOff}
+  - Name: PneIntake
     Base: Subsystem
-    Name: Intake
-  - Children:
-    - Children: []
+    Children:
+    - Name: intakeSolenoid
+      Base: Double Solenoid
+      Children: []
       Properties:
         Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: &id003 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
@@ -66,15 +74,15 @@ Children:
           name: Forward Channel (Solenoid)
           validators: &id010 [Solenoid]
           value: '0'
-      Base: Double Solenoid
-      Name: intakeSolenoid
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: pneIntakeDefault}
+  - Name: HaySqueezer
     Base: Subsystem
-    Name: PneIntake
-  - Children:
-    - Children: []
+    Children:
+    - Name: haySqueezerSolenoid
+      Base: Double Solenoid
+      Children: []
       Properties:
         Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id003
@@ -100,21 +108,21 @@ Children:
           name: Forward Channel (Solenoid)
           validators: *id010
           value: '1'
-      Base: Double Solenoid
-      Name: haySqueezerSolenoid
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
+  - Name: Spool
     Base: Subsystem
-    Name: HaySqueezer
-  - Children: []
+    Children: []
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: spoolOff}
+  - Name: BreakElevator
     Base: Subsystem
-    Name: Spool
-  - Children:
-    - Children: []
+    Children:
+    - Name: breakSolenoid
+      Base: Double Solenoid
+      Children: []
       Properties:
         Forward PCM (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id003
@@ -140,18 +148,16 @@ Children:
           name: Forward Channel (Solenoid)
           validators: *id010
           value: '2'
-      Base: Double Solenoid
-      Name: breakSolenoid
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
-    Base: Subsystem
-    Name: BreakElevator
   Properties: {}
-  Base: Subsystems
-  Name: Subsystems
-- Children:
-  - Children: []
+- Name: Operator Interface
+  Base: OI
+  Children:
+  - Name: driver
+    Base: Joystick
+    Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: &id011 ['0', '1', '2', '3', '4', '5']
@@ -159,9 +165,9 @@ Children:
         name: Number
         validators: &id012 [Joystick]
         value: '0'
+  - Name: coDriver
     Base: Joystick
-    Name: driver
-  - Children: []
+    Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id011
@@ -169,201 +175,197 @@ Children:
         name: Number
         validators: *id012
         value: '1'
-    Base: Joystick
-    Name: coDriver
   Properties: {}
-  Base: OI
-  Name: Operator Interface
-- Children:
-  - Children: []
+- Name: Commands
+  Base: Commands
+  Children:
+  - Name: Autonomous Command
+    Base: Command
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: Drive
     Base: Command
-    Name: Autonomous Command
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Chassis}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: intakeOut
     Base: Command
-    Name: Drive
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Intake}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: intakeIn
     Base: Command
-    Name: intakeOut
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Intake}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: intakeOff
     Base: Command
-    Name: intakeIn
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Intake}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: haySqueezerToggle
     Base: Command
-    Name: intakeOff
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: HaySqueezer}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: spoolOff
     Base: Command
-    Name: haySqueezerToggle
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Spool}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: spoolClockwise
     Base: Command
-    Name: spoolOff
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Spool}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: spoolCounterClockwise
     Base: Command
-    Name: spoolClockwise
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Spool}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: haySqueezerClose
     Base: Command
-    Name: spoolCounterClockwise
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: HaySqueezer}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: haySqueezerOpen
     Base: Command
-    Name: haySqueezerClose
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: HaySqueezer}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: pneIntakeDefault
     Base: Command
-    Name: haySqueezerOpen
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: PneIntake}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: pneIntakeIn
     Base: Command
-    Name: pneIntakeDefault
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: PneIntake}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: pneIntakeToggle
     Base: Command
-    Name: pneIntakeIn
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: PneIntake}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: PneIntakeOut
     Base: Command
-    Name: pneIntakeToggle
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: rumble
     Base: Command
-    Name: PneIntakeOut
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: twoLevel
     Base: Command
-    Name: rumble
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Spool}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: oneLevel
     Base: Command
-    Name: twoLevel
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Spool}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: containerLevel
     Base: Command
-    Name: oneLevel
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Spool}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: containerTwoLevel
     Base: Command
-    Name: containerLevel
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Spool}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: zeroLevel
     Base: Command
-    Name: containerTwoLevel
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Spool}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: maxLevel
     Base: Command
-    Name: zeroLevel
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Spool}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: breakToggle
     Base: Command
-    Name: maxLevel
-  - Children: []
+    Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: BreakElevator}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-    Base: Command
-    Name: breakToggle
   Properties: {}
-  Base: Commands
-  Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Vanden\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Aaron\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\Users\Vanden\workspace\RoboVikes2015'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
@@ -380,6 +382,4 @@ Properties:
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-    name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}
-Base: Robot
-Name: Heimdall
+    name: Autonomous Command, type: Command, validators: null, value: None}
