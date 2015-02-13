@@ -39,6 +39,7 @@ void Drive::Execute() {
 
 //Mecanum TankDrive..........................................................................................
 
+	/*
 	int leftx = Robot::oi->getdriver()->GetRawAxis(leftX);
 	int lefty = Robot::oi->getdriver()->GetRawAxis(leftY);
 	int rightx = Robot::oi->getdriver()->GetRawAxis(rightX);
@@ -173,7 +174,7 @@ void Drive::Execute() {
 	SmartDashboard::PutNumber("rotInput", rotInput);
 }
 */
-
+}
 // Make this return true when this Command no longer needs to run execute()
 bool Drive::IsFinished() {
 	return false;
