@@ -383,12 +383,20 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: AutoPneumaticIntakeIn
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Chassis}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: AutoDriveReverse
   Properties: {}
   Base: Commands
   Name: Commands
 Properties:
   Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\computer\workspace',
-    extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\Users\Vanden\workspace\RoboVikes2015'}
+    extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\Users\computer\workspace\RoboVikes2015'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
   Java Package: !!robotbuilder.data.properties.StringProperty {default: org.usfirst.frc0000,
