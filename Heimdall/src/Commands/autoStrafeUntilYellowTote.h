@@ -29,6 +29,13 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	void detection();
+private:
+	Timer* lightSensorTimer;
+	bool finish;
+	int numberOfDetections;
+	bool lastLightSensorCondition;
+	bool currentLightSensorCondition;
 };
 
 #endif
