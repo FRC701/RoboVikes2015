@@ -21,7 +21,7 @@ goToTop::goToTop() {
 
 // Called just before this Command runs the first time
 void goToTop::Initialize() {
-	Robot::spool->pidController->SetSetpoint(2500);
+	Robot::spool->pidController->SetSetpoint(Robot::prefs->GetDouble("setpointTop"));
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -42,5 +42,5 @@ void goToTop::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void goToTop::Interrupted() {
-
+	Robot::spool->pidController->Disable();
 }
