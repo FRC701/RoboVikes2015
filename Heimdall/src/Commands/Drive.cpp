@@ -45,26 +45,26 @@ void Drive::Execute() {
 
 
 //Raw Mecanum Drive..........................................................................................
-	//Robot::chassis->robotDrive->MecanumDrive_Cartesian(Robot::oi->getdriver()->GetRawAxis(leftX),
-	//												Robot::oi->getdriver()->GetRawAxis(leftY),
-	//												Robot::oi->getdriver()->GetRawAxis(rightX));
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(Robot::oi->getdriver()->GetRawAxis(leftX),
+													Robot::oi->getdriver()->GetRawAxis(leftY),
+													Robot::oi->getdriver()->GetRawAxis(rightX));
 
 //Software Shifting...........................................................................................
 	toggleL3();
 	Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
 
-//Mecanum Drive...............................................................................................
-	double xInput = /*getJoystickTriggerValue()*/ Robot::oi->getdriver()->GetRawAxis(0) * getMultiplier();
-	double yInput = Robot::oi->getdriver()->GetRawAxis(Drive::leftY) * getMultiplier();
-	double rotInput = Robot::oi->getdriver()->GetRawAxis(Drive::rightX) * getMultiplier();
+//Mecanum Drive Triggers...............................................................................................
+	//double xInput = /*getJoystickTriggerValue()*/ Robot::oi->getdriver()->GetRawAxis(0) * getMultiplier();
+	//double yInput = Robot::oi->getdriver()->GetRawAxis(Drive::leftY) * getMultiplier();
+	//double rotInput = Robot::oi->getdriver()->GetRawAxis(Drive::rightX) * getMultiplier();
 
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(xInput, yInput, rotInput);
+	//Robot::chassis->robotDrive->MecanumDrive_Cartesian(xInput, yInput, rotInput);
 
 //Debugging SmartDashboard Outputs.............................................................................
-	SmartDashboard::PutNumber("Mulitplier", getMultiplier());
-	SmartDashboard::PutNumber("xInput", xInput);
-	SmartDashboard::PutNumber("yInput", yInput);
-	SmartDashboard::PutNumber("rotInput", rotInput);
+	//SmartDashboard::PutNumber("Mulitplier", getMultiplier());
+	//SmartDashboard::PutNumber("xInput", xInput);
+	//SmartDashboard::PutNumber("yInput", yInput);
+	//SmartDashboard::PutNumber("rotInput", rotInput);
 }
 
 // Make this return true when this Command no longer needs to run execute()
