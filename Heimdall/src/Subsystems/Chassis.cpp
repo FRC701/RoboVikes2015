@@ -40,7 +40,7 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	pidController = new PIDController(kP, kI, kD, pidInput, pidOutput);
 	pidController->SetInputRange(0.0, 10000.0);
 	pidController->SetOutputRange(-1.0, 1.0);
-	pidController->SetAbsoluteTolerance(100);
+	pidController->SetAbsoluteTolerance(150);
 /*
 	accelerometerX = new robovikes::Accelerometer();
 	accelerometerY = new robovikes::Accelerometer();
