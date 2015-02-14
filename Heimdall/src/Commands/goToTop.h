@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef PIDCOMMAND_H
-#define PIDCOMMAND_H
+#ifndef GOTOTOP_H
+#define GOTOTOP_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class PIDCommand: public Command {
+class goToTop: public Command {
 public:
-	PIDCommand();
+	goToTop();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
