@@ -93,12 +93,13 @@ void Robot::TeleopInit() {
 	if (autonomousCommand != NULL)
 		autonomousCommand->Cancel();
 
-	chassis->stopFeedingCompensator();
+	//chassis->stopFeedingCompensator();
 }
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 // Built in Accelerometer..............................................................................
+	/*
 	SmartDashboard::PutNumber("Accelerometer: X", accel->GetX());
 	SmartDashboard::PutNumber("Accelerometer: Y", accel->GetY());
 	SmartDashboard::PutNumber("Accelerometer: Z", accel->GetZ());
@@ -113,7 +114,7 @@ void Robot::TeleopPeriodic() {
 
 	SmartDashboard::PutNumber("Compensation X", chassis->accelerometerX->getCompensation());
 	SmartDashboard::PutNumber("Compensation Y", chassis->accelerometerY->getCompensation());
-
+*/
 //.....................................................................................................
 	SmartDashboard::PutNumber("Right Plot Motor", PDP->GetCurrent(12));
 	SmartDashboard::PutNumber("Left Plot Motor", PDP->GetCurrent(3));
@@ -129,6 +130,8 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Chassis Rear Left Motor",  Robot::chassis->leftRear->GetOutputCurrent());
 //Encoder...............................................................................................
 	SmartDashboard::PutNumber("Encoder Position", Robot::spool->spoolLeftMotor->GetEncPosition());
+	SmartDashboard::PutNumber("Forward Encoder", Robot::chassis->leftRear->GetEncPosition());
+
 	SmartDashboard::PutNumber("Encoder Vel", Robot::chassis->rightFront->GetEncVel());
 	SmartDashboard::PutNumber("Forward Limit Switch", Robot::chassis->rightFront->IsFwdLimitSwitchClosed());
 	SmartDashboard::PutNumber("Starting Encoder Value", Robot::oi->encoderStartingValue);
