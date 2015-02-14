@@ -22,31 +22,26 @@ oneLevel::oneLevel() {
 
 // Called just before this Command runs the first time
 void oneLevel::Initialize() {
-	
+	Robot::spool->pidController->SetSetpoint(1445);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void oneLevel::Execute() {
-	Robot::spool->spoolLeftMotor->Set(1.0);
-	Robot::spool->spoolRightMotor->Set(1.0);
+	Robot::spool->pidController->Enable();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool oneLevel::IsFinished() {
-	bool test;
-	double oneToteLevel = Robot::oi->encoderStartingValue -1116;
-	if(Robot::spool->spoolRightMotor->GetEncPosition() <=oneToteLevel )
-		test = true;
-	return test;
+	return Robot::spool->pidController->OnTarget();
 }
 
 // Called once after isFinished returns true
 void oneLevel::End() {
-	
+	Robot::spool->pidController->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void oneLevel::Interrupted() {
-
+	Robot::spool->pidController->Disable();
 }

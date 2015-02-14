@@ -22,29 +22,26 @@ containerLevel::containerLevel() {
 
 // Called just before this Command runs the first time
 void containerLevel::Initialize() {
-	
+	Robot::spool->pidController->SetSetpoint(1111);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void containerLevel::Execute() {
-	
+	Robot::spool->pidController->Enable();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool containerLevel::IsFinished() {
-	bool test;
-	if(Robot::spool->spoolRightMotor->GetEncPosition() <= -1116)
-		test = true;
-	return test;
+	return Robot::spool->pidController->OnTarget();
 }
 
 // Called once after isFinished returns true
 void containerLevel::End() {
-	
+	Robot::spool->pidController->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void containerLevel::Interrupted() {
-
+	Robot::spool->pidController->Disable();
 }

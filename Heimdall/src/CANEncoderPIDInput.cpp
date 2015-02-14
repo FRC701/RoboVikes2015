@@ -7,15 +7,17 @@
 #include "CANEncoderPIDInput.h"
 
 CANTalonEncoderPIDSource::CANTalonEncoderPIDSource(CANTalon* talon)
-: talon(talon)
+: talon(talon), compensation(0.0)
 {
 
 }
-
 
 double CANTalonEncoderPIDSource::PIDGet()
 {
-	return -1.0 * talon->GetEncPosition();
+	return -1.0 * (talon->GetEncPosition() - compensation);
 }
 
-
+void CANTalonEncoderPIDSource::setCompensation(double compensationInput)
+{
+	compensation = compensationInput;
+}

@@ -15,9 +15,12 @@ class CANTalonEncoderPIDSource : public PIDSource
 {
 public:
 	CANTalonEncoderPIDSource(CANTalon* talon);
+	CANTalonEncoderPIDSource(CANTalon* talon, double compensation);
 	virtual double PIDGet() override;
+	void setCompensation(double compensationInput);
 private:
 	CANTalon* talon;
+	double compensation;
 };
 
 

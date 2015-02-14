@@ -32,7 +32,7 @@ void haySqueezerOpen::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool haySqueezerOpen::IsFinished() {
-	return false;
+	return !Robot::haySqueezer->leftPneSensor->Get();
 }
 
 // Called once after isFinished returns true
