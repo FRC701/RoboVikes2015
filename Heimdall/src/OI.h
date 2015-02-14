@@ -25,7 +25,7 @@ private:
 	JoystickButton* coButtonA;
 	JoystickButton* coButtonB;
 	JoystickButton* coButtonX;
-	//JoystickButton* coButtonY;
+	JoystickButton* coButtonY;
 	JoystickButton* coButtonLB;
 	JoystickButton* coButtonRB;
 //Timer for rumble of driver controller.......................................
