@@ -21,6 +21,7 @@ using namespace std;
 #include "Commands/autoContainer.h"
 #include "Commands/autoDrive.h"
 #include "Commands/autoDriveIntoZone.h"
+#include "Commands/autoOneTote.h"
 #include "Commands/autoStrafe.h"
 #include "Commands/breakToggle.h"
 #include "Commands/chuteHight.h"
@@ -115,6 +116,8 @@ OI::OI() {
 	SmartDashboard::PutData("autoDriveIntoZone", new autoDriveIntoZone());
 
 	SmartDashboard::PutData("autoContainer", new autoContainer());
+
+	SmartDashboard::PutData("autoOneTote", new autoOneTote());
 
 	SmartDashboard::PutData("autoDrive", new autoDrive());
 

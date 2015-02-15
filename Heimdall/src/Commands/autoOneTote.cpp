@@ -10,33 +10,32 @@
 
 
 
-#include "autoContainer.h"
+#include "autoOneTote.h"
 #include "haySqueezerOpen.h"
 #include "haySqueezerClose.h"
-#include "containerLevel.h"
-#include "twoLevel.h"
-#include "Delay.h"
-#include "autoDrive.h"
 #include "zeroLevel.h"
-#include "goToyPosition.h"
+#include "oneLevel.h"
+#include "twoLevel.h"
+#include "autoDrive.h"
 #include "autoStrafe.h"
+#include "Delay.h"
 
-autoContainer::autoContainer() {
+
+autoOneTote::autoOneTote() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
 	AddSequential(new haySqueezerOpen());
-	AddSequential(new containerLevel());
+	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
+	AddSequential(new autoStrafe(500));
 	AddSequential(new Delay(0.5));
-	AddSequential(new twoLevel());
-	AddSequential(new autoStrafe(-500));
-	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
-	AddSequential(new autoDrive(4000));
+	AddSequential(new oneLevel());
+	AddSequential(new autoDrive(5000));
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerOpen());
-	//AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!
+	AddSequential(new twoLevel());
 	AddSequential(new autoDrive(-300));
 
 	// To run multiple commands at the same time,

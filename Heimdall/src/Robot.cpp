@@ -15,6 +15,7 @@
 #include "Commands/PneIntakeOut.h"
 #include "Commands/autoContainer.h"
 #include "Commands/autoDriveIntoZone.h"
+#include "Commands/autoOneTote.h"
 #include "PowerDistributionPanel.h"
 
 
@@ -57,7 +58,7 @@ void Robot::RobotInit() {
 //Autos......................................................................................
 	autonomousModeChooser = new SendableChooser();
 	autonomousModeChooser->AddDefault("AutoDriveIntoZone", new autoDriveIntoZone());
-	autonomousModeChooser->AddObject("OpenIntake", new PneIntakeOut());
+	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
