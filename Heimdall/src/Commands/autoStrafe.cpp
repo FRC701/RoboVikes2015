@@ -36,16 +36,16 @@ autoStrafe::autoStrafe(double setPoint)
 void autoStrafe::Initialize() {
 	float setPoint = Robot::chassis->rightRear->GetEncPosition();
 	setPoint += mDistance;
-	Robot::chassis->pidStrafeController->SetSetpoint(setPoint);
+	Robot::chassis->pidStrafeWallController->SetSetpoint(setPoint);
 	SmartDashboard::PutNumber("Strafe actual setPoint", setPoint);
-	SmartDashboard::PutNumber("Get Set Point", Robot::chassis->pidStrafeController->GetSetpoint());
+	SmartDashboard::PutNumber("Get Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
 }
 
 // Called repeatedly when this Command is scheduled to run
 void autoStrafe::Execute() {
-	Robot::chassis->pidStrafeController->Enable();
+	Robot::chassis->pidStrafeWallController->Enable();
 
-	SmartDashboard::PutNumber("Strafe Set Point", Robot::chassis->pidStrafeController->GetSetpoint());
+	SmartDashboard::PutNumber("Strafe Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -60,16 +60,16 @@ bool autoStrafe::IsFinished() {
 	}
 	return (mTimeForStop.HasPeriodPassed(0.2));
 */
-	return Robot::chassis->pidStrafeController->OnTarget();
+	return Robot::chassis->pidStrafeWallController->OnTarget();
 }
 
 // Called once after isFinished returns true
 void autoStrafe::End() {
-	Robot::chassis->pidStrafeController->Disable();
+	Robot::chassis->pidStrafeWallController->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void autoStrafe::Interrupted() {
-	Robot::chassis->pidStrafeController->Disable();
+	Robot::chassis->pidStrafeWallController->Disable();
 }

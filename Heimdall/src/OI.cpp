@@ -23,6 +23,7 @@ using namespace std;
 #include "Commands/autoDriveIntoZone.h"
 #include "Commands/autoOneTote.h"
 #include "Commands/autoStrafe.h"
+#include "Commands/autoStrafeToToteRight.h"
 #include "Commands/breakToggle.h"
 #include "Commands/chuteHight.h"
 #include "Commands/chuteStack.h"
@@ -67,11 +68,19 @@ OI::OI() {
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
 
+	SmartDashboard::PutData("autoDriveIntoZone", new autoDriveIntoZone());
+
+	SmartDashboard::PutData("autoContainer", new autoContainer());
+
 	SmartDashboard::PutData("Drive", new Drive());
 
-	SmartDashboard::PutData("intakeOut", new intakeOut());
+	SmartDashboard::PutData("autoStrafeToToteRight", new autoStrafeToToteRight());
+
+	SmartDashboard::PutData("autoDrive", new autoDrive());
 
 	SmartDashboard::PutData("intakeIn", new intakeIn());
+
+	SmartDashboard::PutData("intakeOut", new intakeOut());
 
 	SmartDashboard::PutData("intakeOff", new intakeOff());
 
@@ -113,13 +122,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("goToYPosition", new goToYPosition());
 
-	SmartDashboard::PutData("autoDriveIntoZone", new autoDriveIntoZone());
-
-	SmartDashboard::PutData("autoContainer", new autoContainer());
-
 	SmartDashboard::PutData("autoOneTote", new autoOneTote());
-
-	SmartDashboard::PutData("autoDrive", new autoDrive());
 
 	SmartDashboard::PutData("autoStrafe", new autoStrafe());
 
@@ -134,7 +137,7 @@ OI::OI() {
 
 //Auto Testing.......................................................
 	SmartDashboard::PutData("autoDrive X", new autoDrive(1000.0));
-	SmartDashboard::PutData("autoStrafe X", new autoStrafe(500.0));
+	SmartDashboard::PutData("autoStrafe X", new autoStrafe(1000.0));
 
 	driverRumbler = new Rumbler(driver);
 	coDriverRumbler = new Rumbler(coDriver);

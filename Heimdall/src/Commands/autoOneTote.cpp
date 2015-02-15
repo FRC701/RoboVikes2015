@@ -29,10 +29,10 @@ autoOneTote::autoOneTote() {
 	AddSequential(new haySqueezerOpen());
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
-	AddSequential(new autoStrafe(500));
+	AddSequential(new autoStrafe(1000));
 	AddSequential(new Delay(0.5));
 	AddSequential(new oneLevel());
-	AddSequential(new autoDrive(5000));
+	AddSequential(new autoDrive(1000));
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerOpen());
 	AddSequential(new twoLevel());

@@ -38,20 +38,26 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	rightFront = RobotMap::chassisrightFrontMotor;
 	rightRear = RobotMap::chassisrightRearMotor;
 	robotDrive = RobotMap::chassisRobotDrive;
-//Forward................................................................................
+//Forward.....................................................................................
 	pidInput = new CANTalonEncoderPIDSource(leftRear);
 	pidOutput = new RobotDrivePIDOutput(robotDrive);
 	pidController = new PIDController(kP, kI, kD, pidInput, pidOutput);
 	pidController->SetInputRange(-100000.0, 1000000.0);
 	pidController->SetOutputRange(-1.0, 1.0);
 	pidController->SetAbsoluteTolerance(150);
-//Strafing................................................................................
+//Strafing....................................................................................
 	pidStrafeInput = new CANTalonEncoderPIDSource(rightRear);
 	pidStrafeOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe);
 	pidStrafeController = new PIDController(kPS, kIS, kDS, pidStrafeInput, pidStrafeOutput);
 	pidStrafeController->SetInputRange(-100000.0, 1000000.0);
 	pidStrafeController->SetOutputRange(-1.0, 1.0);
 	pidStrafeController->SetAbsoluteTolerance(150);
+//Strafing Wall...............................................................................
+	pidStrafeWallOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe, 0.3);
+	pidStrafeWallController = new PIDController(kPS, kIS, kDS, pidStrafeInput, pidStrafeWallOutput);
+	pidStrafeWallController->SetInputRange(-100000.0, 1000000.0);
+	pidStrafeWallController->SetOutputRange(-1.0, 1.0);
+	pidStrafeWallController->SetAbsoluteTolerance(150);
 
 /*
 	accelerometerX = new robovikes::Accelerometer();

@@ -7,9 +7,10 @@
 
 #include "RobotDrivePIDOutput.h"
 
-RobotDrivePIDOutput::RobotDrivePIDOutput(RobotDrive* robotDrive, bool strafe)
+RobotDrivePIDOutput::RobotDrivePIDOutput(RobotDrive* robotDrive, bool strafe, double wallStrafeCompenstation)
 : robotDrive(robotDrive)
 , mStrafe(strafe)
+, mWallStrafeCompensation(wallStrafeCompenstation)
 {
 	// TODO Auto-generated constructor stub
 
@@ -19,7 +20,7 @@ RobotDrivePIDOutput::RobotDrivePIDOutput(RobotDrive* robotDrive, bool strafe)
 void RobotDrivePIDOutput::PIDWrite(float output)
 {
 	if (mStrafe)
-		robotDrive->MecanumDrive_Cartesian( output, 0.0, 0.0);
+		robotDrive->MecanumDrive_Cartesian( output, mWallStrafeCompensation, 0.0);
 	else
 		robotDrive->MecanumDrive_Cartesian(0.0, output * -1, 0.0);
 	SmartDashboard::PutNumber("PID Output", output);
