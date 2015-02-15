@@ -132,7 +132,9 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Chassis Rear Left Motor",  Robot::chassis->leftRear->GetOutputCurrent());
 //Encoder...............................................................................................
 	SmartDashboard::PutNumber("Encoder Position", Robot::spool->spoolLeftMotor->GetEncPosition());
+
 	SmartDashboard::PutNumber("Forward Encoder", Robot::chassis->leftRear->GetEncPosition());
+
 	SmartDashboard::PutNumber("Strafing Encoder", Robot::chassis->rightRear->GetEncPosition());
 
 

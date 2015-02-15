@@ -14,13 +14,14 @@
 class CANTalonEncoderPIDSource : public PIDSource
 {
 public:
-	CANTalonEncoderPIDSource(CANTalon* talon);
-	CANTalonEncoderPIDSource(CANTalon* talon, double compensation);
+	CANTalonEncoderPIDSource(CANTalon* talon, bool isInverted = false);
+	CANTalonEncoderPIDSource(CANTalon* talon, double compensation, bool isInverted = false);
 	virtual double PIDGet() override;
 	void setCompensation(double compensationInput);
 private:
 	CANTalon* talon;
 	double compensation;
+	bool mIsInverted;
 };
 
 

@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef AUTODELAY_H
-#define AUTODELAY_H
+#ifndef AUTODRIVE_H
+#define AUTODRIVE_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,14 +21,18 @@
  *
  * @author ExampleAuthor
  */
-class autoDelay: public Command {
+class autoDrive: public Command {
 public:
-	autoDelay();
+	autoDrive();
+	autoDrive(double setPoint);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+private:
+	double mDistance;
+	Timer mTimeForStop;
 };
 
 #endif

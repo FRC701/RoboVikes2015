@@ -14,10 +14,14 @@
 
 class RobotDrivePIDOutput: public PIDOutput {
 public:
-	RobotDrivePIDOutput(RobotDrive* robotDrive);
+	static const bool kStrafe = true;
+	static const bool kDontStrafe = false;
+
+	RobotDrivePIDOutput(RobotDrive* robotDrive, bool strafe = false);
 	virtual void PIDWrite(float output) override;
 private:
 	RobotDrive* robotDrive;
+	bool mStrafe;
 };
 
 #endif /* SRC_ROBOTDRIVEPIDOUTPUT_H_ */

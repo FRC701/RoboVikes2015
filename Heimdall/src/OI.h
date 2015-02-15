@@ -23,8 +23,8 @@ private:
 	JoystickButton* dButtonL3;
 //CoDriver Buttons............................................................
 	JoystickButton* cYellow;
-	JoystickButton* cSmallred;
-	JoystickButton* cSmallblack;
+	JoystickButton* cSmallRed;
+	JoystickButton* cSmallBlack;
 	JoystickButton* cGreen;
 
 	JoystickButton* cBlue;

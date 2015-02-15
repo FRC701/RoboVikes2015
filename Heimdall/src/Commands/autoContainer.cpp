@@ -14,9 +14,12 @@
 #include "haySqueezerOpen.h"
 #include "haySqueezerClose.h"
 #include "containerLevel.h"
-#include "goToYPosition.h"
 #include "twoLevel.h"
-
+#include "Delay.h"
+#include "autoDrive.h"
+#include "zeroLevel.h"
+#include "goToyPosition.h"
+#include "autoStrafe.h"
 
 autoContainer::autoContainer() {
 	// Add Commands here:
@@ -26,8 +29,15 @@ autoContainer::autoContainer() {
 	AddSequential(new haySqueezerOpen());
 	AddSequential(new containerLevel());
 	AddSequential(new haySqueezerClose());
+	AddSequential(new Delay(0.5));
 	AddSequential(new twoLevel());
-	AddSequential(new goToYPosition());
+	AddSequential(new autoStrafe(-500));
+	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
+	AddSequential(new autoDrive(4000));
+	AddSequential(new zeroLevel());
+	AddSequential(new haySqueezerOpen());
+	//AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!
+	AddSequential(new autoDrive(-1000));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()
