@@ -124,7 +124,7 @@ Children:
       Name: leftPneSensor
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: haySqueezerDefault}
     Base: Subsystem
     Name: HaySqueezer
   - Children: []
@@ -167,6 +167,42 @@ Children:
         name: Default Command, type: Command, validators: null, value: None}
     Base: Subsystem
     Name: BreakElevator
+  - Children:
+    - Children: []
+      Properties:
+        Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
+          choices: &id011 ['0', '1', '2', '3']
+          default: '0'
+          name: Output Channel (Relay)
+          validators: &id012 [RelayOutput]
+          value: '0'
+      Base: Spike
+      Name: featureLights
+    - Children: []
+      Properties:
+        Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id011
+          default: '0'
+          name: Output Channel (Relay)
+          validators: *id012
+          value: '1'
+      Base: Spike
+      Name: Spike 2
+    - Children: []
+      Properties:
+        Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id011
+          default: '0'
+          name: Output Channel (Relay)
+          validators: *id012
+          value: '2'
+      Base: Spike
+      Name: Spike 3
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: lightsDefault}
+    Base: Subsystem
+    Name: Lights
   Properties: {}
   Base: Subsystems
   Name: Subsystems
@@ -174,20 +210,20 @@ Children:
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: &id011 ['0', '1', '2', '3', '4', '5']
+        choices: &id013 ['0', '1', '2', '3', '4', '5']
         default: 1
         name: Number
-        validators: &id012 [Joystick]
+        validators: &id014 [Joystick]
         value: '0'
     Base: Joystick
     Name: driver
   - Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id011
+        choices: *id013
         default: 1
         name: Number
-        validators: *id012
+        validators: *id014
         value: '1'
     Base: Joystick
     Name: coDriver
@@ -457,6 +493,38 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command Group
     Name: oneLevelOpenIntake
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: HaySqueezer}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: haySqueezerDefault
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Lights}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: lightsOn
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Lights}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: lightsOff
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Lights}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: lightsDefault
   Properties: {}
   Base: Commands
   Name: Commands

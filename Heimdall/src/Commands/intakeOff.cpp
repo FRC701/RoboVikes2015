@@ -29,9 +29,29 @@ void intakeOff::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void intakeOff::Execute() {
 
+//Guitar................................................................................
+/*
+	if(Robot::oi->getcoDriver()->GetPOV() == 0)
+	{
+		Robot::intake->intakeLeftMotor->Set(1.0);
+		Robot::intake->intakeRightMotor->Set(1.0);
+	}
+	else if(Robot::oi->getcoDriver()->GetPOV() == 180)
+	{
+		Robot::intake->intakeLeftMotor->Set(-1.0);
+		Robot::intake->intakeRightMotor->Set(-1.0);
+	}
+	else
+	{
+		Robot::intake->intakeLeftMotor->Set(0.0);
+		Robot::intake->intakeRightMotor->Set(0.0);
+	}
+*/
+//Box....................................................................................
+///*
 	Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1));
 	Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * -1);
-
+//*/
 }
 
 // Make this return true when this Command no longer needs to run execute()

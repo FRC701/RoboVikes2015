@@ -29,14 +29,14 @@ void autoStrafeToToteRight::Initialize() {
 void autoStrafeToToteRight::Execute() {
 	bool strafe = true;
 	double encoderValue;
-	if(strafe)
-		Robot::chassis->robotDrive->MecanumDrive_Cartesian(1.0, 0.3, 0.0);
 	if(Robot::chassis->leftLightSensor->Get() && Robot::chassis->rightLightSensor->Get())
 	{
 		encoderValue = Robot::chassis->rightRear->GetEncPosition();
 		strafe = false;
 		Robot::chassis->pidStrafeWallController->SetSetpoint(encoderValue);
 	}
+	if(strafe)
+			Robot::chassis->robotDrive->MecanumDrive_Cartesian(1.0, 0.3, 0.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
