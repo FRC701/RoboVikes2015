@@ -33,7 +33,7 @@ autoContainer::autoContainer() {
 	AddSequential(new twoLevel());
 	AddSequential(new autoStrafe(-500));
 	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
-	AddSequential(new autoDrive(4000));
+	AddSequential(new autoDrive(8000));
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerOpen());
 	//AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!

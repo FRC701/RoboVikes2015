@@ -10,21 +10,19 @@
 
 
 
-#include "oneLevelTote.h"
-#include "haySqueezerClose.h"
+#include "oneLevelOpenIntake.h"
 #include "PneIntakeOut.h"
 #include "oneLevel.h"
 
-oneLevelTote::oneLevelTote() {
+oneLevelOpenIntake::oneLevelOpenIntake() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
 
-	//AddSequential(new haySqueezerClose());
-	//AddSequential(new PneIntakeOut());
-	//AddSequential(new oneLevel());
-
+	AddSequential(new oneLevel());
+	if(Robot::spool->spoolLeftMotor->Get() < 0.0)
+		AddSequential(new PneIntakeOut());
 
 	// To run multiple commands at the same time,
 	// use AddParallel()

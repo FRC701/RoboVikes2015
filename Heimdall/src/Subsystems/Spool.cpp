@@ -31,7 +31,7 @@ Spool::Spool() : Subsystem("Spool") {
 	pidInput = new CANTalonEncoderPIDSource(spoolLeftMotor, true); //kInverted TODO be added
 	pidOutput = new TwoMotorPIDOutput(spoolLeftMotor, spoolRightMotor);
 	pidController = new PIDController(kP, kI, kD, pidInput, pidOutput);
-	pidController->SetInputRange(0.0, 3000.0);
+	pidController->SetInputRange(0.0, 4000.0);
 	pidController->SetOutputRange(-1.0, 1.0);
 	pidController->SetTolerance(5.0);
 }

@@ -22,7 +22,7 @@ chuteHight::chuteHight() {
 
 // Called just before this Command runs the first time
 void chuteHight::Initialize() {
-	Robot::spool->pidController->SetSetpoint(2650);
+	Robot::spool->pidController->SetSetpoint(3200);
 }
 
 // Called repeatedly when this Command is scheduled to run

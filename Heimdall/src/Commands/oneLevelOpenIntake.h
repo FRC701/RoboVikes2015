@@ -10,8 +10,8 @@
 
 
 
-#ifndef ONELEVELTOTE_H
-#define ONELEVELTOTE_H
+#ifndef ONELEVELOPENINTAKE_H
+#define ONELEVELOPENINTAKE_H
 
 #include "Commands/CommandGroup.h"
 
@@ -20,9 +20,9 @@
  *
  * @author ExampleAuthor
  */
-class oneLevelTote: public CommandGroup {
+class oneLevelOpenIntake: public CommandGroup {
 public:	
-	oneLevelTote();
+	oneLevelOpenIntake();
 };
 
 #endif

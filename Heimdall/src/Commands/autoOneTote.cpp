@@ -29,14 +29,14 @@ autoOneTote::autoOneTote() {
 	AddSequential(new haySqueezerOpen());
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
-	AddSequential(new autoStrafe(1000));
+	AddSequential(new autoStrafe(500));
 	AddSequential(new Delay(0.5));
 	AddSequential(new oneLevel());
-	AddSequential(new autoDrive(1000));
+	AddSequential(new autoDrive(7600));
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerOpen());
 	AddSequential(new twoLevel());
-	AddSequential(new autoDrive(-300));
+	AddSequential(new autoDrive(-500));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()

@@ -32,8 +32,8 @@ private:
 	JoystickButton* cBlack;
 	JoystickButton* cRed;
 
-	/*
-	JoystickButton* coButtonA;
+//Guitar......................................................................
+/*	JoystickButton* coButtonA;
 	JoystickButton* coButtonB;
 	JoystickButton* coButtonX;
 	//JoystickButton* coButtonY;
