@@ -45,13 +45,13 @@ void Drive::Execute() {
 
 
 //Raw Mecanum Drive..........................................................................................
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(Robot::oi->getdriver()->GetRawAxis(leftX),
-													Robot::oi->getdriver()->GetRawAxis(leftY),
-													Robot::oi->getdriver()->GetRawAxis(rightX));
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(Robot::oi->getdriver()->GetRawAxis(leftX * getMultiplier()),
+													Robot::oi->getdriver()->GetRawAxis(leftY * getMultiplier()),
+													Robot::oi->getdriver()->GetRawAxis(rightX * getMultiplier()));
 
 //Software Shifting...........................................................................................
 	toggleL3();
-	Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
+	//Robot::oi->getdriver()->SetRumble(Joystick::kLeftRumble, 0.0);
 
 //Mecanum Drive Triggers...............................................................................................
 	//double xInput = /*getJoystickTriggerValue()*/ Robot::oi->getdriver()->GetRawAxis(0) * getMultiplier();
