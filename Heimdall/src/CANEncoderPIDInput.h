@@ -14,6 +14,7 @@
 class CANTalonEncoderPIDSource : public PIDSource
 {
 public:
+	static const bool kInverted = true;
 	CANTalonEncoderPIDSource(CANTalon* talon, bool isInverted = false);
 	CANTalonEncoderPIDSource(CANTalon* talon, double compensation, bool isInverted = false);
 	virtual double PIDGet() override;
