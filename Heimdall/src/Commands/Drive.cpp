@@ -45,9 +45,9 @@ void Drive::Execute() {
 
 
 //Raw Mecanum Drive..........................................................................................
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(Robot::oi->getdriver()->GetRawAxis(leftX * getMultiplier()),
-													Robot::oi->getdriver()->GetRawAxis(leftY * getMultiplier()),
-													Robot::oi->getdriver()->GetRawAxis(rightX * getMultiplier()));
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(Robot::oi->getdriver()->GetRawAxis(leftX) * getMultiplier(),
+													Robot::oi->getdriver()->GetRawAxis(leftY) * getMultiplier(),
+													Robot::oi->getdriver()->GetRawAxis(rightX) * getMultiplier());
 
 //Software Shifting...........................................................................................
 	toggleL3();
