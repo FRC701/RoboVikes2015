@@ -27,18 +27,13 @@ void haySqueezerDefault::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void haySqueezerDefault::Execute() {
-	bool current = false;
-	bool last = false;
-	if(Robot::oi->getcoDriver()->GetRawAxis(4) == 1.0 && current != last)
+	if(Robot::haySqueezer->haySqueezerSolenoid->Get() == DoubleSolenoid::kReverse)		//Test current condition of
+	{																					//	hayS. solenoid by calling Get()
+		Robot::haySqueezer->haySqueezerSolenoid->Set(DoubleSolenoid::kForward);			//Set opposite to test condition
+	}
+	else if(Robot::haySqueezer->haySqueezerSolenoid->Get() == DoubleSolenoid::kForward)
 	{
-		if(Robot::haySqueezer->haySqueezerSolenoid->Get() == DoubleSolenoid::kReverse)		//Test current condition of
-		{																					//	hayS. solenoid by calling Get()
-			Robot::haySqueezer->haySqueezerSolenoid->Set(DoubleSolenoid::kForward);			//Set opposite to test condition
-		}
-		else if(Robot::haySqueezer->haySqueezerSolenoid->Get() == DoubleSolenoid::kForward)
-		{
-			Robot::haySqueezer->haySqueezerSolenoid->Set(DoubleSolenoid::kReverse);
-		}
+		Robot::haySqueezer->haySqueezerSolenoid->Set(DoubleSolenoid::kReverse);
 	}
 }
 
