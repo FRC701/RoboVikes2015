@@ -9,27 +9,20 @@
 // it from being updated in the future.
 
 
-#ifndef GOTOYPOSITION_H
-#define GOTOYPOSITION_H
 
+#ifndef AUTOONETOTE_H
+#define AUTOONETOTE_H
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "Commands/CommandGroup.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class goToYPosition: public Command {
-public:
-	goToYPosition();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
-	Timer* timeForStop;
+class autoOneTote: public CommandGroup {
+public:	
+	autoOneTote();
 };
 
 #endif

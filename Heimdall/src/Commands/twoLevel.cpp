@@ -22,35 +22,26 @@ twoLevel::twoLevel() {
 
 // Called just before this Command runs the first time
 void twoLevel::Initialize() {
-	
+	Robot::spool->pidController->SetSetpoint(2350);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void twoLevel::Execute() {
-	//Robot::spool->spoolRightMotor->Set()
+	Robot::spool->pidController->Enable();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool twoLevel::IsFinished() {
-	bool test = false;
-	/*
-	if(Robot::spool->spoolRightMotor->GetEncPosition() <= -1116)
-		test = true;
-	return test;
-	*/
-	if(Robot::spool->spoolRightMotor->GetPosition() == -1000)
-		cout << "you are there!";
-		test = true;
-	return test;
+	return Robot::spool->pidController->OnTarget();
 }
 
 // Called once after isFinished returns true
 void twoLevel::End() {
-	
+	Robot::spool->pidController->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void twoLevel::Interrupted() {
-
+	Robot::spool->pidController->Disable();
 }

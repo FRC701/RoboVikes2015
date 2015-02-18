@@ -9,27 +9,20 @@
 // it from being updated in the future.
 
 
-#ifndef GOTOYPOSITION_H
-#define GOTOYPOSITION_H
 
+#ifndef AUTODRIVEINTOZONE_H
+#define AUTODRIVEINTOZONE_H
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "Commands/CommandGroup.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class goToYPosition: public Command {
-public:
-	goToYPosition();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
-	Timer* timeForStop;
+class autoDriveIntoZone: public CommandGroup {
+public:	
+	autoDriveIntoZone();
 };
 
 #endif

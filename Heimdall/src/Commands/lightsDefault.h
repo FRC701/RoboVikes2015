@@ -9,20 +9,26 @@
 // it from being updated in the future.
 
 
+#ifndef LIGHTSDEFAULT_H
+#define LIGHTSDEFAULT_H
 
-#ifndef ONELEVELTOTE_H
-#define ONELEVELTOTE_H
 
-#include "Commands/CommandGroup.h"
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class oneLevelTote: public CommandGroup {
-public:	
-	oneLevelTote();
+class lightsDefault: public Command {
+public:
+	lightsDefault();
+	virtual void Initialize();
+	virtual void Execute();
+	virtual bool IsFinished();
+	virtual void End();
+	virtual void Interrupted();
 };
 
 #endif

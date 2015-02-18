@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef GOTOYPOSITION_H
-#define GOTOYPOSITION_H
+#ifndef CHUTEHIGHT_H
+#define CHUTEHIGHT_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,15 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class goToYPosition: public Command {
+class chuteHight: public Command {
 public:
-	goToYPosition();
+	chuteHight();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	Timer* timeForStop;
 };
 
 #endif

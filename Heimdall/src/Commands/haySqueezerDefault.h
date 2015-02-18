@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef GOTOYPOSITION_H
-#define GOTOYPOSITION_H
+#ifndef HAYSQUEEZERDEFAULT_H
+#define HAYSQUEEZERDEFAULT_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,15 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class goToYPosition: public Command {
+class haySqueezerDefault: public Command {
 public:
-	goToYPosition();
+	haySqueezerDefault();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	Timer* timeForStop;
 };
 
 #endif

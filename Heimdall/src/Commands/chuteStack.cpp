@@ -10,21 +10,18 @@
 
 
 
-#include "oneLevelTote.h"
-#include "haySqueezerClose.h"
-#include "PneIntakeOut.h"
-#include "oneLevel.h"
+#include "chuteStack.h"
+#include "grabOneTote.h"
+#include "chuteHight.h"
 
-oneLevelTote::oneLevelTote() {
+chuteStack::chuteStack() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
 
-	//AddSequential(new haySqueezerClose());
-	//AddSequential(new PneIntakeOut());
-	//AddSequential(new oneLevel());
-
+	AddSequential(new grabOneTote());
+	AddSequential(new chuteHight());
 
 	// To run multiple commands at the same time,
 	// use AddParallel()

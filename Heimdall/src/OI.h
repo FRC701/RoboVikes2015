@@ -21,13 +21,29 @@ private:
 	JoystickButton* dButtonRB;
 	JoystickButton* dButtonLB;
 	JoystickButton* dButtonL3;
-//CoDriver Buttons............................................................
-	JoystickButton* coButtonA;
-	JoystickButton* coButtonB;
-	JoystickButton* coButtonX;
-	//JoystickButton* coButtonY;
-	JoystickButton* coButtonLB;
-	JoystickButton* coButtonRB;
+//CoDriver Box Buttons............................................................
+///*
+	JoystickButton* cYellow;
+	JoystickButton* cSmallRed;
+	JoystickButton* cSmallBlack;
+	JoystickButton* cGreen;
+
+	JoystickButton* cBlue;
+	JoystickButton* cWhite;
+	JoystickButton* cBlack;
+	JoystickButton* cRed;
+//*/
+//Guitar......................................................................
+/*
+	JoystickButton* gButtonGreen;
+	JoystickButton* gButtonRed;
+	JoystickButton* gButtonYellow;
+	JoystickButton* gButtonBlue;
+	JoystickButton* gButtonOrange;
+	JoystickButton* gButtonBack;
+	JoystickButton* gButtonStart;
+
+*/
 //Timer for rumble of driver controller.......................................
 	//Timer* rumbleTimer;
 

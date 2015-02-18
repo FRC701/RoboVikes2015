@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef GOTOYPOSITION_H
-#define GOTOYPOSITION_H
+#ifndef AUTOSTRAFETOTOTERIGHT_H
+#define AUTOSTRAFETOTOTERIGHT_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,15 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class goToYPosition: public Command {
+class autoStrafeToToteRight: public Command {
 public:
-	goToYPosition();
+	autoStrafeToToteRight();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	Timer* timeForStop;
 };
 
 #endif
