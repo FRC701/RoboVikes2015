@@ -132,13 +132,13 @@
 		<location x="0" y="189"/>
 	</widget>
 	<widget field="spoolOff" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="644"/>
+		<location x="1349" y="57"/>
 	</widget>
 	<widget field="spoolCounterClockwise" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="610"/>
+		<location x="1282" y="88"/>
 	</widget>
 	<widget field="spoolClockwise" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="576"/>
+		<location x="1319" y="125"/>
 	</widget>
 	<widget field="haySqueezerToggle" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
 		<location x="1132" y="104"/>
