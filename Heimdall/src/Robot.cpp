@@ -86,6 +86,17 @@ void Robot::DisabledInit(){
 
 void Robot::DisabledPeriodic() {
 	Scheduler::GetInstance()->Run();
+
+	Robot::chassis->leftFront->ConfigNeutralMode(CANSpeedController::kNeutralMode_Jumper);
+	Robot::chassis->leftRear->ConfigNeutralMode(CANSpeedController::kNeutralMode_Jumper);
+	Robot::chassis->rightFront->ConfigNeutralMode(CANSpeedController::kNeutralMode_Jumper);
+	Robot::chassis->rightRear->ConfigNeutralMode(CANSpeedController::kNeutralMode_Jumper);
+
+	Robot::spool->spoolLeftMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Jumper);
+	Robot::spool->spoolRightMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Jumper);
+
+	Robot::intake->intakeLeftMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Jumper);
+	Robot::intake->intakeRightMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Jumper);
 }
 
 void Robot::AutonomousInit() {
