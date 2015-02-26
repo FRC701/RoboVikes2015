@@ -1,169 +1,213 @@
 <xml version="1.0">
 <dashboard>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.VideoStreamViewerExtension">
-		<location x="437" y="244"/>
-		<width>316</width>
-		<height>252</height>
-	</static-widget>
-	<widget field="UserButton" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="547"/>
-	</widget>
-	<widget field="Right HaySqueezer" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="526"/>
-	</widget>
-	<widget field="Left HaySqueezer" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="168"/>
-	</widget>
-	<widget field="Right LightSensor" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="147"/>
-	</widget>
-	<widget field="Left LightSensor" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="126"/>
-	</widget>
-	<widget field="Starting Encoder Value" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="105"/>
-	</widget>
-	<widget field="Forward Limit Switch" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="84"/>
-	</widget>
-	<widget field="Encoder Vel" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="63"/>
-	</widget>
-	<widget field="Strafing Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="42"/>
-	</widget>
-	<widget field="Forward Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="21"/>
-	</widget>
 	<widget field="Encoder Position" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="468"/>
+	</widget>
+	<widget field="Elevator Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="807" y="140"/>
+		<property name="Background" value="0.204.255.255"/>
+	</widget>
+	<widget field="POV" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="447"/>
+	</widget>
+	<widget field="Chassis Rear Left Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="426"/>
+	</widget>
+	<widget field="Chassis Rear Right Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="405"/>
+	</widget>
+	<widget field="Chassis Front Right Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="384"/>
+	</widget>
+	<widget field="Chassis Front Left Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="363"/>
+	</widget>
+	<widget field="Spool Right Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="295"/>
+	</widget>
+	<widget field="Spool Left Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="274"/>
+	</widget>
+	<widget field="Left Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="253"/>
+	</widget>
+	<widget field="Right Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="232"/>
+	</widget>
+	<widget field="Left Plot Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="211"/>
+	</widget>
+	<widget field="Right Plot Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="0"/>
 	</widget>
-	<widget field="oneLevelOpenIntake" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="929" y="532"/>
+	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="409" y="-2"/>
 	</widget>
-	<widget field="lightsOn" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="929" y="185"/>
-	</widget>
-	<widget field="lightsOff" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="929" y="151"/>
+	<widget field="UserButton" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="400" y="260"/>
 	</widget>
 	<widget field="lightsDefault" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="937" y="117"/>
+		<location x="1013" y="238"/>
+	</widget>
+	<widget field="Right LightSensor" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="933" y="100"/>
+	</widget>
+	<widget field="lightsOn" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="259" y="34"/>
+	</widget>
+	<widget field="lightsOff" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="259" y="0"/>
 	</widget>
 	<widget field="haySqueezerDefault" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="929" y="34"/>
+		<location x="1004" y="472"/>
 	</widget>
-	<widget field="grabOneTote" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="929" y="0"/>
-	</widget>
-	<widget field="goToYPosition" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="747" y="532"/>
-	</widget>
-	<widget field="chuteStack" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="747" y="185"/>
-	</widget>
-	<widget field="chuteHight" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="747" y="151"/>
-	</widget>
-	<widget field="breakToggle" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="371" y="532"/>
+	<widget field="oneLevelOpenIntake" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="45" y="504"/>
 	</widget>
 	<widget field="autoStrafeToToteRight" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="747" y="117"/>
-	</widget>
-	<widget field="autoStrafe" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="371" y="184"/>
-	</widget>
-	<widget field="autoStrafe X" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="747" y="41"/>
+		<location x="19" y="329"/>
 	</widget>
 	<widget field="autoOneTote" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="545" y="532"/>
+		<location x="71" y="177"/>
+	</widget>
+	<widget field="chuteHight" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="263" y="400"/>
+	</widget>
+	<widget field="grabOneTote" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="248" y="367"/>
+	</widget>
+	<widget field="chuteStack" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="460" y="513"/>
 	</widget>
 	<widget field="autoDriveIntoZone" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="506" y="116"/>
+		<location x="43" y="148"/>
 	</widget>
-	<widget field="autoDrive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="371" y="150"/>
+	<widget field="autoStrafe X" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1341" y="242"/>
+	</widget>
+	<widget field="autoStrafe" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1352" y="280"/>
 	</widget>
 	<widget field="autoDrive X" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="371" y="116"/>
+		<location x="1168" y="245"/>
+	</widget>
+	<widget field="autoDrive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1180" y="288"/>
 	</widget>
 	<widget field="autoContainer" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="545" y="42"/>
+		<location x="66" y="120"/>
 	</widget>
+	<widget field="Right HaySqueezer" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="925" y="40"/>
+		<property name="Background" value="255.81.52.255"/>
+	</widget>
+	<widget field="Left HaySqueezer" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="928" y="10"/>
+		<property name="Background" value="255.51.33.255"/>
+	</widget>
+	<widget field="Strafing Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="1333" y="217"/>
+		<height>20</height>
+		<property name="Background" value="0.255.0.255"/>
+	</widget>
+	<widget field="goToYPosition" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1164" y="318"/>
+	</widget>
+	<widget field="Forward Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="1152" y="217"/>
+		<property name="Background" value="102.255.0.255"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.VideoStreamViewerExtension">
+		<location x="604" y="237"/>
+		<width>402</width>
+		<height>359</height>
+	</static-widget>
 	<widget field="Autonomous modes" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="205" y="212"/>
+		<location x="64" y="28"/>
+	</widget>
+	<widget field="Left LightSensor" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="938" y="70"/>
+	</widget>
+	<widget field="breakToggle" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="331" y="136"/>
+	</widget>
+	<widget field="Starting Encoder Value" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="780" y="164"/>
+		<property name="Background" value="255.255.0.255"/>
 	</widget>
 	<widget field="zeroLevel" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="818" y="368"/>
+		<location x="466" y="481"/>
 	</widget>
 	<widget field="twoLevel" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="824" y="341"/>
-	</widget>
-	<widget field="rumble" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="211" y="68"/>
-	</widget>
-	<widget field="pneIntakeToggle" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1142" y="141"/>
-	</widget>
-	<widget field="pneIntakeIn" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="211" y="0"/>
-	</widget>
-	<widget field="pneIntakeDefault" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="492"/>
-	</widget>
-	<widget field="oneLevel" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="458"/>
+		<location x="469" y="356"/>
 	</widget>
 	<widget field="maxLevel" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="424"/>
-	</widget>
-	<widget field="haySqueezerOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="390"/>
-	</widget>
-	<widget field="haySqueezerClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="872" y="285"/>
+		<location x="467" y="326"/>
 	</widget>
 	<widget field="containerTwoLevel" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="223"/>
+		<location x="423" y="387"/>
 	</widget>
 	<widget field="containerLevel" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="189"/>
+		<location x="442" y="451"/>
+	</widget>
+	<widget field="rumble" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1453" y="554"/>
+	</widget>
+	<widget field="pneIntakeToggle" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1194" y="418"/>
+	</widget>
+	<widget field="pneIntakeIn" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1214" y="392"/>
+	</widget>
+	<widget field="pneIntakeDefault" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1190" y="470"/>
+	</widget>
+	<widget field="oneLevel" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="470" y="422"/>
+	</widget>
+	<widget field="haySqueezerOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1013" y="444"/>
+	</widget>
+	<widget field="haySqueezerClose" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1013" y="385"/>
 	</widget>
 	<widget field="spoolOff" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1349" y="57"/>
+		<location x="633" y="10"/>
 	</widget>
 	<widget field="spoolCounterClockwise" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1282" y="88"/>
+		<location x="566" y="75"/>
 	</widget>
 	<widget field="spoolClockwise" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1319" y="125"/>
+		<location x="605" y="41"/>
 	</widget>
-	<widget field="haySqueezerToggle" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1132" y="104"/>
-	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.RobotPreferences">
-		<location x="1169" y="234"/>
-	</static-widget>
 	<widget field="intakeOut" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="356"/>
+		<location x="1403" y="391"/>
 	</widget>
 	<widget field="intakeOff" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="322"/>
+		<location x="1405" y="419"/>
 	</widget>
 	<widget field="intakeIn" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="978" y="368"/>
+		<location x="1411" y="447"/>
+	</widget>
+	<widget field="haySqueezerToggle" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="1007" y="417"/>
 	</widget>
 	<widget field="PneIntakeOut" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="601" y="8"/>
+		<location x="1207" y="444"/>
+	</widget>
+	<widget field="Forward Limit Switch" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="583" y="132"/>
+		<height>20</height>
+	</widget>
+	<widget field="Encoder Vel" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="832" y="189"/>
 	</widget>
 	<widget field="Drive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1174" y="35"/>
+		<location x="1456" y="110"/>
 	</widget>
-	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="1172" y="480"/>
-	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.RobotPreferences">
+		<location x="1115" y="-4"/>
+	</static-widget>
 </dashboard>
 <live-window>
 </live-window>
