@@ -14,7 +14,9 @@
 class TwoMotorPIDOutput: public PIDOutput {
 public:
 	TwoMotorPIDOutput(SpeedController* motor1, SpeedController* motor2);
+	virtual ~TwoMotorPIDOutput();
 	virtual void PIDWrite(float output) override;
+	virtual void Set(float speed); // TODO override!
 private:
 	SpeedController* motor1;
 	SpeedController* motor2;

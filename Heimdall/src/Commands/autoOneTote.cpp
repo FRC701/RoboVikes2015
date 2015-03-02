@@ -11,7 +11,7 @@
 
 
 #include "autoOneTote.h"
-#include "haySqueezerOpen.h"
+#include "autoHaySqueezerOpen.h"
 #include "haySqueezerClose.h"
 #include "zeroLevel.h"
 #include "oneLevel.h"
@@ -26,7 +26,7 @@ autoOneTote::autoOneTote() {
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-	AddSequential(new haySqueezerOpen());
+	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
 	AddSequential(new autoStrafe(500));
@@ -34,7 +34,7 @@ autoOneTote::autoOneTote() {
 	AddSequential(new oneLevel());
 	AddSequential(new autoDrive(7600));
 	AddSequential(new zeroLevel());
-	AddSequential(new haySqueezerOpen());
+	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new twoLevel());
 	AddSequential(new autoDrive(-500));
 

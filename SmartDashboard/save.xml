@@ -1,14 +1,44 @@
 <xml version="1.0">
 <dashboard>
-	<widget field="Encoder Position" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="468"/>
+	<widget field="Joystick 4 Value" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="251" y="220"/>
+	</widget>
+	<widget field="POV Driver" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="379" y="32"/>
+	</widget>
+	<widget field="POV CoDriver" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="211" y="581"/>
+	</widget>
+	<widget field="Intake Right Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="211" y="560"/>
+	</widget>
+	<widget field="Intake Left Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="211" y="539"/>
+	</widget>
+	<widget field="Accelerometer: Z" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="224" y="518"/>
+	</widget>
+	<widget field="Accelerometer: Y" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="224" y="497"/>
+	</widget>
+	<widget field="Accelerometer: X" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="211" y="476"/>
+	</widget>
+	<widget field="PID Output" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="208" y="455"/>
+	</widget>
+	<widget field="Auto Drive Set Point" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="211" y="434"/>
+	</widget>
+	<widget field="setPoint" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="572"/>
+	</widget>
+	<widget field="autoHaySqueezerOpen" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="538"/>
 	</widget>
 	<widget field="Elevator Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="807" y="140"/>
 		<property name="Background" value="0.204.255.255"/>
-	</widget>
-	<widget field="POV" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="447"/>
 	</widget>
 	<widget field="Chassis Rear Left Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="426"/>
@@ -39,9 +69,6 @@
 	</widget>
 	<widget field="Right Plot Motor" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="0" y="0"/>
-	</widget>
-	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="409" y="-2"/>
 	</widget>
 	<widget field="UserButton" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="400" y="260"/>
@@ -118,7 +145,7 @@
 		<property name="Background" value="102.255.0.255"/>
 	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.VideoStreamViewerExtension">
-		<location x="604" y="237"/>
+		<location x="595" y="235"/>
 		<width>402</width>
 		<height>359</height>
 	</static-widget>

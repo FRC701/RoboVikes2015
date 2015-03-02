@@ -11,7 +11,7 @@
 
 
 #include "autoContainer.h"
-#include "haySqueezerOpen.h"
+#include "autoHaySqueezerOpen.h"
 #include "haySqueezerClose.h"
 #include "containerLevel.h"
 #include "twoLevel.h"
@@ -26,7 +26,7 @@ autoContainer::autoContainer() {
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-	AddSequential(new haySqueezerOpen());
+	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new containerLevel());
 	AddSequential(new haySqueezerClose());
 	AddSequential(new Delay(0.5));
@@ -35,7 +35,7 @@ autoContainer::autoContainer() {
 	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
 	AddSequential(new autoDrive(8000));
 	AddSequential(new zeroLevel());
-	AddSequential(new haySqueezerOpen());
+	AddSequential(new autoHaySqueezerOpen());
 	//AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!
 	AddSequential(new autoDrive(-300));
 
