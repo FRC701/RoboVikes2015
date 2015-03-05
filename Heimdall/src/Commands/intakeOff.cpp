@@ -23,7 +23,7 @@ intakeOff::intakeOff() {
 
 // Called just before this Command runs the first time
 void intakeOff::Initialize() {
-	
+
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -49,8 +49,8 @@ void intakeOff::Execute() {
 */
 //Box....................................................................................
 ///*
-	Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1));
-	Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * -1);
+	Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * 0.3);
+	Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * -0.3);
 //*/
 }
 
@@ -61,7 +61,7 @@ bool intakeOff::IsFinished() {
 
 // Called once after isFinished returns true
 void intakeOff::End() {
-	
+
 }
 
 // Called when another command which requires one or more of the same
