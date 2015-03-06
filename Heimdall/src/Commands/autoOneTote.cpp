@@ -43,12 +43,14 @@ autoOneTote::autoOneTote() {
 	// Drive into the auto zone
 	AddSequential(new autoDrive(7600));
 
+	// The following lines of code should all be commented out due
+	// to the Madera regional's rules
 	// Put down the tote and drive backwards to abandon contact
 	// with the tote
-	AddSequential(new zeroLevel());
-	AddSequential(new autoHaySqueezerOpen());
-	AddSequential(new twoLevel());
-	AddSequential(new autoDrive(-500));
+	// AddSequential(new zeroLevel());
+	// AddSequential(new autoHaySqueezerOpen());
+	// AddSequential(new twoLevel());
+	// AddSequential(new autoDrive(-500));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()

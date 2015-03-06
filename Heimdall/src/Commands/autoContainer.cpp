@@ -45,12 +45,14 @@ autoContainer::autoContainer() {
 	// Drive into the auto zone
 	AddSequential(new autoDrive(8000));
 
+	// The following lines of code should all be commented out due
+	// to the Madera regional's rules
 	// Put down the container and drive backwards to
 	// abandon contact with the container
-	AddSequential(new zeroLevel());
-	AddSequential(new autoHaySqueezerOpen());
-	//AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!
-	AddSequential(new autoDrive(-300));
+	// AddSequential(new zeroLevel());
+	// AddSequential(new autoHaySqueezerOpen());
+	// AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!
+	// AddSequential(new autoDrive(-300));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()
