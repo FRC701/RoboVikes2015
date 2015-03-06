@@ -26,14 +26,27 @@ autoContainer::autoContainer() {
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
+
+	// Drop the elevator down and pick up the container
 	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new containerLevel());
 	AddSequential(new haySqueezerClose());
+
 	AddSequential(new Delay(0.5));
+
+	// Lift the container off of the ground
 	AddSequential(new twoLevel());
+
+	// Slightly strafe left to avoid hitting the yellow tote
 	AddSequential(new autoStrafe(-500));
+
 	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
+
+	// Drive into the auto zone
 	AddSequential(new autoDrive(8000));
+
+	// Put down the container and drive backwards to
+	// abandon contact with the container
 	AddSequential(new zeroLevel());
 	AddSequential(new autoHaySqueezerOpen());
 	//AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!

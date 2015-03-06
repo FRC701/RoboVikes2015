@@ -26,13 +26,25 @@ autoOneTote::autoOneTote() {
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
+
+	// Drop the elevator down and pick up the yellow tote
 	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
+
+	// Slightly strafe to the right to avoid hitting the container
 	AddSequential(new autoStrafe(500));
+
 	AddSequential(new Delay(0.5));
+
+	// Lift the tote off of the ground
 	AddSequential(new oneLevel());
+
+	// Drive into the auto zone
 	AddSequential(new autoDrive(7600));
+
+	// Put down the tote and drive backwards to abandon contact
+	// with the tote
 	AddSequential(new zeroLevel());
 	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new twoLevel());
