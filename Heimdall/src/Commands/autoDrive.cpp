@@ -53,7 +53,9 @@ void autoDrive::Execute() {
 	Robot::chassis->pidController->Enable();
 
 	// Check if encoder enough to show progress
-	if ((std::abs(Robot::chassis->leftRear->GetEncPosition()) - mPreviousEncoderReading) < 10)
+	if ((std::abs(Robot::chassis->leftRear->GetEncPosition())
+	     - mPreviousEncoderReading)
+		 < Robot::prefs->GetInt("autoDriveRequiredEncoderProgress", 0))
 	{
 		mTimeoutForEncoderChange.Start();
 	}

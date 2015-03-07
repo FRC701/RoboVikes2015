@@ -52,7 +52,8 @@ void autoStrafe::Execute() {
 	Robot::chassis->pidStrafeWallController->Enable();
 
 	// Check if encoder enough to show progress
-	if ((std::abs(Robot::chassis->rightRear->GetEncPosition()) - mPreviousEncoderReading) < 10)
+	if ((std::abs(Robot::chassis->rightRear->GetEncPosition()) - mPreviousEncoderReading)
+			< Robot::prefs->GetInt("autoStrafeRequiredEncoderProgress", 0))
 	{
 		mTimeoutForEncoderChange.Start();
 	}
