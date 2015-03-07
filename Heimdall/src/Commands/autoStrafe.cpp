@@ -12,7 +12,8 @@
 #include "autoStrafe.h"
 
 autoStrafe::autoStrafe()
-:	mDistance(0), mTimeout(), mTimeForStop()
+:	mDistance(0), mTimeout(), mTimeoutForEncoderChange(),
+	mPreviousEncoderReading(0), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -23,7 +24,8 @@ autoStrafe::autoStrafe()
 }
 
 autoStrafe::autoStrafe(double setPoint)
-:	mDistance(setPoint), mTimeout(), mTimeForStop()
+:	mDistance(setPoint), mTimeout(), mTimeoutForEncoderChange(),
+	mPreviousEncoderReading(0), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -47,7 +49,20 @@ void autoStrafe::Initialize() {
 void autoStrafe::Execute() {
 	Robot::chassis->pidStrafeWallController->Enable();
 
-	SmartDashboard::PutNumber("Strafe Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
+	// Check if encoder enough to show progress
+	if ((std::abs(Robot::chassis->rightRear->GetEncPosition()) - mPreviousEncoderReading) < 10)
+	{
+		mTimeoutForEncoderChange.Start();
+	}
+	else
+	{
+		mTimeoutForEncoderChange.Stop();
+		mTimeoutForEncoderChange.Reset();
+	}
+
+	mPreviousEncoderReading = Robot::chassis->rightRear->GetEncPosition();
+
+	// SmartDashboard::PutNumber("Strafe Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -63,13 +78,16 @@ bool autoStrafe::IsFinished() {
 	return (mTimeForStop.HasPeriodPassed(0.2));
 */
 	return (Robot::chassis->pidStrafeWallController->OnTarget() ||
-			mTimeout.HasPeriodPassed(Robot::prefs->GetDouble("autoStrafeTimeout", 0.0)));
+			mTimeout.HasPeriodPassed(Robot::prefs->GetDouble("autoStrafeTimeout", 0.0)) ||
+			mTimeoutForEncoderChange.HasPeriodPassed(0.25));
 }
 
 // Called once after isFinished returns true
 void autoStrafe::End() {
 	mTimeout.Stop();
 	mTimeout.Reset();
+	mTimeoutForEncoderChange.Stop();
+	mTimeoutForEncoderChange.Reset();
 	Robot::chassis->pidStrafeWallController->Disable();
 }
 
@@ -78,5 +96,7 @@ void autoStrafe::End() {
 void autoStrafe::Interrupted() {
 	mTimeout.Stop();
 	mTimeout.Reset();
+	mTimeoutForEncoderChange.Stop();
+	mTimeoutForEncoderChange.Reset();
 	Robot::chassis->pidStrafeWallController->Disable();
 }
