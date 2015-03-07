@@ -11,6 +11,8 @@
 
 #include "autoStrafe.h"
 
+#include <cmath>
+
 autoStrafe::autoStrafe()
 :	mDistance(0), mTimeout(), mTimeoutForEncoderChange(),
 	mPreviousEncoderReading(0), mTimeForStop()
