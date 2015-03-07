@@ -11,8 +11,11 @@
 
 #include "autoDrive.h"
 
+#include <cmath>
+
 autoDrive::autoDrive()
-:	mDistance(0), mTimeout(), mTimeForStop()
+:	mDistance(0), mTimeout(), mTimeoutForEncoderChange(),
+	mPreviousEncoderReading(0), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -24,7 +27,8 @@ autoDrive::autoDrive()
 
 
 autoDrive::autoDrive(double setPoint)
-:	mDistance(setPoint), mTimeout(), mTimeForStop()
+:	mDistance(setPoint), mTimeout(), mTimeoutForEncoderChange(),
+	mPreviousEncoderReading(0), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -47,6 +51,19 @@ void autoDrive::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void autoDrive::Execute() {
 	Robot::chassis->pidController->Enable();
+
+	// Check if encoder enough to show progress
+	if ((std::abs(Robot::chassis->leftRear->GetEncPosition()) - mPreviousEncoderReading) < 10)
+	{
+		mTimeoutForEncoderChange.Start();
+	}
+	else
+	{
+		mTimeoutForEncoderChange.Stop();
+		mTimeoutForEncoderChange.Reset();
+	}
+
+	mPreviousEncoderReading = Robot::chassis->leftRear->GetEncPosition();
 	// SmartDashboard::PutNumber("Auto Drive Set Point", Robot::chassis->pidController->GetSetpoint());
 }
 
@@ -60,7 +77,8 @@ bool autoDrive::IsFinished() {
 		mTimeForStop.Reset();
 	}
 	return (mTimeForStop.HasPeriodPassed(0.2) ||
-			mTimeout.HasPeriodPassed(Robot::prefs->GetDouble("autoDriveTimeout", 0.0)));
+			mTimeout.HasPeriodPassed(Robot::prefs->GetDouble("autoDriveTimeout", 0.0)) ||
+			mTimeoutForEncoderChange.HasPeriodPassed(0.25));
 	//return Robot::chassis->pidController->OnTarget();
 }
 
