@@ -17,6 +17,7 @@
 #include "Commands/autoDriveIntoZone.h"
 #include "Commands/autoOneTote.h"
 #include "Commands/autoThreeTote.h"
+#include "Commands/autoStrafe.h"
 #include "Commands/autoDoNothing.h"
 #include "PowerDistributionPanel.h"
 
@@ -63,6 +64,7 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
 	autonomousModeChooser->AddObject("AutoThreeTote", new autoThreeTote());
+	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-1360));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
