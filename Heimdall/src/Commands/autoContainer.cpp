@@ -20,6 +20,7 @@
 #include "zeroLevel.h"
 #include "goToyPosition.h"
 #include "autoStrafe.h"
+#include "chassisStopMoving.h"
 
 autoContainer::autoContainer() {
 	// Add Commands here:
@@ -44,6 +45,9 @@ autoContainer::autoContainer() {
 
 	// Drive into the auto zone
 	AddSequential(new autoDrive(8000));
+
+	// Stop moving (for debugging purposes)
+	AddSequential(new chassisStopMoving());
 
 	// The following lines of code should all be commented out due
 	// to the Madera regional's rules

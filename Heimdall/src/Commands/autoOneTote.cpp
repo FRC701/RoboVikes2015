@@ -19,6 +19,7 @@
 #include "autoDrive.h"
 #include "autoStrafe.h"
 #include "Delay.h"
+#include "chassisStopMoving.h"
 
 
 autoOneTote::autoOneTote() {
@@ -42,6 +43,9 @@ autoOneTote::autoOneTote() {
 
 	// Drive into the auto zone
 	AddSequential(new autoDrive(7600));
+
+	// Stop moving (for debugging purposes)
+	AddSequential(new chassisStopMoving());
 
 	// The following lines of code should all be commented out due
 	// to the Madera regional's rules
