@@ -44,7 +44,7 @@ autoContainer::autoContainer() {
 	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
 
 	// Drive into the auto zone
-	AddSequential(new autoDrive(8000));
+	AddSequential(new autoDrive(6920));
 
 	// Stop moving (for debugging purposes)
 	AddSequential(new chassisStopMoving());
