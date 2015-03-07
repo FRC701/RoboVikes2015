@@ -88,6 +88,8 @@ void autoDrive::End() {
 	mTimeout.Reset();
 	mTimeForStop.Stop();
 	mTimeForStop.Reset();
+	mTimeoutForEncoderChange.Stop();
+	mTimeoutForEncoderChange.Reset();
 	Robot::chassis->pidController->Disable();
 }
 
@@ -98,5 +100,7 @@ void autoDrive::Interrupted() {
 	mTimeout.Reset();
 	mTimeForStop.Stop();
 	mTimeForStop.Reset();
+	mTimeoutForEncoderChange.Stop();
+	mTimeoutForEncoderChange.Reset();
 	Robot::chassis->pidController->Disable();
 }
