@@ -42,7 +42,7 @@ autoOneTote::autoOneTote() {
 	AddSequential(new oneLevel());
 
 	// Drive into the auto zone
-	AddSequential(new autoDrive(6920));
+	AddSequential(new autoDrive(6580));
 
 	// Stop moving (for debugging purposes)
 	AddSequential(new chassisStopMoving());

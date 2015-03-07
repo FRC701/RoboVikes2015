@@ -19,7 +19,7 @@ autoDriveIntoZone::autoDriveIntoZone() {
 	//      AddSequential(new Command2());
 	// these will run in order.
 
-	AddSequential(new autoDrive(6920));
+	AddSequential(new autoDrive(6580));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()
