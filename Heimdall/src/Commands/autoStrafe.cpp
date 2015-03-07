@@ -12,7 +12,7 @@
 #include "autoStrafe.h"
 
 autoStrafe::autoStrafe()
-:	mDistance(0), mTimeForStop()
+:	mDistance(0), mTimeout(), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -23,7 +23,7 @@ autoStrafe::autoStrafe()
 }
 
 autoStrafe::autoStrafe(double setPoint)
-:	mDistance(setPoint), mTimeForStop()
+:	mDistance(setPoint), mTimeout(), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -37,8 +37,10 @@ void autoStrafe::Initialize() {
 	float setPoint = Robot::chassis->rightRear->GetEncPosition();
 	setPoint += mDistance;
 	Robot::chassis->pidStrafeWallController->SetSetpoint(setPoint);
-	SmartDashboard::PutNumber("Strafe actual setPoint", setPoint);
-	SmartDashboard::PutNumber("Get Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
+	// SmartDashboard::PutNumber("Strafe actual setPoint", setPoint);
+	// SmartDashboard::PutNumber("Get Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
+
+	mTimeout.Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -60,16 +62,21 @@ bool autoStrafe::IsFinished() {
 	}
 	return (mTimeForStop.HasPeriodPassed(0.2));
 */
-	return Robot::chassis->pidStrafeWallController->OnTarget();
+	return (Robot::chassis->pidStrafeWallController->OnTarget() ||
+			mTimeout.HasPeriodPassed(Robot::prefs->GetDouble("autoStrafeTimeout", 0.0)));
 }
 
 // Called once after isFinished returns true
 void autoStrafe::End() {
+	mTimeout.Stop();
+	mTimeout.Reset();
 	Robot::chassis->pidStrafeWallController->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void autoStrafe::Interrupted() {
+	mTimeout.Stop();
+	mTimeout.Reset();
 	Robot::chassis->pidStrafeWallController->Disable();
 }
