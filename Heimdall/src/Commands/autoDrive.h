@@ -32,6 +32,8 @@ public:
 	virtual void Interrupted();
 private:
 	double mDistance;
+	Timer mTimeout; // checks if this command has been running
+	                // for too long
 	Timer mTimeForStop;
 };
 

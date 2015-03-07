@@ -12,7 +12,7 @@
 #include "autoDrive.h"
 
 autoDrive::autoDrive()
-:	mDistance(0), mTimeForStop()
+:	mDistance(0), mTimeout(), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -24,7 +24,7 @@ autoDrive::autoDrive()
 
 
 autoDrive::autoDrive(double setPoint)
-:	mDistance(setPoint), mTimeForStop()
+:	mDistance(setPoint), mTimeout(), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -38,14 +38,16 @@ autoDrive::autoDrive(double setPoint)
 void autoDrive::Initialize() {
 	float setPoint = Robot::chassis->leftRear->GetEncPosition();
 	setPoint += mDistance;
-	SmartDashboard::PutNumber("setPoint", setPoint);
+	// SmartDashboard::PutNumber("setPoint", setPoint);
 	Robot::chassis->pidController->SetSetpoint(setPoint);
+
+	mTimeout.Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void autoDrive::Execute() {
 	Robot::chassis->pidController->Enable();
-	SmartDashboard::PutNumber("Auto Drive Set Point", Robot::chassis->pidController->GetSetpoint());
+	// SmartDashboard::PutNumber("Auto Drive Set Point", Robot::chassis->pidController->GetSetpoint());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -57,12 +59,15 @@ bool autoDrive::IsFinished() {
 		mTimeForStop.Stop();
 		mTimeForStop.Reset();
 	}
-	return (mTimeForStop.HasPeriodPassed(0.2));
+	return (mTimeForStop.HasPeriodPassed(0.2) ||
+			mTimeout.HasPeriodPassed(Robot::prefs->GetDouble("autoDriveTimeout", 0.0)));
 	//return Robot::chassis->pidController->OnTarget();
 }
 
 // Called once after isFinished returns true
 void autoDrive::End() {
+	mTimeout.Stop();
+	mTimeout.Reset();
 	mTimeForStop.Stop();
 	mTimeForStop.Reset();
 	Robot::chassis->pidController->Disable();
@@ -71,6 +76,8 @@ void autoDrive::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void autoDrive::Interrupted() {
+	mTimeout.Stop();
+	mTimeout.Reset();
 	mTimeForStop.Stop();
 	mTimeForStop.Reset();
 	Robot::chassis->pidController->Disable();
