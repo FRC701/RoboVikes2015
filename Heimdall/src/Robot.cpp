@@ -121,6 +121,10 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
+
+	SmartDashboard::PutNumber("Forward Encoder", Robot::chassis->leftRear->GetEncPosition());
+
+	SmartDashboard::PutNumber("Strafing Encoder", Robot::chassis->rightRear->GetEncPosition());
 }
 
 void Robot::TeleopInit() {
