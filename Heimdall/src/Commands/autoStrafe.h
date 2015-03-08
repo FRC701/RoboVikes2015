@@ -24,7 +24,7 @@
 class autoStrafe: public Command {
 public:
 	autoStrafe();
-	autoStrafe(double setPoint);
+	autoStrafe(double setPoint, double timeoutInSeconds);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
@@ -32,13 +32,14 @@ public:
 	virtual void Interrupted();
 private:
 	double mDistance;
-	Timer mTimeout; // checks if this command has been running
-		            // for too long
-	Timer mTimeoutForEncoderChange; // checks how long the encoder
-		                            // has gone without changing within
-		                            // a tolerance range
-	int mPreviousEncoderReading; // for checking encoder change
-	Timer mTimeForStop;
+
+	// Handles timeout for the entire command
+	Timer mTimeoutTimer;
+	double mTimeout;
+
+	// Handles timeout for change in encoder values
+	Timer mTimeoutForEncoderChange;
+	int mPreviousEncoderReading;
 };
 
 #endif
