@@ -39,7 +39,7 @@ autoOneTote::autoOneTote() {
 	AddSequential(new oneLevel());
 
 	// Slightly strafe to the right to avoid hitting the container
-	AddSequential(new autoStrafe(500));
+	AddSequential(new autoStrafe(500, 0.5));
 
 	// Drive into the auto zone
 	AddSequential(new autoDrive(6700));

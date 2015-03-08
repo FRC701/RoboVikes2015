@@ -64,7 +64,7 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
 	autonomousModeChooser->AddObject("AutoThreeTote", new autoThreeTote());
-	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680));
+	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680, 2.0));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);

@@ -39,7 +39,7 @@ autoContainer::autoContainer() {
 	AddSequential(new twoLevel());
 
 	// Slightly strafe left to avoid hitting the yellow tote
-	AddSequential(new autoStrafe(-500));
+	AddSequential(new autoStrafe(-500, 0.5));
 
 	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
 
