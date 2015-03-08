@@ -82,8 +82,8 @@ bool autoStrafe::IsFinished() {
 */
 	return (Robot::chassis->pidStrafeWallController->OnTarget() ||
 			// mTimeoutTimer.HasPeriodPassed(Robot::prefs->GetDouble("autoStrafeTimeout", 0.0)) ||
-			mTimeoutTimer.HasPeriodPassed(mTimeout) ||
-			mTimeoutForEncoderChange.HasPeriodPassed(0.25));
+			mTimeoutTimer.HasPeriodPassed(mTimeout)); // ||
+			// mTimeoutForEncoderChange.HasPeriodPassed(0.25));
 }
 
 // Called once after isFinished returns true
