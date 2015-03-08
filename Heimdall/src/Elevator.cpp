@@ -9,7 +9,7 @@ Elevator::Elevator(SpeedController* motor1, SpeedController* motor2, DoubleSolen
 
 void Elevator::Set(float speed)
 {
-	if( std::abs(speed) < 0.01)
+	if( std::abs(speed) < 0.03)
 		brake->Set(DoubleSolenoid::kReverse);
 	else
 		brake->Set(DoubleSolenoid::kForward);
