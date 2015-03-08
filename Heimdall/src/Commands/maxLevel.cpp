@@ -22,29 +22,27 @@ maxLevel::maxLevel() {
 
 // Called just before this Command runs the first time
 void maxLevel::Initialize() {
-	
+	Robot::spool->pidController->SetSetpoint(
+		Robot::prefs->GetDouble("maxLevel", 0.0));
 }
 
 // Called repeatedly when this Command is scheduled to run
 void maxLevel::Execute() {
-	
+	Robot::spool->pidController->Enable();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool maxLevel::IsFinished() {
-	bool test;
-	if(Robot::spool->spoolRightMotor->GetEncPosition() <= -1116)
-		test = true;
-	return test;
+	return Robot::spool->pidController->OnTarget();
 }
 
 // Called once after isFinished returns true
 void maxLevel::End() {
-	
+	Robot::spool->pidController->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void maxLevel::Interrupted() {
-
+	Robot::spool->pidController->Disable();
 }
