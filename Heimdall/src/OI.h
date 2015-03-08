@@ -31,6 +31,7 @@ private:
 	JoystickButton* cWhite;
 	JoystickButton* cBlack;
 	JoystickButton* cRed;
+	JoystickButton* cGreenLeft;
 //*/
 //Guitar......................................................................
 /*
