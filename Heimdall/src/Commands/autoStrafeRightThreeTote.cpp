@@ -14,7 +14,7 @@
 
 autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 //Open HaySqueezer
-	AddSequential(new autoHaySqueezerOpen());hih
+	AddSequential(new autoHaySqueezerOpen());
 	//Go Down
 	AddSequential(new zeroLevel());
 	//close
@@ -23,7 +23,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	AddSequential(new twoLevel());
 //.............................................................. Second Tote
 	//Strafe to the right to tote
-	AddSequential(new autoStrafeToToteLeft());
+	AddSequential(new autoStrafeToToteRight());
 	//Strafe slightly right to clear container
 	AddSequential(new autoStrafe(500));
 	//lower elevator directly above tote
@@ -42,7 +42,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	AddSequential(new twoLevel());
 //..............................................................Third Tote
 	//Strafe to the left to tote
-	AddSequential(new autoStrafeToToteLeft());
+	AddSequential(new autoStrafeToToteRight());
 	//Strafe slightly right to clear container
 	AddSequential(new autoStrafe(500));
 	//lower elevator directly above tote

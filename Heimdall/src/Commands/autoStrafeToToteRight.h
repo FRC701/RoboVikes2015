@@ -23,15 +23,15 @@
  */
 class autoStrafeToToteRight: public Command {
 public:
-	autoStrafeToToteRight();
+	autoStrafeToToteRight(double timeForStable);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	bool onTarget();
 private:
-	double position;
+	Timer* timer;
+	double timeForStable;
 };
 
 #endif
