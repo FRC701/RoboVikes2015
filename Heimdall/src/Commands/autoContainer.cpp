@@ -39,12 +39,12 @@ autoContainer::autoContainer() {
 	AddSequential(new twoLevel());
 
 	// Slightly strafe left to avoid hitting the yellow tote
-	AddSequential(new autoStrafe(-500));
+	AddSequential(new autoStrafe(-500, 0.5));
 
 	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
 
 	// Drive into the auto zone
-	AddSequential(new autoDrive(8000));
+	AddSequential(new autoDrive(6700));
 
 	// Stop moving (for debugging purposes)
 	AddSequential(new chassisStopMoving());

@@ -43,20 +43,20 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	pidOutput = new RobotDrivePIDOutput(robotDrive);
 	pidController = new PIDController(kP, kI, kD, pidInput, pidOutput);
 	pidController->SetInputRange(-100000.0, 1000000.0);
-	pidController->SetOutputRange(-0.25, 0.25);
+	pidController->SetOutputRange(-0.5, 0.5);
 	pidController->SetAbsoluteTolerance(150);
 //Strafing....................................................................................
 	pidStrafeInput = new CANTalonEncoderPIDSource(rightRear);
 	pidStrafeOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe);
 	pidStrafeController = new PIDController(kPS, kIS, kDS, pidStrafeInput, pidStrafeOutput);
 	pidStrafeController->SetInputRange(-100000.0, 1000000.0);
-	pidStrafeController->SetOutputRange(-1.0, 1.0);
+	pidStrafeController->SetOutputRange(-0.75, 0.75);
 	pidStrafeController->SetAbsoluteTolerance(150);
 //Strafing Wall...............................................................................
-	pidStrafeWallOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe, 0.3);
+	pidStrafeWallOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe, 0.1);
 	pidStrafeWallController = new PIDController(kPS, kIS, kDS, pidStrafeInput, pidStrafeWallOutput);
 	pidStrafeWallController->SetInputRange(-100000.0, 1000000.0);
-	pidStrafeWallController->SetOutputRange(-0.25, 0.25);
+	pidStrafeWallController->SetOutputRange(-0.75, 0.75);
 	pidStrafeWallController->SetAbsoluteTolerance(150);
 
 /*

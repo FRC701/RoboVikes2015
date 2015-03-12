@@ -9,9 +9,14 @@ Elevator::Elevator(SpeedController* motor1, SpeedController* motor2, DoubleSolen
 
 void Elevator::Set(float speed)
 {
-	if( std::abs(speed) < 0.01)
+	if( std::abs(speed) < 0.08)
+	{
 		brake->Set(DoubleSolenoid::kReverse);
+		TwoMotorPIDOutput::Set(0.0);
+	}
 	else
+	{
 		brake->Set(DoubleSolenoid::kForward);
-	TwoMotorPIDOutput::Set(speed);
+		TwoMotorPIDOutput::Set(speed);
+	}
 }
