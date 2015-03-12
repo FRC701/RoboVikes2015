@@ -11,7 +11,7 @@
 
 
 #include "autoOneTote.h"
-#include "haySqueezerOpen.h"
+#include "autoHaySqueezerOpen.h"
 #include "haySqueezerClose.h"
 #include "zeroLevel.h"
 #include "oneLevel.h"
@@ -19,6 +19,7 @@
 #include "autoDrive.h"
 #include "autoStrafe.h"
 #include "Delay.h"
+#include "chassisStopMoving.h"
 
 
 autoOneTote::autoOneTote() {
@@ -26,17 +27,34 @@ autoOneTote::autoOneTote() {
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-	AddSequential(new haySqueezerOpen());
+
+	// Drop the elevator down and pick up the yellow tote
+	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
-	AddSequential(new autoStrafe(500));
+
 	AddSequential(new Delay(0.5));
+
+	// Lift the tote off of the ground
 	AddSequential(new oneLevel());
-	AddSequential(new autoDrive(7600));
-	AddSequential(new zeroLevel());
-	AddSequential(new haySqueezerOpen());
-	AddSequential(new twoLevel());
-	AddSequential(new autoDrive(-500));
+
+	// Slightly strafe to the right to avoid hitting the container
+	AddSequential(new autoStrafe(500, 0.5));
+
+	// Drive into the auto zone
+	AddSequential(new autoDrive(6700));
+
+	// Stop moving (for debugging purposes)
+	AddSequential(new chassisStopMoving());
+
+	// The following lines of code should all be commented out due
+	// to the Madera regional's rules
+	// Put down the tote and drive backwards to abandon contact
+	// with the tote
+	// AddSequential(new zeroLevel());
+	// AddSequential(new autoHaySqueezerOpen());
+	// AddSequential(new twoLevel());
+	// AddSequential(new autoDrive(-500));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()

@@ -128,7 +128,7 @@ void Drive::toggleL3()
 		{
 			cout << "L3 Retrieved as True!\n";
 			getEnableMultiplier() ? setEnableMultiplier(false) : setEnableMultiplier(true);
-			Robot::oi->driverRumbler->start(Joystick::kLeftRumble, 0.3);
+			//Robot::oi->driverRumbler->start(Joystick::kLeftRumble, 0.3);
 		}
 		else if(!currentCondition)
 		{

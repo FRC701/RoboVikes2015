@@ -11,7 +11,7 @@
 
 
 #include "autoContainer.h"
-#include "haySqueezerOpen.h"
+#include "autoHaySqueezerOpen.h"
 #include "haySqueezerClose.h"
 #include "containerLevel.h"
 #include "twoLevel.h"
@@ -20,24 +20,43 @@
 #include "zeroLevel.h"
 #include "goToyPosition.h"
 #include "autoStrafe.h"
+#include "chassisStopMoving.h"
 
 autoContainer::autoContainer() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-	AddSequential(new haySqueezerOpen());
+
+	// Drop the elevator down and pick up the container
+	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new containerLevel());
 	AddSequential(new haySqueezerClose());
+
 	AddSequential(new Delay(0.5));
+
+	// Lift the container off of the ground
 	AddSequential(new twoLevel());
-	AddSequential(new autoStrafe(-500));
+
+	// Slightly strafe left to avoid hitting the yellow tote
+	AddSequential(new autoStrafe(-500, 0.5));
+
 	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
-	AddSequential(new autoDrive(8000));
-	AddSequential(new zeroLevel());
-	AddSequential(new haySqueezerOpen());
-	//AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!
-	AddSequential(new autoDrive(-300));
+
+	// Drive into the auto zone
+	AddSequential(new autoDrive(6700));
+
+	// Stop moving (for debugging purposes)
+	AddSequential(new chassisStopMoving());
+
+	// The following lines of code should all be commented out due
+	// to the Madera regional's rules
+	// Put down the container and drive backwards to
+	// abandon contact with the container
+	// AddSequential(new zeroLevel());
+	// AddSequential(new autoHaySqueezerOpen());
+	// AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!
+	// AddSequential(new autoDrive(-300));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()

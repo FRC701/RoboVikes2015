@@ -28,7 +28,7 @@ public:
 	static DoubleSolenoid* haySqueezerhaySqueezerSolenoid;
 	static DigitalInput* haySqueezerrightPneSensor;
 	static DigitalInput* haySqueezerleftPneSensor;
-	static DoubleSolenoid* breakElevatorbreakSolenoid;
+	static DoubleSolenoid* spoolbreakSolenoid;
 	static Relay* lightsfeatureLights;
 	static Relay* lightsSpike2;
 	static Relay* lightsSpike3;

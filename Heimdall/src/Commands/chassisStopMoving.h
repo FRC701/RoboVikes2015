@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef AUTOSTRAFE_H
-#define AUTOSTRAFE_H
+#ifndef CHASSISSTOPMOVING_H
+#define CHASSISSTOPMOVING_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,25 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class autoStrafe: public Command {
+class chassisStopMoving: public Command {
 public:
-	autoStrafe();
-	autoStrafe(double setPoint, double timeoutInSeconds);
+	chassisStopMoving();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-private:
-	double mDistance;
-
-	// Handles timeout for the entire command
-	Timer mTimeoutTimer;
-	double mTimeout;
-
-	// Handles timeout for change in encoder values
-	Timer mTimeoutForEncoderChange;
-	int mPreviousEncoderReading;
 };
 
 #endif

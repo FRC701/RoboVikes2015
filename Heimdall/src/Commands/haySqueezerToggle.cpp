@@ -22,7 +22,7 @@ haySqueezerToggle::haySqueezerToggle() {
 
 // Called just before this Command runs the first time
 void haySqueezerToggle::Initialize() {
-	Robot::haySqueezer->haySqueezerSolenoid->Set(DoubleSolenoid::kReverse);
+
 }
 
 // Called repeatedly when this Command is scheduled to run

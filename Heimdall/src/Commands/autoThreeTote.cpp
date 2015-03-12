@@ -10,16 +10,17 @@
 
 
 
-#include "autoDriveIntoZone.h"
-#include "autoDrive.h"
+#include "autoThreeTote.h"
+#include "autoStrafeToToteRight.h"
 
-autoDriveIntoZone::autoDriveIntoZone() {
+autoThreeTote::autoThreeTote() {
+
+	AddSequential(new autoStrafeToToteRight());
+
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-
-	AddSequential(new autoDrive(6700));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()

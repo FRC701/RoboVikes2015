@@ -15,8 +15,19 @@ TwoMotorPIDOutput::TwoMotorPIDOutput(SpeedController* motor1, SpeedController* m
 
 void TwoMotorPIDOutput::PIDWrite(float output)
 {
-	motor1->Set(output);
-	motor2->Set(output);
+	Set(output);
 }
+
+void TwoMotorPIDOutput::Set(float speed)
+{
+	motor1->Set(speed);
+	motor2->Set(speed);
+}
+
+TwoMotorPIDOutput::~TwoMotorPIDOutput()
+{
+
+}
+
 
 

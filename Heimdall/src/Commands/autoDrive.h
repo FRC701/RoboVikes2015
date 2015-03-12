@@ -32,6 +32,12 @@ public:
 	virtual void Interrupted();
 private:
 	double mDistance;
+	Timer mTimeout; // checks if this command has been running
+	                // for too long
+	Timer mTimeoutForEncoderChange; // checks how long the encoder
+	                                // has gone without changing within
+	                                // a tolerance range
+	int mPreviousEncoderReading; // for checking encoder change
 	Timer mTimeForStop;
 };
 

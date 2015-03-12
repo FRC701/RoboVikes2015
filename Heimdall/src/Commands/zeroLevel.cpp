@@ -22,28 +22,26 @@ zeroLevel::zeroLevel() {
 
 // Called just before this Command runs the first time
 void zeroLevel::Initialize() {
-
+	Robot::spool->pidController->SetSetpoint(
+			Robot::prefs->GetDouble("zeroLevel", 0.0));
 }
 
 // Called repeatedly when this Command is scheduled to run
 void zeroLevel::Execute() {
-	Robot::spool->spoolLeftMotor->Set(-1.0);
-	Robot::spool->spoolRightMotor->Set(-1.0);
+	Robot::spool->pidController->Enable();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool zeroLevel::IsFinished() {
-	return Robot::spool->spoolLeftMotor->IsRevLimitSwitchClosed();
+	return Robot::spool->pidController->OnTarget();
 }
 
 // Called once after isFinished returns true
 void zeroLevel::End() {
-	Robot::spool->spoolLeftMotor->Set(0.0);
-	Robot::spool->spoolRightMotor->Set(0.0);
+	Robot::spool->pidController->Disable();
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void zeroLevel::Interrupted() {
-	Robot::spool->spoolLeftMotor->Set(0.0);
-	Robot::spool->spoolRightMotor->Set(0.0);
+	Robot::spool->pidController->Disable();
 }

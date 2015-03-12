@@ -20,7 +20,7 @@ DoubleSolenoid* RobotMap::pneIntakeintakeSolenoid = NULL;
 DoubleSolenoid* RobotMap::haySqueezerhaySqueezerSolenoid = NULL;
 DigitalInput* RobotMap::haySqueezerrightPneSensor = NULL;
 DigitalInput* RobotMap::haySqueezerleftPneSensor = NULL;
-DoubleSolenoid* RobotMap::breakElevatorbreakSolenoid = NULL;
+DoubleSolenoid* RobotMap::spoolbreakSolenoid = NULL;
 Relay* RobotMap::lightsfeatureLights = NULL;
 Relay* RobotMap::lightsSpike2 = NULL;
 Relay* RobotMap::lightsSpike3 = NULL;
@@ -63,8 +63,8 @@ void RobotMap::init() {
 	haySqueezerleftPneSensor = new DigitalInput(3);
 	lw->AddSensor("HaySqueezer", "leftPneSensor", haySqueezerleftPneSensor);
 	
-	breakElevatorbreakSolenoid = new DoubleSolenoid(0, 2, 5);      
-	lw->AddActuator("BreakElevator", "breakSolenoid", breakElevatorbreakSolenoid);
+	spoolbreakSolenoid = new DoubleSolenoid(0, 2, 5);      
+	lw->AddActuator("Spool", "breakSolenoid", spoolbreakSolenoid);
 	
 	lightsfeatureLights = new Relay(0);
 	lw->AddActuator("Lights", "featureLights", lightsfeatureLights);

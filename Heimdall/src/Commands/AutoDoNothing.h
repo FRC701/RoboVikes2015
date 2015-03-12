@@ -9,29 +9,20 @@
 // it from being updated in the future.
 
 
-#ifndef AUTOSTRAFETOTOTERIGHT_H
-#define AUTOSTRAFETOTOTERIGHT_H
 
+#ifndef AUTODONOTHING_H
+#define AUTODONOTHING_H
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "Commands/CommandGroup.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class autoStrafeToToteRight: public Command {
-public:
-	autoStrafeToToteRight();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
-	bool onTarget();
-private:
-	double position;
+class AutoDoNothing: public CommandGroup {
+public:	
+	AutoDoNothing();
 };
 
 #endif
