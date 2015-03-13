@@ -27,7 +27,7 @@ void autoStrafeToToteLeft::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void autoStrafeToToteLeft::Execute() {
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(-0.75, 0.1, 0.0);
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(-0.75, 0.2, 0.0); //TODO needs to adjust for wall, disabling for now
 }
 
 // Make this return true when this Command no longer needs to run execute()

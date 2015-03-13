@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
+#include "Delay.h"
 #include "autoHaySqueezerOpen.h"
 #include "zeroLevel.h"
 #include "haySqueezerClose.h"
@@ -26,28 +27,34 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	AddSequential(new zeroLevel());
 	//close
 	AddSequential(new haySqueezerClose());
+	//delay
+	AddSequential(new Delay(0.5));
 	//Go above the container
 	AddSequential(new twoLevel());
 //.............................................................. Second Tote
 	//Strafe to the left to tote
 	AddSequential(new autoStrafeToToteLeft());
 	//Strafe slightly right to clear container
-	AddSequential(new autoStrafe(500));
+	//AddSequential(new autoStrafe(500));
 	//lower elevator directly above tote
-	AddSequential(new oneLevel());
+	//AddSequential(new oneLevel());
 	//move back over tote
-	AddSequential(new autoStrafe(-500));
+	//AddSequential(new autoStrafe(-500));
+	//lower elevator on tote
 	//open hay squeezer
 	AddSequential(new autoHaySqueezerOpen());
-	//lower elevator on tote
+	//
 	AddSequential(new zeroLevel());
 	//close hay squeezer on tote
 	AddSequential(new haySqueezerClose());
+	//delay
+	AddSequential(new Delay(0.5));
 	//
 	AddSequential(new autoStrafe(500));
 	//
 	AddSequential(new twoLevel());
 //..............................................................Third Tote
+	/*
 	//Strafe to the left to tote
 	AddSequential(new autoStrafeToToteLeft());
 	//Strafe slightly right to clear container
@@ -67,6 +74,7 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	//............................................................Drive
 	//
 	AddSequential(new autoDrive(7600));
+	*/
 
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

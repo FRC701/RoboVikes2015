@@ -17,6 +17,7 @@
 #include "Commands/autoDriveIntoZone.h"
 #include "Commands/autoOneTote.h"
 #include "Commands/autoDoNothing.h"
+#include "Commands/autoLeftStrafeThreeTote.h"
 #include "PowerDistributionPanel.h"
 
 
@@ -61,6 +62,7 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddDefault("AutoDriveIntoZone", new autoDriveIntoZone());
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
+	autonomousModeChooser->AddObject("LEFT-AutoThreeTote", new autoLeftStrafeThreeTote());
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
@@ -183,6 +185,7 @@ void Robot::TeleopPeriodic() {
 	}
 //JoySticks.............................................................................................
 	SmartDashboard::PutNumber("Joystick 4 Value", Robot::oi->getcoDriver()->GetRawAxis(4));
+	SmartDashboard::PutNumber("Joystick 1 Value", Robot::oi->getdriver()->GetRawAxis(1));
 
 //Encoder...............................................................................................
 	SmartDashboard::PutNumber("Elevator Encoder", Robot::spool->spoolRightMotor->GetEncPosition());
