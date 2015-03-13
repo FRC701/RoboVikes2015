@@ -8,7 +8,14 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
+#include "autoHaySqueezerOpen.h"
+#include "zeroLevel.h"
+#include "haySqueezerClose.h"
+#include "twoLevel.h"
+#include "autoStrafeToToteLeft.h"
+#include "autoDrive.h"
+#include "autoStrafe.h"
+#include "oneLevel.h"
 
 #include "autoLeftStrafeThreeTote.h"
 
