@@ -46,7 +46,7 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	pidController->SetOutputRange(-0.25, 0.25);
 	pidController->SetAbsoluteTolerance(150);
 //Strafing....................................................................................
-	pidStrafeInput = new CANTalonEncoderPIDSource(rightRear);
+	pidStrafeInput = new CANTalonEncoderPIDSource(rightRear, true);
 	pidStrafeOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe);
 	pidStrafeController = new PIDController(kPS, kIS, kDS, pidStrafeInput, pidStrafeOutput);
 	pidStrafeController->SetInputRange(-100000.0, 1000000.0);

@@ -65,8 +65,8 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
 	autonomousModeChooser->AddObject("LEFT-AutoThreeTote", new autoLeftStrafeThreeTote());
-	autonomousModeChooser->AddObject("Auto Stafe", new autoStrafe(1000));
-	autonomousModeChooser->AddObject("AutoWideStack", new autoWideStack);
+	autonomousModeChooser->AddObject("Auto Strafe", new autoStrafe(1000));
+	autonomousModeChooser->AddObject("AutoWideStack", new autoWideStack());
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
@@ -125,6 +125,10 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
+
+	SmartDashboard::PutNumber("Strafing Encoder", Robot::chassis->rightRear->GetEncPosition());
+
+	SmartDashboard::PutNumber("Forward Encoder", Robot::chassis->leftRear->GetEncPosition());
 }
 
 void Robot::TeleopInit() {
