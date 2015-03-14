@@ -60,6 +60,7 @@ void Robot::RobotInit() {
 	accel = new BuiltInAccelerometer(Accelerometer::kRange_4G);
 	// add the multiple autonomous modes to the sendable chooser
 //Autos......................................................................................
+	// double testStrafeValue = Robot::prefs->GetDouble("testStrafeValue", 0.0);
 	autonomousModeChooser = new SendableChooser();
 	autonomousModeChooser->AddDefault("AutoDriveIntoZone", new autoDriveIntoZone());
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
@@ -70,6 +71,7 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
+	// SmartDashboard::PutNumber("testStrafeValue", testStrafeValue);
 
 //StartUp....................................................................................
 
@@ -155,9 +157,9 @@ void Robot::TeleopPeriodic() {
 	if(Robot::prefs->GetBoolean("debug", false))
 	{
 
-		SmartDashboard::PutNumber("Accelerometer: X", accel->GetX());
-		SmartDashboard::PutNumber("Accelerometer: Y", accel->GetY());
-		SmartDashboard::PutNumber("Accelerometer: Z", accel->GetZ());
+		// SmartDashboard::PutNumber("Accelerometer: X", accel->GetX());
+		// SmartDashboard::PutNumber("Accelerometer: Y", accel->GetY());
+		// SmartDashboard::PutNumber("Accelerometer: Z", accel->GetZ());
 		/*
 		SmartDashboard::PutNumber("Acceleration X", 	chassis->accelerometerX->getAcceleration());
 		SmartDashboard::PutNumber("Velocity X", 	chassis->accelerometerX->getVelocity());
