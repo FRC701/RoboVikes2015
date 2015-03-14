@@ -45,7 +45,7 @@ void autoStrafe::Initialize() {
 void autoStrafe::Execute() {
 	Robot::chassis->pidStrafeWallController->Enable();
 
-	//SmartDashboard::PutNumber("Strafe Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
+	SmartDashboard::PutNumber("Strafe Setpoint", Robot::chassis->pidStrafeWallController->GetSetpoint());
 }
 
 // Make this return true when this Command no longer needs to run execute()
