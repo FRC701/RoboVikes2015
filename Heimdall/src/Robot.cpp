@@ -18,6 +18,8 @@
 #include "Commands/autoOneTote.h"
 #include "Commands/autoDoNothing.h"
 #include "Commands/autoLeftStrafeThreeTote.h"
+#include "Commands/autoStrafe.h"
+#include "Commands/autoWideStack.h"
 #include "PowerDistributionPanel.h"
 
 
@@ -63,6 +65,8 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
 	autonomousModeChooser->AddObject("LEFT-AutoThreeTote", new autoLeftStrafeThreeTote());
+	autonomousModeChooser->AddObject("Auto Stafe", new autoStrafe(1000));
+	autonomousModeChooser->AddObject("AutoWideStack", new autoWideStack);
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
@@ -206,6 +210,11 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutBoolean("Right HaySqueezer", Robot::haySqueezer->rightPneSensor->Get());
 
 	SmartDashboard::PutBoolean("UserButton", GetUserButton());
+
+	//Robot::chassis->leftFront->SetVoltageRampRate(0.01);
+	//Robot::chassis->leftRear->SetVoltageRampRate(0.01);
+	//Robot::chassis->rightFront->SetVoltageRampRate(0.01);
+	//Robot::chassis->rightRear->SetVoltageRampRate(0.01);
 
 }
 

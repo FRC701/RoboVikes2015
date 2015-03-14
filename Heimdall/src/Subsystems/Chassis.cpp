@@ -53,10 +53,10 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	pidStrafeController->SetOutputRange(-1.0, 1.0);
 	pidStrafeController->SetAbsoluteTolerance(150);
 //Strafing Wall...............................................................................
-	pidStrafeWallOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe, 0.3);
+	pidStrafeWallOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe, 0.15);
 	pidStrafeWallController = new PIDController(kPS, kIS, kDS, pidStrafeInput, pidStrafeWallOutput);
 	pidStrafeWallController->SetInputRange(-100000.0, 1000000.0);
-	pidStrafeWallController->SetOutputRange(-0.25, 0.25);
+	pidStrafeWallController->SetOutputRange(-0.75, 0.75);
 	pidStrafeWallController->SetAbsoluteTolerance(150);
 
 /*

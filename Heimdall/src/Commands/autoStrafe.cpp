@@ -37,15 +37,15 @@ void autoStrafe::Initialize() {
 	float setPoint = Robot::chassis->rightRear->GetEncPosition();
 	setPoint += mDistance;
 	Robot::chassis->pidStrafeWallController->SetSetpoint(setPoint);
-	SmartDashboard::PutNumber("Strafe actual setPoint", setPoint);
-	SmartDashboard::PutNumber("Get Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
+	//SmartDashboard::PutNumber("Strafe actual setPoint", setPoint);
+	//SmartDashboard::PutNumber("Get Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
 }
 
 // Called repeatedly when this Command is scheduled to run
 void autoStrafe::Execute() {
 	Robot::chassis->pidStrafeWallController->Enable();
 
-	SmartDashboard::PutNumber("Strafe Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
+	//SmartDashboard::PutNumber("Strafe Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
 }
 
 // Make this return true when this Command no longer needs to run execute()

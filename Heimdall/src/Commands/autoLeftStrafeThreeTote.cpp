@@ -16,7 +16,8 @@
 #include "autoStrafeToToteLeft.h"
 #include "autoDrive.h"
 #include "autoStrafe.h"
-#include "oneLevel.h"
+#include "autoWideStack.h"
+#include "autoLightStrafeRight.h"
 
 #include "autoLeftStrafeThreeTote.h"
 
@@ -37,11 +38,17 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	//Strafe slightly right to clear container
 	//AddSequential(new autoStrafe(500));
 	//lower elevator directly above tote
-	//AddSequential(new oneLevel());
+	AddSequential(new Delay(0.3));
+	//
+	AddSequential(new autoLightStrafeRight());
+
+	AddSequential(new autoWideStack());
 	//move back over tote
 	//AddSequential(new autoStrafe(-500));
 	//lower elevator on tote
 	//open hay squeezer
+	AddSequential(new autoStrafeToToteLeft());
+
 	AddSequential(new autoHaySqueezerOpen());
 	//
 	AddSequential(new zeroLevel());
@@ -50,19 +57,22 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	//delay
 	AddSequential(new Delay(0.5));
 	//
-	AddSequential(new autoStrafe(500));
+	//AddSequential(new autoStrafe(500));
 	//
 	AddSequential(new twoLevel());
 //..............................................................Third Tote
-	/*
 	//Strafe to the left to tote
 	AddSequential(new autoStrafeToToteLeft());
 	//Strafe slightly right to clear container
-	AddSequential(new autoStrafe(500));
+	//AddSequential(new autoStrafe(500));
 	//lower elevator directly above tote
-	AddSequential(new oneLevel());
+	AddSequential(new Delay(0.3));
+
+	AddSequential(new autoLightStrafeRight());
+
+	AddSequential(new autoWideStack());
 	//move back over tote
-	AddSequential(new autoStrafe(-500));
+	//AddSequential(new autoStrafe(-500));
 	//open hay squeezer
 	AddSequential(new autoHaySqueezerOpen());
 	//lower elevator on tote
@@ -70,11 +80,16 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	//close hay squeezer on tote
 	AddSequential(new haySqueezerClose());
 	//
-	AddSequential(new autoStrafe(500));
+	//AddSequential(new autoStrafe(500));
+	AddSequential(new Delay(0.5));
+
+	AddSequential(new twoLevel());
+
+
 	//............................................................Drive
 	//
 	AddSequential(new autoDrive(7600));
-	*/
+
 
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
