@@ -30,11 +30,16 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	AddSequential(new haySqueezerClose());
 	//delay
 	AddSequential(new Delay(0.5));
+	// strafe right to avoid hitting the container
+	AddSequential(new autoStrafe(500));
 	//Go above the container
 	AddSequential(new twoLevel());
+
 //.............................................................. Second Tote
 	//Strafe to the left to tote
 	AddSequential(new autoStrafeToToteLeft());
+
+	/*
 	//Strafe slightly right to clear container
 	//AddSequential(new autoStrafe(500));
 	//lower elevator directly above tote
@@ -107,4 +112,5 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
+	 * */
 }
