@@ -31,14 +31,26 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	//delay
 	AddSequential(new Delay(0.5));
 	// strafe right to avoid hitting the container
-	AddSequential(new autoStrafe(500));
+	AddSequential(new autoStrafe(Robot::prefs->GetDouble("setpointStrafeRightAvoidContainer", 0.0)));
 	//Go above the container
 	AddSequential(new twoLevel());
 
 //.............................................................. Second Tote
+
+	// Strafe left until in front of second container
+	// AddSequential(new autoStrafe(Robot::prefs->GetDouble("distanceFirstToteToSecondContainer", 0.0)));
+
+	// Drive forward to push the container sufficiently away
+	// AddSequential(new autoDrive(Robot::prefs->GetDouble("distancePushContainerAway", 0.0)));
+
+	// Drive back to position for strafing
+	// AddSequential(new autoDrive(-1 * Robot::prefs->GetDouble("distancePushContainerAway", 0.0)));
+
+	// Drive to the yellow tote
+
+
 	//Strafe to the left to tote
 	AddSequential(new autoStrafeToToteLeft());
-
 	/*
 	//Strafe slightly right to clear container
 	//AddSequential(new autoStrafe(500));
@@ -94,23 +106,5 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	//............................................................Drive
 	//
 	AddSequential(new autoDrive(7600));
-
-
-	// Add Commands here:
-	// e.g. AddSequential(new Command1());
-	//      AddSequential(new Command2());
-	// these will run in order.
-
-	// To run multiple commands at the same time,
-	// use AddParallel()
-	// e.g. AddParallel(new Command1());
-	//      AddSequential(new Command2());
-	// Command1 and Command2 will run in parallel.
-
-	// A command group will require all of the subsystems that each member
-	// would require.
-	// e.g. if Command1 requires chassis, and Command2 requires arm,
-	// a CommandGroup containing them would require both the chassis and the
-	// arm.
-	 * */
+	*/
 }
