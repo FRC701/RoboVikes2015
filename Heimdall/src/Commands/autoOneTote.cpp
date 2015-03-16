@@ -33,16 +33,16 @@ autoOneTote::autoOneTote() {
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
 
-	// Slightly strafe to the right to avoid hitting the container
-	AddSequential(new autoStrafe(500));
-
 	AddSequential(new Delay(0.5));
 
 	// Lift the tote off of the ground
 	AddSequential(new oneLevel());
 
+	// Slightly strafe to the right to avoid hitting the container
+	AddSequential(new autoStrafe(500, 0.5));
+
 	// Drive into the auto zone
-	AddSequential(new autoDrive(7600));
+	AddSequential(new autoDrive(6700));
 
 	// Stop moving (for debugging purposes)
 	AddSequential(new chassisStopMoving());

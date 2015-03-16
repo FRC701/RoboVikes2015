@@ -1,5 +1,17 @@
 <xml version="1.0">
 <dashboard>
+	<widget field="chassisStopMoving" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="214" y="102"/>
+	</widget>
+	<widget field="AutoDoNothing" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="202" y="68"/>
+	</widget>
+	<widget field="autoThreeTote" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="447"/>
+	</widget>
+	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="49"/>
+	</widget>
 	<widget field="Joystick 4 Value" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="251" y="220"/>
 	</widget>

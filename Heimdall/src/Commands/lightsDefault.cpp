@@ -22,7 +22,7 @@ lightsDefault::lightsDefault() {
 
 // Called just before this Command runs the first time
 void lightsDefault::Initialize() {
-	//Robot::lights->featureLights->Set(Relay::kOn);
+	Robot::lights->featureLights->Set(Relay::kForward);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -37,7 +37,7 @@ bool lightsDefault::IsFinished() {
 
 // Called once after isFinished returns true
 void lightsDefault::End() {
-	
+
 }
 
 // Called when another command which requires one or more of the same

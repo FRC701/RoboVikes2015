@@ -16,6 +16,8 @@
 #include "Commands/autoContainer.h"
 #include "Commands/autoDriveIntoZone.h"
 #include "Commands/autoOneTote.h"
+#include "Commands/autoThreeTote.h"
+#include "Commands/autoStrafe.h"
 #include "Commands/autoDoNothing.h"
 #include "Commands/autoLeftStrafeThreeTote.h"
 #include "Commands/autoStrafe.h"
@@ -68,6 +70,8 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("LEFT-AutoThreeTote", new autoLeftStrafeThreeTote());
 	autonomousModeChooser->AddObject("Auto Strafe", new autoStrafe(1000));
 	autonomousModeChooser->AddObject("AutoWideStack", new autoWideStack());
+	autonomousModeChooser->AddObject("AutoThreeTote", new autoThreeTote());
+	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680, 2.0));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
@@ -128,9 +132,9 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
 
-	SmartDashboard::PutNumber("Strafing Encoder", Robot::chassis->rightRear->GetEncPosition());
-
 	SmartDashboard::PutNumber("Forward Encoder", Robot::chassis->leftRear->GetEncPosition());
+
+	SmartDashboard::PutNumber("Strafing Encoder", Robot::chassis->rightRear->GetEncPosition());
 }
 
 void Robot::TeleopInit() {

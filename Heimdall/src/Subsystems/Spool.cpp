@@ -37,7 +37,7 @@ Spool::Spool() : Subsystem("Spool") {
 	pidController->SetOutputRange(-1.0, 1.0);
 	pidController->SetTolerance(5.0);
 }
-    
+
 void Spool::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
