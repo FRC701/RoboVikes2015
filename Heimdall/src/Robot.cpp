@@ -68,7 +68,7 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
 	autonomousModeChooser->AddObject("LEFT-AutoThreeTote", new autoLeftStrafeThreeTote());
-	autonomousModeChooser->AddObject("Auto Strafe", new autoStrafe(1000));
+	autonomousModeChooser->AddObject("Auto Strafe", new autoStrafe(1000, 1.0));
 	autonomousModeChooser->AddObject("AutoWideStack", new autoWideStack());
 	autonomousModeChooser->AddObject("AutoThreeTote", new autoThreeTote());
 	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680, 2.0));
