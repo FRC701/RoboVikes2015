@@ -39,7 +39,7 @@ private:
 
 	// Handles timeout for change in encoder values
 	Timer mTimeoutForEncoderChange;
-	int mPreviousEncoderReading;
+	double mPreviousEncoderReading;
 };
 
 #endif
