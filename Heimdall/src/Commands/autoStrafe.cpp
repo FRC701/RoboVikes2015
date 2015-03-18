@@ -26,8 +26,8 @@ autoStrafe::autoStrafe()
 }
 
 autoStrafe::autoStrafe(double setPoint, double timeoutInSeconds)
-:	mDistance(setPoint), mTimeoutTimer(0), mTimeout(timeoutInSeconds),
-	mTimeoutForEncoderChange(0), mPreviousEncoderReading(0.0)
+:	mDistance(setPoint), mTimeoutTimer(), mTimeout(timeoutInSeconds),
+	mTimeoutForEncoderChange(), mPreviousEncoderReading(0.0)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);

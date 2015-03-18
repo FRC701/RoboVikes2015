@@ -15,73 +15,81 @@
 #include "autoStrafeToToteRight.h"
 #include "autoDrive.h"
 #include "autoStrafe.h"
-#include "oneLevel.h"
+#include "autoWideStack.h"
+#include "autoLightStrafeRight.h"
+#include "autoStrafeToToteLeft.h"
+#include "Delay.h"
 
 #include "autoStrafeRightThreeTote.h"
 
 autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	//Open HaySqueezer
-		AddSequential(new autoHaySqueezerOpen());
-		//Go Down
-		AddSequential(new zeroLevel());
-		//close
-		AddSequential(new haySqueezerClose());
-		//Go above the container
-		AddSequential(new twoLevel());
-	//.............................................................. Second Tote
-		//Strafe to the right to tote
-		AddSequential(new autoStrafeToToteRight());
+	AddSequential(new autoHaySqueezerOpen());
+	//Go Down
+	AddSequential(new zeroLevel());
+	//close
+	AddSequential(new haySqueezerClose());
+	//Delay for closing
+	AddSequential(new Delay(0.1));
+	//Strafe Slightly to the right to avoid knocking first container down
+	AddSequential(new autoStrafe(600, 0.5));
+	//Go above the container
+	AddSequential(new twoLevel());
+//.............................................................. Second Tote
+	//Strafe to the right to tote
+	AddSequential(new autoStrafeToToteRight());
+
 		//Strafe slightly right to clear container
-		AddSequential(new autoStrafe(500, 0.5));
-		//lower elevator directly above tote
-		AddSequential(new oneLevel());
+//***** AddSequential(new autoStrafe(500, 0.5));		//Encoder Dependent
+		AddSequential(new autoLightStrafeRight());		//Banner Sensor Dependent
+
+	//lower elevator directly above tote
+	AddSequential(new autoWideStack());
+
 		//move back over tote
-		AddSequential(new autoStrafe(-500, 0.5));
-		//open hay squeezer
-		AddSequential(new autoHaySqueezerOpen());
-		//lower elevator on tote
-		AddSequential(new zeroLevel());
-		//close hay squeezer on tote
-		AddSequential(new haySqueezerClose());
-		//
-		AddSequential(new autoStrafe(500, 0.5));
-		//
-		AddSequential(new twoLevel());
+//*****	AddSequential(new autoStrafe(-500, 0.5)); 		//Similar to before. !!!We can also
+		AddSequential(new autoStrafeToToteLeft());		// use the strafe command as a timer
+														// based strafe by ending command
+														// short(decrease time out)
+
+	//open hay squeezer
+	AddSequential(new autoHaySqueezerOpen());
+	//lower elevator on tote
+	AddSequential(new zeroLevel());
+	//close hay squeezer on tote
+	AddSequential(new haySqueezerClose());
+	//
+	AddSequential(new Delay(0.1));
+	//
+	AddSequential(new autoStrafe(500, 0.5));
+	//
+	AddSequential(new twoLevel());
 	//..............................................................Third Tote
-		//Strafe to the left to tote
-		AddSequential(new autoStrafeToToteRight());
+	//Strafe to the right to tote
+	AddSequential(new autoStrafeToToteRight());
+
 		//Strafe slightly right to clear container
-		AddSequential(new autoStrafe(500, 0.5));
-		//lower elevator directly above tote
-		AddSequential(new oneLevel());
+//*****	AddSequential(new autoStrafe(500, 0.5));
+		AddSequential(new autoLightStrafeRight());
+
+	//lower elevator directly above tote
+	AddSequential(new autoWideStack());
+
 		//move back over tote
-		AddSequential(new autoStrafe(-500, 0.5));
-		//open hay squeezer
-		AddSequential(new autoHaySqueezerOpen());
-		//lower elevator on tote
-		AddSequential(new zeroLevel());
-		//close hay squeezer on tote
-		AddSequential(new haySqueezerClose());
-		//
-		AddSequential(new autoStrafe(500, 0.5));
-		//............................................................Drive
-		//
-		AddSequential(new autoDrive(7600));
+//*****	AddSequential(new autoStrafe(-500, 0.5));
+		AddSequential(new autoStrafeToToteLeft());
+	/*
+	//open hay squeezer
+	AddSequential(new autoHaySqueezerOpen());
+	//lower elevator on tote
+	AddSequential(new zeroLevel());
+	//close hay squeezer on tote
+	AddSequential(new haySqueezerClose());
+	//
+	AddSequential(new autoStrafe(500, 0.5));
+	//............................................................Drive
+	 */
 
-	// Add Commands here:
-	// e.g. AddSequential(new Command1());
-	//      AddSequential(new Command2());
-	// these will run in order.
+	AddSequential(new autoDrive(7600));
 
-	// To run multiple commands at the same time,
-	// use AddParallel()
-	// e.g. AddParallel(new Command1());
-	//      AddSequential(new Command2());
-	// Command1 and Command2 will run in parallel.
-
-	// A command group will require all of the subsystems that each member
-	// would require.
-	// e.g. if Command1 requires chassis, and Command2 requires arm,
-	// a CommandGroup containing them would require both the chassis and the
-	// arm.
 }
