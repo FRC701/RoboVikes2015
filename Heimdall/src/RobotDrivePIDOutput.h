@@ -17,12 +17,13 @@ public:
 	static const bool kStrafe = true;
 	static const bool kDontStrafe = false;
 
-	RobotDrivePIDOutput(RobotDrive* robotDrive, bool strafe = false, double wallStafeCompensation = 0.0);
+	RobotDrivePIDOutput(RobotDrive* robotDrive, bool strafe = false, double wallStafeCompensation = 0.0, bool encoderIsInverted = false);
 	virtual void PIDWrite(float output) override;
 private:
 	RobotDrive* robotDrive;
 	bool mStrafe;
 	double mWallStrafeCompensation;
+	bool mEncoderIsInverted;
 };
 
 #endif /* SRC_ROBOTDRIVEPIDOUTPUT_H_ */

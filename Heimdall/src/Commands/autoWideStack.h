@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef AUTOSTRAFETOTOTERIGHT_H
-#define AUTOSTRAFETOTOTERIGHT_H
+#ifndef AUTOWIDESTACK_H
+#define AUTOWIDESTACK_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,17 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class autoStrafeToToteRight: public Command {
+class autoWideStack: public Command {
 public:
-	autoStrafeToToteRight(double timeForStable = 0.0);
+	autoWideStack();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-private:
-	double timeForStable;
-	Timer* timer;
 };
 
 #endif

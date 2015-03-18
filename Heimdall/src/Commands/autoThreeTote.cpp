@@ -11,12 +11,8 @@
 
 
 #include "autoThreeTote.h"
-#include "autoStrafeToToteRight.h"
 
 autoThreeTote::autoThreeTote() {
-
-	AddSequential(new autoStrafeToToteRight());
-
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

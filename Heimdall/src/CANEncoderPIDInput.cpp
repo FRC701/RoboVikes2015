@@ -5,6 +5,7 @@
  *      Author: Vanden
  */
 #include "CANEncoderPIDInput.h"
+#include "SmartDashboard/SmartDashboard.h"
 
 CANTalonEncoderPIDSource::CANTalonEncoderPIDSource(CANTalon* talon, bool isInverted)
 : talon(talon), compensation(0.0), mIsInverted(isInverted)
@@ -14,10 +15,15 @@ CANTalonEncoderPIDSource::CANTalonEncoderPIDSource(CANTalon* talon, bool isInver
 
 double CANTalonEncoderPIDSource::PIDGet()
 {
+	double returnValue = 0;
+
 	if(mIsInverted)
-		return -1 * (talon->GetEncPosition() - compensation);
+		returnValue = -1 * (talon->GetEncPosition() - compensation); // e.g. -1 * (7 - 5) = -2
 	else
-		return (talon->GetEncPosition() - compensation);
+		returnValue = (talon->GetEncPosition() - compensation); // e.g. 3 - 5 = -2
+
+	SmartDashboard::PutNumber("PIDGet return", returnValue);
+	return returnValue;
 }
 
 void CANTalonEncoderPIDSource::setCompensation(double compensationInput)

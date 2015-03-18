@@ -15,7 +15,7 @@
 
 autoStrafe::autoStrafe()
 :	mDistance(0), mTimeoutTimer(), mTimeout(),
-	mTimeoutForEncoderChange(), mPreviousEncoderReading(0)
+	mTimeoutForEncoderChange(), mPreviousEncoderReading(0.0)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -27,7 +27,7 @@ autoStrafe::autoStrafe()
 
 autoStrafe::autoStrafe(double setPoint, double timeoutInSeconds)
 :	mDistance(setPoint), mTimeoutTimer(), mTimeout(timeoutInSeconds),
-	mTimeoutForEncoderChange(), mPreviousEncoderReading(0)
+	mTimeoutForEncoderChange(), mPreviousEncoderReading(0.0)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -38,17 +38,22 @@ autoStrafe::autoStrafe(double setPoint, double timeoutInSeconds)
 }
 // Called just before this Command runs the first time
 void autoStrafe::Initialize() {
+
 	float setPoint = Robot::chassis->rightRear->GetEncPosition();
 	setPoint += mDistance;
 	Robot::chassis->pidStrafeWallController->SetSetpoint(setPoint);
 	// SmartDashboard::PutNumber("Strafe actual setPoint", setPoint);
 	// SmartDashboard::PutNumber("Get Set Point", Robot::chassis->pidStrafeWallController->GetSetpoint());
 
+	//TimeOut Timer starting
 	mTimeoutTimer.Start();
+	//Setting Previous Encoder Position to Current
+	mPreviousEncoderReading = Robot::chassis->rightRear->GetEncPosition();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void autoStrafe::Execute() {
+
 	Robot::chassis->pidStrafeWallController->Enable();
 
 	// Check if encoder enough to show progress

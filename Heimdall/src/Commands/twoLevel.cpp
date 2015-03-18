@@ -22,7 +22,7 @@ twoLevel::twoLevel() {
 
 // Called just before this Command runs the first time
 void twoLevel::Initialize() {
-	Robot::spool->pidController->SetSetpoint(2350);
+	Robot::spool->pidController->SetSetpoint(2500);
 }
 
 // Called repeatedly when this Command is scheduled to run

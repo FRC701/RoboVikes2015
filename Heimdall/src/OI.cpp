@@ -23,10 +23,16 @@ using namespace std;
 #include "Commands/autoDrive.h"
 #include "Commands/autoDriveIntoZone.h"
 #include "Commands/autoHaySqueezerOpen.h"
+#include "Commands/autoLeftStrafeThreeTote.h"
+#include "Commands/autoLightStrafeLeft.h"
+#include "Commands/autoLightStrafeRight.h"
 #include "Commands/autoOneTote.h"
 #include "Commands/autoStrafe.h"
+#include "Commands/autoStrafeRightThreeTote.h"
+#include "Commands/autoStrafeToToteLeft.h"
 #include "Commands/autoStrafeToToteRight.h"
 #include "Commands/autoThreeTote.h"
+#include "Commands/autoWideStack.h"
 #include "Commands/breakToggle.h"
 #include "Commands/chassisStopMoving.h"
 #include "Commands/chuteHight.h"
@@ -77,17 +83,23 @@ OI::OI() {
 
 
         // SmartDashboard Buttons
+	SmartDashboard::PutData("autoLeftStrafeThreeTote", new autoLeftStrafeThreeTote());
+
 	SmartDashboard::PutData("autoDriveIntoZone", new autoDriveIntoZone());
 
 	SmartDashboard::PutData("autoContainer", new autoContainer());
 
-	SmartDashboard::PutData("Drive", new Drive());
+	SmartDashboard::PutData("AutoDoNothing", new AutoDoNothing());
+
+	SmartDashboard::PutData("autoOneTote", new autoOneTote());
 
 	SmartDashboard::PutData("autoStrafeToToteRight", new autoStrafeToToteRight());
 
 	SmartDashboard::PutData("autoDrive", new autoDrive());
 
 	SmartDashboard::PutData("intakeIn", new intakeIn());
+
+	SmartDashboard::PutData("Drive", new Drive());
 
 	SmartDashboard::PutData("intakeOut", new intakeOut());
 
@@ -131,8 +143,6 @@ OI::OI() {
 
 	SmartDashboard::PutData("goToYPosition", new goToYPosition());
 
-	SmartDashboard::PutData("autoOneTote", new autoOneTote());
-
 	SmartDashboard::PutData("autoStrafe", new autoStrafe());
 
 	SmartDashboard::PutData("chuteStack", new chuteStack());
@@ -155,9 +165,17 @@ OI::OI() {
 
 	SmartDashboard::PutData("autoThreeTote", new autoThreeTote());
 
-	SmartDashboard::PutData("AutoDoNothing", new AutoDoNothing());
-
 	SmartDashboard::PutData("chassisStopMoving", new chassisStopMoving());
+
+	SmartDashboard::PutData("autoStrafeToToteLeft", new autoStrafeToToteLeft());
+
+	SmartDashboard::PutData("autoStrafeRightThreeTote", new autoStrafeRightThreeTote());
+
+	SmartDashboard::PutData("autoWideStack", new autoWideStack());
+
+	SmartDashboard::PutData("autoLightStrafeRight", new autoLightStrafeRight());
+
+	SmartDashboard::PutData("autoLightStrafeLeft", new autoLightStrafeLeft());
 
 	SmartDashboard::PutData("icePickLevel", new icePickLevel());
 
