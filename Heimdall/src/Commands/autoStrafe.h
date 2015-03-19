@@ -30,6 +30,14 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+public:
+	enum Purpose
+	{
+		rightToAvoidContainer,
+		leftToAvoidYellowTote,
+		leftFromLandfillZone,
+
+	};
 private:
 	double mDistance;
 
