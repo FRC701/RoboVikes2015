@@ -11,22 +11,50 @@
 
 
 #include "autoLeftDriveThreeToteNarrow.h"
+#include "autoHaySqueezerOpen.h"
+#include "zeroLevel.h"
+#include "haySqueezerClose.h"
+#include "Delay.h"
+#include "oneLevel.h"
+#include "autoDrive.h"
+#include "autoStrafe.h"
 
 autoLeftDriveThreeToteNarrow::autoLeftDriveThreeToteNarrow() {
-	// Add Commands here:
-	// e.g. AddSequential(new Command1());
-	//      AddSequential(new Command2());
-	// these will run in order.
 
-	// To run multiple commands at the same time,
-	// use AddParallel()
-	// e.g. AddParallel(new Command1());
-	//      AddSequential(new Command2());
-	// Command1 and Command2 will run in parallel.
+	const double timeToRemoveContainers = 2.0;
+	const double encoderDistanceBetweenTotes = 500.0;
 
-	// A command group will require all of the subsystems that each member
-	// would require.
-	// e.g. if Command1 requires chassis, and Command2 requires arm,
-	// a CommandGroup containing them would require both the chassis and the
-	// arm.
+	// Drop the elevator down and pick up the yellow Tote
+	AddSequential(new autoHaySqueezerOpen());
+	AddSequential(new zeroLevel());
+	AddSequential(new haySqueezerClose());
+	AddSequential(new Delay(0.5)); // let the hay squeezer close
+
+	// Lift the Tote off of the ground
+	AddSequential(new oneLevel());
+
+	// Drive to the second Tote
+	AddSequential(new autoDrive(encoderDistanceBetweenTotes));
+
+	// Drop the elevator down to let the tabs pick up the next Tote
+	AddSequential(new zeroLevel());
+
+	// Lift the two Totes off of the ground
+	AddSequential(new oneLevel());
+
+	// Drive to the third Tote
+	AddSequential(new autoDrive(encoderDistanceBetweenTotes));
+
+	// Drop the elevator down to let the tabs pick up the next Tote
+	AddSequential(new zeroLevel());
+
+	// Lift the three Totes off of the ground
+	AddSequential(new oneLevel());
+
+	// Strafe into the Auto Zone
+	AddSequential(new autoStrafe(500.0, 5.0));
+
+	// Drop the stack and back away from it
+	AddSequential(new zeroLevel());
+	AddSequential(new autoDrive(-400.0));
 }

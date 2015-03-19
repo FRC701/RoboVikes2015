@@ -32,8 +32,7 @@ autoOneTote::autoOneTote() {
 	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
-
-	AddSequential(new Delay(0.5));
+	AddSequential(new Delay(0.5)); // let the hay squeezer close
 
 	// Lift the tote off of the ground
 	AddSequential(new oneLevel());

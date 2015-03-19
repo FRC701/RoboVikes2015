@@ -18,10 +18,16 @@
 /**
  *
  *
- * @author ExampleAuthor
+ * @author Wikipedia
+ * @commandDescription With this command, the robot will
+ * take three yellow Totes to the Auto Zone.
+ * The robot will start to the right of the rightmost yellow
+ * Tote, and it should be facing to the left.
+ * This command assumes the three Container will be moved out of
+ * the way after a specified amount of time.
  */
 class autoLeftDriveThreeToteNarrow: public CommandGroup {
-public:	
+public:
 	autoLeftDriveThreeToteNarrow();
 };
 
