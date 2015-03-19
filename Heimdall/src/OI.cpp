@@ -31,7 +31,6 @@ using namespace std;
 #include "Commands/autoStrafeRightThreeTote.h"
 #include "Commands/autoStrafeToToteLeft.h"
 #include "Commands/autoStrafeToToteRight.h"
-#include "Commands/autoThreeTote.h"
 #include "Commands/autoWideStack.h"
 #include "Commands/breakToggle.h"
 #include "Commands/chassisStopMoving.h"
@@ -162,8 +161,6 @@ OI::OI() {
 	SmartDashboard::PutData("lightsDefault", new lightsDefault());
 
 	SmartDashboard::PutData("autoHaySqueezerOpen", new autoHaySqueezerOpen());
-
-	SmartDashboard::PutData("autoThreeTote", new autoThreeTote());
 
 	SmartDashboard::PutData("chassisStopMoving", new chassisStopMoving());
 

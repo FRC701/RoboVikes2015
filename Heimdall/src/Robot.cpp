@@ -13,14 +13,13 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/haySqueezerOpen.h"
 #include "Commands/PneIntakeOut.h"
-#include "Commands/autoContainer.h"
 #include "Commands/autoDriveIntoZone.h"
 #include "Commands/autoOneTote.h"
+#include "Commands/autoContainer.h"
+#include "Commands/autoLeftStrafeThreeTote.h"
+#include "Commands/autoStrafeRightThreeTote.h"
 #include "Commands/autoStrafe.h"
 #include "Commands/autoDoNothing.h"
-#include "Commands/autoLeftStrafeThreeTote.h"
-#include "Commands/autoStrafe.h"
-#include "Commands/autoWideStack.h"
 #include "PowerDistributionPanel.h"
 
 
@@ -65,9 +64,8 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddDefault("AutoDriveIntoZone", new autoDriveIntoZone());
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
-	autonomousModeChooser->AddObject("LEFT-AutoThreeTote", new autoLeftStrafeThreeTote());
-	autonomousModeChooser->AddObject("Auto Strafe", new autoStrafe(1000, 1.0));
-	autonomousModeChooser->AddObject("AutoWideStack", new autoWideStack());
+	autonomousModeChooser->AddObject("AutoLeftThreeToteFacingFront", new autoLeftStrafeThreeTote());
+	autonomousModeChooser->AddObject("AutoRightThreeToteFacingFront", new autoStrafeRightThreeTote());
 	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680, 2.0));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
 
