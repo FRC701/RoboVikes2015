@@ -16,7 +16,6 @@
 #include "Commands/autoDriveIntoZone.h"
 #include "Commands/autoOneTote.h"
 #include "Commands/autoContainer.h"
-#include "Commands/autoLeftStrafeThreeTote.h"
 #include "Commands/autoStrafeRightThreeTote.h"
 #include "Commands/autoStrafe.h"
 #include "Commands/autoDoNothing.h"
@@ -64,7 +63,6 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddDefault("AutoDriveIntoZone", new autoDriveIntoZone());
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
-	autonomousModeChooser->AddObject("AutoLeftThreeToteFacingFront", new autoLeftStrafeThreeTote());
 	autonomousModeChooser->AddObject("AutoRightThreeToteFacingFront", new autoStrafeRightThreeTote());
 	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680, 2.0));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
