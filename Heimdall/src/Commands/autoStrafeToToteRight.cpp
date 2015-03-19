@@ -31,6 +31,8 @@ void autoStrafeToToteRight::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void autoStrafeToToteRight::Execute() {
 
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(1.0, 0.15, 0);
+	/*
 	SmartDashboard::PutNumber("Auto Strafing", Robot::chassis->rightRear->GetEncPosition());
 
 	if(!Robot::chassis->leftLightSensor->Get() && !Robot::chassis->rightLightSensor->Get())
@@ -43,7 +45,7 @@ void autoStrafeToToteRight::Execute() {
 		Robot::chassis->pidStrafeController->Enable();
 		timer->Start();
 	}
-
+*/
 /*
 	bool strafe = true;
 	if(Robot::chassis->leftLightSensor->Get() && Robot::chassis->rightLightSensor->Get())
@@ -69,20 +71,23 @@ void autoStrafeToToteRight::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool autoStrafeToToteRight::IsFinished() {
-	return timer->HasPeriodPassed(timeForStable);
+	// return timer->HasPeriodPassed(timeForStable);
+	return Robot::chassis->leftLightSensor->Get() && Robot::chassis->rightLightSensor->Get();
 }
 
 // Called once after isFinished returns true
 void autoStrafeToToteRight::End() {
 	//Robot::chassis->pidStrafeWallController->Disable();
-	timer->Stop();
-	timer->Reset();
+	// timer->Stop();
+	// timer->Reset();
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void autoStrafeToToteRight::Interrupted() {
 	//Robot::chassis->pidStrafeWallController->Disable();
-	timer->Stop();
-	timer->Reset();
+	// timer->Stop();
+	// timer->Reset();
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 }
