@@ -33,9 +33,10 @@ public:
 public:
 	enum Purpose
 	{
-		rightToAvoidContainer,
-		leftToAvoidYellowTote,
+		rightToAvoidContainerBeforeDrivingForward,
+		leftToAvoidYellowToteBeforeDrivingForward,
 		leftFromLandfillZone,
+		rightToAvoidContainerBeforeElevatorRises,
 
 	};
 private:
