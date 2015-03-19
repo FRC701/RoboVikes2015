@@ -603,7 +603,6 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: icePickLevel
->>>>>>> origin/develop
   Properties: {}
   Base: Commands
   Name: Commands
