@@ -23,52 +23,44 @@
 #include "autoStrafeRightThreeTote.h"
 
 autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
-	//Open HaySqueezer
+
 	AddSequential(new autoHaySqueezerOpen());
 
-	//Go Down
+	// Lower the elevator and pick up the first tote
 	AddSequential(new zeroLevel());
-
-	//close
 	AddSequential(new haySqueezerClose());
-
-	//Delay for closing
-	AddSequential(new Delay(0.3));
+	AddSequential(new Delay(0.3)); // to let the hay squeezer close
 
 	// Strafe Slightly to the right to avoid knocking first container down
 	// AddSequential(new autoStrafe(600, 0.5));
 
-	//Go above the container
+	// Go above container height
 	AddSequential(new spoolAboveContainer());
 
-	//Strafe to the right to second tote
+	//Strafe to the right to the second tote
 	AddSequential(new autoStrafeToToteRight());
 
-
 	//Strafe slightly right to clear second container
-	AddSequential(new autoStrafe(500, 0.5));		//Encoder Dependent
 	AddSequential(new autoLightStrafeRight());		//Banner Sensor Dependent
 
-	//lower elevator directly above second tote
+	// lower elevator directly above second tote
 	AddSequential(new autoWideStack());
 
-	//move back over second tote
-	AddSequential(new autoStrafeToToteLeft());		// use the strafe command as a timer
-													// based strafe by ending command
-													// short(decrease time out)
+	// move back over second tote
+	AddSequential(new autoStrafeToToteLeft());
 
-	//open hay squeezer
+	// open hay squeezer
 	AddSequential(new autoHaySqueezerOpen());
-	//lower elevator on second tote
-	AddSequential(new zeroLevel());
 
-	//close hay squeezer on tote
+	// lower elevator and pick up second tote
+	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
 	AddSequential(new Delay(0.3));
 
 	// Strafe slightly to the right to avoid knocking the second container down
 	// AddSequential(new autoStrafe(500, 0.5));
 
+	// Go above container height
 	AddSequential(new spoolAboveContainer());
 
 	//Strafe to the right to third Tote
