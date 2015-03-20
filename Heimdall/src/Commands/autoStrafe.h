@@ -24,7 +24,7 @@
 class autoStrafe: public Command {
 public:
 	autoStrafe();
-	autoStrafe(double setPoint, double timeoutInSeconds);
+	autoStrafe(bool distanceBased, bool timerBased, bool encoderSafety);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
@@ -38,19 +38,9 @@ public:
 		leftFromLandfillZone,
 		rightToAvoidContainerBeforeElevatorRises,
 	};
-
-	enum EndCondition
-	{
-		encoderDistance,
-		timeOut,
-		encoderDistanceAndTimeOut,
-	};
 private:
-	double mDistance;
-
 	// Handles timeout for the entire command
 	Timer mTimeoutTimer;
-	double mTimeout;
 
 	// Handles timeout for change in encoder values
 	Timer mTimeoutForEncoderChange;
