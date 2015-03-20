@@ -19,7 +19,6 @@
 #include "autoLightStrafeRight.h"
 #include "autoStrafeToToteLeft.h"
 #include "Delay.h"
-#include "oneLevel.h"
 
 #include "autoStrafeRightThreeTote.h"
 
@@ -39,27 +38,24 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// Strafe Slightly to the right to avoid knocking first container down
 	// AddSequential(new autoStrafe(600, 0.5));
 
-//.............................................................. Second Tote
-
 	//Go above the container
 	AddSequential(new spoolAboveContainer());
-	// AddParallel(new oneLevel());
+
 	//Strafe to the right to second tote
 	AddSequential(new autoStrafeToToteRight());
 
 
-		//Strafe slightly right to clear second container
-//***** AddSequential(new autoStrafe(500, 0.5));		//Encoder Dependent
-		AddSequential(new autoLightStrafeRight());		//Banner Sensor Dependent
+	//Strafe slightly right to clear second container
+	AddSequential(new autoStrafe(500, 0.5));		//Encoder Dependent
+	AddSequential(new autoLightStrafeRight());		//Banner Sensor Dependent
 
 	//lower elevator directly above second tote
 	AddSequential(new autoWideStack());
 
-		//move back over second tote
-//*****	AddSequential(new autoStrafe(-500, 0.5)); 		//Similar to before. !!!We can also
-		AddSequential(new autoStrafeToToteLeft());		// use the strafe command as a timer
-														// based strafe by ending command
-														// short(decrease time out)
+	//move back over second tote
+	AddSequential(new autoStrafeToToteLeft());		// use the strafe command as a timer
+													// based strafe by ending command
+													// short(decrease time out)
 
 	//open hay squeezer
 	AddSequential(new autoHaySqueezerOpen());
@@ -74,7 +70,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// AddSequential(new autoStrafe(500, 0.5));
 
 	AddSequential(new spoolAboveContainer());
-	//..............................................................Third Tote
+
 	//Strafe to the right to third Tote
 	AddSequential(new autoStrafeToToteRight());
 
