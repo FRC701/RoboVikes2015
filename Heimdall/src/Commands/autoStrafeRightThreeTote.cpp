@@ -25,16 +25,21 @@
 autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	//Open HaySqueezer
 	AddSequential(new autoHaySqueezerOpen());
+
 	//Go Down
 	AddSequential(new zeroLevel());
+
 	//close
 	AddSequential(new haySqueezerClose());
+
 	//Delay for closing
 	AddSequential(new Delay(0.1));
-	//Strafe Slightly to the right to avoid knocking first container down
+
+	// Strafe Slightly to the right to avoid knocking first container down
 	// AddSequential(new autoStrafe(600, 0.5));
+
 	//Go above the container
-	AddSequential(new spoolAboveContainer());
+	AddParallel(new spoolAboveContainer());
 //.............................................................. Second Tote
 	//Strafe to the right to second tote
 	AddSequential(new autoStrafeToToteRight());
@@ -64,7 +69,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// Strafe slightly to the right to avoid knocking the second container down
 	// AddSequential(new autoStrafe(500, 0.5));
 
-	AddSequential(new spoolAboveContainer());
+	AddParallel(new spoolAboveContainer());
 	//..............................................................Third Tote
 	//Strafe to the right to third Tote
 	AddSequential(new autoStrafeToToteRight());
