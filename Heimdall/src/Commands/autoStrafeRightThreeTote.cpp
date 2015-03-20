@@ -11,7 +11,7 @@
 #include "autoHaySqueezerOpen.h"
 #include "zeroLevel.h"
 #include "haySqueezerClose.h"
-#include "twoLevel.h"
+#include "spoolAboveContainer.h"
 #include "autoStrafeToToteRight.h"
 #include "autoDrive.h"
 #include "autoStrafe.h"
@@ -34,7 +34,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	//Strafe Slightly to the right to avoid knocking first container down
 	AddSequential(new autoStrafe(600, 0.5));
 	//Go above the container
-	AddSequential(new twoLevel());
+	AddSequential(new spoolAboveContainer());
 //.............................................................. Second Tote
 	//Strafe to the right to tote
 	AddSequential(new autoStrafeToToteRight());
@@ -63,7 +63,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	//
 	AddSequential(new autoStrafe(500, 0.5));
 	//
-	AddSequential(new twoLevel());
+	AddSequential(new spoolAboveContainer());
 	//..............................................................Third Tote
 	//Strafe to the right to tote
 	AddSequential(new autoStrafeToToteRight());
@@ -90,6 +90,6 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	//............................................................Drive
 	 */
 
-	AddSequential(new autoDrive(7600));
+	AddSequential(new autoDrive(6700));
 
 }
