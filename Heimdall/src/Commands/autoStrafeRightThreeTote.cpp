@@ -76,9 +76,11 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 
 	// Push the third yellow Tote into the Auto Zone
 	// While doing so, begin dropping the other two yellow Totes
-	AddParallel(new autoDrive(3300));
+	AddParallel(new autoDrive(5500));
 	AddSequential(new zeroLevel());
 
-	// Open the hay squeezer to forfeit contact with the Tote stack
+	// Open the hay squeezer and back up
+	// to forfeit contact with the Tote stack
 	AddSequential(new autoHaySqueezerOpen());
+	AddSequential(new autoDrive(-450));
 }
