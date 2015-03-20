@@ -33,7 +33,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	AddSequential(new haySqueezerClose());
 
 	//Delay for closing
-	AddSequential(new Delay(0.1));
+	AddSequential(new Delay(0.3));
 
 	// Strafe Slightly to the right to avoid knocking first container down
 	// AddSequential(new autoStrafe(600, 0.5));
@@ -64,7 +64,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 
 	//close hay squeezer on tote
 	AddSequential(new haySqueezerClose());
-	AddSequential(new Delay(0.1));
+	AddSequential(new Delay(0.3));
 
 	// Strafe slightly to the right to avoid knocking the second container down
 	// AddSequential(new autoStrafe(500, 0.5));
