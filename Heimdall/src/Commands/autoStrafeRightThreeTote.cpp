@@ -32,21 +32,21 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	//Delay for closing
 	AddSequential(new Delay(0.1));
 	//Strafe Slightly to the right to avoid knocking first container down
-	AddSequential(new autoStrafe(600, 0.5));
+	// AddSequential(new autoStrafe(600, 0.5));
 	//Go above the container
 	AddSequential(new spoolAboveContainer());
 //.............................................................. Second Tote
-	//Strafe to the right to tote
+	//Strafe to the right to second tote
 	AddSequential(new autoStrafeToToteRight());
 
-		//Strafe slightly right to clear container
+		//Strafe slightly right to clear second container
 //***** AddSequential(new autoStrafe(500, 0.5));		//Encoder Dependent
 		AddSequential(new autoLightStrafeRight());		//Banner Sensor Dependent
 
-	//lower elevator directly above tote
+	//lower elevator directly above second tote
 	AddSequential(new autoWideStack());
 
-		//move back over tote
+		//move back over second tote
 //*****	AddSequential(new autoStrafe(-500, 0.5)); 		//Similar to before. !!!We can also
 		AddSequential(new autoStrafeToToteLeft());		// use the strafe command as a timer
 														// based strafe by ending command
@@ -54,42 +54,26 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 
 	//open hay squeezer
 	AddSequential(new autoHaySqueezerOpen());
-	//lower elevator on tote
+	//lower elevator on second tote
 	AddSequential(new zeroLevel());
+
 	//close hay squeezer on tote
 	AddSequential(new haySqueezerClose());
-	//
 	AddSequential(new Delay(0.1));
-	//
-	AddSequential(new autoStrafe(500, 0.5));
-	//
+
+	// Strafe slightly to the right to avoid knocking the second container down
+	// AddSequential(new autoStrafe(500, 0.5));
+
 	AddSequential(new spoolAboveContainer());
 	//..............................................................Third Tote
-	//Strafe to the right to tote
+	//Strafe to the right to third Tote
 	AddSequential(new autoStrafeToToteRight());
 
-		//Strafe slightly right to clear container
-//*****	AddSequential(new autoStrafe(500, 0.5));
-		AddSequential(new autoLightStrafeRight());
-
-	//lower elevator directly above tote
-	AddSequential(new autoWideStack());
-
-		//move back over tote
-//*****	AddSequential(new autoStrafe(-500, 0.5));
-		AddSequential(new autoStrafeToToteLeft());
-	/*
-	//open hay squeezer
-	AddSequential(new autoHaySqueezerOpen());
-	//lower elevator on tote
+	// Push the third yellow Tote into the Auto Zone
+	// While doing so, begin dropping the other two yellow Totes
+	AddParallel(new autoDrive(3300));
 	AddSequential(new zeroLevel());
-	//close hay squeezer on tote
-	AddSequential(new haySqueezerClose());
-	//
-	AddSequential(new autoStrafe(500, 0.5));
-	//............................................................Drive
-	 */
 
-	AddSequential(new autoDrive(6700));
-
+	// Open the hay squeezer to forfeit contact with the Tote stack
+	AddSequential(new autoHaySqueezerOpen());
 }

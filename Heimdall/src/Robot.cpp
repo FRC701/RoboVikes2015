@@ -106,6 +106,9 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
+	// in case Robot::RobotInit() isn't called
+	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
+
 	Robot::spool->spoolLeftMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 	Robot::spool->spoolRightMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 
@@ -126,6 +129,9 @@ void Robot::AutonomousPeriodic() {
 }
 
 void Robot::TeleopInit() {
+	// in case Robot::RobotInit() isn't called
+	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
+
 	// This makes sure that the autonomous stops running when
 	// teleop starts running. If you want the autonomous to
 	// continue until interrupted by another command, remove
