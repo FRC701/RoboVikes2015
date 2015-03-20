@@ -81,6 +81,6 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 
 	// Open the hay squeezer and back up
 	// to forfeit contact with the Tote stack
-	AddSequential(new autoHaySqueezerOpen());
+	AddParallel(new autoHaySqueezerOpen());
 	AddSequential(new autoDrive(-450));
 }
