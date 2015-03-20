@@ -11,6 +11,11 @@
 
 
 #include "autoTestRightThreeTote.h"
+#include "zeroLevel.h"
+#include "haySqueezerClose.h"
+#include "spoolAboveContainer.h"
+#include "Delay.h"
+#include "autoHaySqueezerOpen.h"
 
 autoTestRightThreeTote::autoTestRightThreeTote() {
 	//Open HaySqueezer

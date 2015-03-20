@@ -19,6 +19,7 @@
 #include "autoLightStrafeRight.h"
 #include "autoStrafeToToteLeft.h"
 #include "Delay.h"
+#include "oneLevel.h"
 
 #include "autoStrafeRightThreeTote.h"
 
@@ -38,11 +39,14 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// Strafe Slightly to the right to avoid knocking first container down
 	// AddSequential(new autoStrafe(600, 0.5));
 
-	//Go above the container
-	AddParallel(new spoolAboveContainer());
 //.............................................................. Second Tote
+
+	//Go above the container
+	AddSequential(new spoolAboveContainer());
+	// AddParallel(new oneLevel());
 	//Strafe to the right to second tote
 	AddSequential(new autoStrafeToToteRight());
+
 
 		//Strafe slightly right to clear second container
 //***** AddSequential(new autoStrafe(500, 0.5));		//Encoder Dependent
@@ -69,7 +73,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// Strafe slightly to the right to avoid knocking the second container down
 	// AddSequential(new autoStrafe(500, 0.5));
 
-	AddParallel(new spoolAboveContainer());
+	AddSequential(new spoolAboveContainer());
 	//..............................................................Third Tote
 	//Strafe to the right to third Tote
 	AddSequential(new autoStrafeToToteRight());
