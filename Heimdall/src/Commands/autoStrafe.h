@@ -37,7 +37,13 @@ public:
 		leftToAvoidYellowToteBeforeDrivingForward,
 		leftFromLandfillZone,
 		rightToAvoidContainerBeforeElevatorRises,
+	};
 
+	enum EndCondition
+	{
+		encoderDistance,
+		timeOut,
+		encoderDistanceAndTimeOut,
 	};
 private:
 	double mDistance;
