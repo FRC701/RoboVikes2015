@@ -26,7 +26,7 @@ void delayDriveUntilNoYellowToteSensed::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void delayDriveUntilNoYellowToteSensed::Execute() {
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
+	Robot::chassis->robotDrive->MecanumDrive_Cartesian(1.0, 0.15, 0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
