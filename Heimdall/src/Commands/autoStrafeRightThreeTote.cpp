@@ -19,6 +19,7 @@
 #include "autoLightStrafeRight.h"
 #include "autoStrafeToToteLeft.h"
 #include "Delay.h"
+#include "oneLevel.h"
 
 #include "autoStrafeRightThreeTote.h"
 
@@ -34,8 +35,10 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// Strafe Slightly to the right to avoid knocking first container down
 	// AddSequential(new autoStrafe(600, 0.5));
 
+	AddSequential(new autoLightStrafeRight());
+
 	// Go above container height
-	AddSequential(new spoolAboveContainer());
+	AddParallel(new spoolAboveContainer());
 
 	//Strafe to the right to the second tote
 	AddSequential(new autoStrafeToToteRight());
@@ -60,19 +63,21 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// Strafe slightly to the right to avoid knocking the second container down
 	// AddSequential(new autoStrafe(500, 0.5));
 
-	// Go above container height
-	AddSequential(new spoolAboveContainer());
+	AddSequential(new autoLightStrafeRight());
 
-	//Strafe to the right to third Tote
+	// Go above container height
+	AddParallel(new spoolAboveContainer());
+
+	// Strafe to the right to third Tote
 	AddSequential(new autoStrafeToToteRight());
 
 	// Push the third yellow Tote into the Auto Zone
 	// While doing so, begin dropping the other two yellow Totes
 	AddParallel(new autoDrive(5500));
+
+	AddSequential(new Delay(0.5));
 	AddSequential(new zeroLevel());
 
-	// Open the hay squeezer and back up
-	// to forfeit contact with the Tote stack
-	AddParallel(new autoHaySqueezerOpen());
-	AddSequential(new autoDrive(-450));
+	// forfeit contact with the Tote stack
+	AddSequential(new autoHaySqueezerOpen());
 }
