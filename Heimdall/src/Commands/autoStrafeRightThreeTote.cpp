@@ -23,6 +23,10 @@
 
 #include "autoStrafeRightThreeTote.h"
 
+void pickUpToteAndGoToNextOne() {
+
+}
+
 autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 
 	AddSequential(new autoHaySqueezerOpen());
@@ -35,10 +39,10 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// Strafe Slightly to the right to avoid knocking first container down
 	// AddSequential(new autoStrafe(600, 0.5));
 
-	AddSequential(new autoLightStrafeRight());
-
 	// Go above container height
 	AddParallel(new spoolAboveContainer());
+
+	AddSequential(new Delay(0.5));
 
 	//Strafe to the right to the second tote
 	AddSequential(new autoStrafeToToteRight());
@@ -63,10 +67,10 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// Strafe slightly to the right to avoid knocking the second container down
 	// AddSequential(new autoStrafe(500, 0.5));
 
-	AddSequential(new autoLightStrafeRight());
-
 	// Go above container height
 	AddParallel(new spoolAboveContainer());
+
+	AddSequential(new Delay(0.5));
 
 	// Strafe to the right to third Tote
 	AddSequential(new autoStrafeToToteRight());
