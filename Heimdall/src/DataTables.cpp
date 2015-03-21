@@ -13,7 +13,9 @@ std::vector<autoStrafeData> getAutoStrafeData()
 {
 	std::vector<autoStrafeData> data;
 
-	data[autoStrafe::rightToAvoidContainerBeforeDrivingForward].driveDistance =
+	data[autoStrafe::noneSpecified].driveDistance = 0.0;
+	data[autoStrafe::noneSpecified].timeForTimeout = 0.0;
+	data[autoStrafe::noneSpecified].encoderSafetyTimeout = 0.0;
 
 	return data;
 }

@@ -13,8 +13,13 @@
 
 #include <cmath>
 
+
 autoStrafe::autoStrafe()
-:	mTimeoutTimer(), mTimeoutForEncoderChange(),
+:	mDistanceBased(true),
+	mTimerBased(true),
+	mEncoderSafety(true),
+	mTimeoutTimer(),
+	mTimeoutForEncoderChange(),
 	mPreviousEncoderReading(0.0)
 {
 	// Use requires() here to declare subsystem dependencies
@@ -26,7 +31,11 @@ autoStrafe::autoStrafe()
 }
 
 autoStrafe::autoStrafe(bool distanceBased, bool timerBased, bool encoderSafety)
-:	mTimeoutTimer(), mTimeoutForEncoderChange(),
+:	mDistanceBased(distanceBased),
+	mTimerBased(timerBased),
+	mEncoderSafety(encoderSafety),
+	mTimeoutTimer(),
+	mTimeoutForEncoderChange(),
 	mPreviousEncoderReading(0.0)
 {
 	// Use requires() here to declare subsystem dependencies

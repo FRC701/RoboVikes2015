@@ -33,12 +33,17 @@ public:
 public:
 	enum Purpose
 	{
+		noneSpecified, // indicates error
 		rightToAvoidContainerBeforeDrivingForward,
 		leftToAvoidYellowToteBeforeDrivingForward,
 		leftFromLandfillZone,
 		rightToAvoidContainerBeforeElevatorRises,
 	};
 private:
+	bool mDistanceBased;
+	bool mTimerBased;
+	bool mEncoderSafety;
+
 	// Handles timeout for the entire command
 	Timer mTimeoutTimer;
 
