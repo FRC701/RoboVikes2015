@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
+#include "autoStrafeRightThreeTote.h"
 #include "autoHaySqueezerOpen.h"
 #include "zeroLevel.h"
 #include "haySqueezerClose.h"
@@ -21,23 +22,13 @@
 #include "Delay.h"
 #include "oneLevel.h"
 
-#include "autoStrafeRightThreeTote.h"
-
-void pickUpToteAndGoToNextOne() {
-
-}
-
-autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
-
+void autoStrafeRightThreeTote::pickUpToteAndGoToNextOne() {
 	AddSequential(new autoHaySqueezerOpen());
 
-	// Lower the elevator and pick up the first tote
+	// Lower the elevator and pick up the tote
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
 	AddSequential(new Delay(0.3)); // to let the hay squeezer close
-
-	// Strafe Slightly to the right to avoid knocking first container down
-	// AddSequential(new autoStrafe(600, 0.5));
 
 	// Go above container height
 	AddParallel(new spoolAboveContainer());
@@ -46,6 +37,11 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 
 	//Strafe to the right to the second tote
 	AddSequential(new autoStrafeToToteRight());
+}
+
+autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
+
+	pickUpToteAndGoToNextOne();
 
 	//Strafe slightly right to clear second container
 	AddSequential(new autoLightStrafeRight());		//Banner Sensor Dependent
@@ -56,24 +52,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 	// move back over second tote
 	AddSequential(new autoStrafeToToteLeft());
 
-	// open hay squeezer
-	AddSequential(new autoHaySqueezerOpen());
-
-	// lower elevator and pick up second tote
-	AddSequential(new zeroLevel());
-	AddSequential(new haySqueezerClose());
-	AddSequential(new Delay(0.3));
-
-	// Strafe slightly to the right to avoid knocking the second container down
-	// AddSequential(new autoStrafe(500, 0.5));
-
-	// Go above container height
-	AddParallel(new spoolAboveContainer());
-
-	AddSequential(new Delay(0.5));
-
-	// Strafe to the right to third Tote
-	AddSequential(new autoStrafeToToteRight());
+	pickUpToteAndGoToNextOne();
 
 	// Push the third yellow Tote into the Auto Zone
 	// While doing so, begin dropping the other two yellow Totes

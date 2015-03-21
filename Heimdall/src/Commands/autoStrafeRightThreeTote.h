@@ -23,6 +23,7 @@
 class autoStrafeRightThreeTote: public CommandGroup {
 public:	
 	autoStrafeRightThreeTote();
+	void pickUpToteAndGoToNextOne();
 };
 
 #endif
