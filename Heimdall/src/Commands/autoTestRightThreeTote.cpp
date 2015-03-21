@@ -11,25 +11,19 @@
 
 
 #include "autoTestRightThreeTote.h"
-#include "zeroLevel.h"
-#include "haySqueezerClose.h"
-#include "spoolAboveContainer.h"
+#include "autoDrive.h"
 #include "Delay.h"
+#include "zeroLevel.h"
 #include "autoHaySqueezerOpen.h"
 
 autoTestRightThreeTote::autoTestRightThreeTote() {
-	//Open HaySqueezer
-	AddSequential(new autoHaySqueezerOpen());
+	// Push the third yellow Tote into the Auto Zone
+	// While doing so, begin dropping the other two yellow Totes
+	AddParallel(new autoDrive(5500));
 
-	//Go Down
+	AddSequential(new Delay(0.5));
 	AddSequential(new zeroLevel());
 
-	//close
-	AddSequential(new haySqueezerClose());
-
-	//Delay for closing
-	AddSequential(new Delay(0.3));
-
-	//Go above the container
-	AddSequential(new spoolAboveContainer());
+	// forfeit contact with the Tote stack
+	AddSequential(new autoHaySqueezerOpen());
 }
