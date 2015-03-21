@@ -82,7 +82,7 @@ void autoStrafeToToteRight::End() {
 	//Robot::chassis->pidStrafeWallController->Disable();
 	// timer->Stop();
 	// timer->Reset();
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
+	// Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 }
 
 // Called when another command which requires one or more of the same
@@ -91,5 +91,5 @@ void autoStrafeToToteRight::Interrupted() {
 	//Robot::chassis->pidStrafeWallController->Disable();
 	// timer->Stop();
 	// timer->Reset();
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
+	// Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 }
