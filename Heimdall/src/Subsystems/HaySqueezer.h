@@ -12,7 +12,10 @@
 #ifndef HAYSQUEEZER_H
 #define HAYSQUEEZER_H
 #include "Commands/Subsystem.h"
-#include "WPILib.h"
+//#include "WPILib.h"
+
+#include "DoubleSolenoid.h"
+#include "DigitalInput.h"
 
 /**
  *

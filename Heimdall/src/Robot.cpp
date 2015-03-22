@@ -213,7 +213,7 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutBoolean("Left HaySqueezer", Robot::haySqueezer->leftPneSensor->Get());
 	SmartDashboard::PutBoolean("Right HaySqueezer", Robot::haySqueezer->rightPneSensor->Get());
 
-	SmartDashboard::PutBoolean("UserButton", GetUserButton());
+	//SmartDashboard::PutBoolean("UserButton", GetUserButton());
 
 	//Robot::chassis->leftFront->SetVoltageRampRate(0.01);
 	//Robot::chassis->leftRear->SetVoltageRampRate(0.01);

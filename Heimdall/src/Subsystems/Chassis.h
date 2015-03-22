@@ -12,7 +12,10 @@
 #ifndef CHASSIS_H
 #define CHASSIS_H
 #include "Commands/Subsystem.h"
-#include "WPILib.h"
+//#include "WPILib.h"
+
+#include "DigitalInput.h"
+#include "PIDController.h"
 
 #include "../CANEncoderPIDInput.h"
 #include "../RobotDrivePIDOutput.h"

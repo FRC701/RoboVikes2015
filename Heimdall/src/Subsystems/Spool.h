@@ -12,9 +12,12 @@
 #ifndef SPOOL_H
 #define SPOOL_H
 #include "Commands/Subsystem.h"
-#include "WPILib.h"
+//#include "WPILib.h"
 #include "../CANEncoderPIDInput.h"
 #include "../Elevator.h"
+
+#include "CANTalon.h"
+#include "PIDController.h"
 
 /**
  *

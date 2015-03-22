@@ -12,7 +12,9 @@
 #ifndef PNEINTAKE_H
 #define PNEINTAKE_H
 #include "Commands/Subsystem.h"
-#include "WPILib.h"
+//#include "WPILib.h"
+
+#include "DoubleSolenoid.h"
 
 /**
  *
