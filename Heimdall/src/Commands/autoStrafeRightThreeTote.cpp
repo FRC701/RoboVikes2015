@@ -21,7 +21,7 @@
 #include "autoStrafeToToteLeft.h"
 #include "Delay.h"
 #include "oneLevel.h"
-#include "delayDriveUntilNoYellowToteSensed.h"
+#include "autoStrafeUntilNoYellowTote.h"
 
 void autoStrafeRightThreeTote::pickUpToteAndGoToNextOne() {
 	AddSequential(new autoHaySqueezerOpen());
@@ -34,7 +34,7 @@ void autoStrafeRightThreeTote::pickUpToteAndGoToNextOne() {
 	// Go above container height
 	AddParallel(new spoolAboveContainer());
 
-	AddSequential(new delayDriveUntilNoYellowToteSensed());
+	AddSequential(new autoStrafeUntilNoYellowTote());
 
 	//Strafe to the right to the second tote
 	AddSequential(new autoStrafeToToteRight());
