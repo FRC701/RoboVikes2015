@@ -10,20 +10,20 @@
 
 
 
-#ifndef AUTOSTRAFERIGHTTHREETOTE_H
-#define AUTOSTRAFERIGHTTHREETOTE_H
+#include "autoTestRightThreeTote.h"
+#include "autoDrive.h"
+#include "Delay.h"
+#include "zeroLevel.h"
+#include "autoHaySqueezerOpen.h"
 
-#include "Commands/CommandGroup.h"
+autoTestRightThreeTote::autoTestRightThreeTote() {
+	// Push the third yellow Tote into the Auto Zone
+	// While doing so, begin dropping the other two yellow Totes
+	AddParallel(new autoDrive(5500));
 
-/**
- *
- *
- * @author ExampleAuthor
- */
-class autoStrafeRightThreeTote: public CommandGroup {
-public:	
-	autoStrafeRightThreeTote();
-	void pickUpToteAndGoToNextOne();
-};
+	AddSequential(new Delay(0.5));
+	AddSequential(new zeroLevel());
 
-#endif
+	// forfeit contact with the Tote stack
+	AddSequential(new autoHaySqueezerOpen());
+}

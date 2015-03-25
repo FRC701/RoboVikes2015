@@ -10,8 +10,8 @@
 
 
 
-#ifndef AUTOTHREETOTE_H
-#define AUTOTHREETOTE_H
+#ifndef AUTOTESTRIGHTTHREETOTE_H
+#define AUTOTESTRIGHTTHREETOTE_H
 
 #include "Commands/CommandGroup.h"
 
@@ -20,9 +20,9 @@
  *
  * @author ExampleAuthor
  */
-class autoThreeTote: public CommandGroup {
+class autoTestRightThreeTote: public CommandGroup {
 public:	
-	autoThreeTote();
+	autoTestRightThreeTote();
 };
 
 #endif

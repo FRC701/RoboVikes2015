@@ -9,21 +9,26 @@
 // it from being updated in the future.
 
 
+#ifndef SPOOLABOVECONTAINER_H
+#define SPOOLABOVECONTAINER_H
 
-#ifndef AUTOSTRAFERIGHTTHREETOTE_H
-#define AUTOSTRAFERIGHTTHREETOTE_H
 
-#include "Commands/CommandGroup.h"
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class autoStrafeRightThreeTote: public CommandGroup {
-public:	
-	autoStrafeRightThreeTote();
-	void pickUpToteAndGoToNextOne();
+class spoolAboveContainer: public Command {
+public:
+	spoolAboveContainer();
+	virtual void Initialize();
+	virtual void Execute();
+	virtual bool IsFinished();
+	virtual void End();
+	virtual void Interrupted();
 };
 
 #endif

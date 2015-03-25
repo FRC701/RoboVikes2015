@@ -13,15 +13,13 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/haySqueezerOpen.h"
 #include "Commands/PneIntakeOut.h"
-#include "Commands/autoContainer.h"
 #include "Commands/autoDriveIntoZone.h"
 #include "Commands/autoOneTote.h"
-#include "Commands/autoThreeTote.h"
+#include "Commands/autoContainer.h"
+#include "Commands/autoStrafeRightThreeTote.h"
 #include "Commands/autoStrafe.h"
 #include "Commands/autoDoNothing.h"
-#include "Commands/autoLeftStrafeThreeTote.h"
-#include "Commands/autoStrafe.h"
-#include "Commands/autoWideStack.h"
+#include "Commands/autoTestRightThreeTote.h"
 #include "PowerDistributionPanel.h"
 
 
@@ -60,22 +58,18 @@ void Robot::RobotInit() {
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
 	accel = new BuiltInAccelerometer(Accelerometer::kRange_4G);
-	// add the multiple autonomous modes to the sendable chooser
+
 //Autos......................................................................................
-	// double testStrafeValue = Robot::prefs->GetDouble("testStrafeValue", 0.0);
 	autonomousModeChooser = new SendableChooser();
-	autonomousModeChooser->AddDefault("AutoDriveIntoZone", new autoDriveIntoZone());
+	autonomousModeChooser->AddDefault("AutoRightThreeToteFacingFront", new autoStrafeRightThreeTote());
+	autonomousModeChooser->AddObject("AutoDriveIntoZone", new autoDriveIntoZone());
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
-	autonomousModeChooser->AddObject("LEFT-AutoThreeTote", new autoLeftStrafeThreeTote());
-	autonomousModeChooser->AddObject("Auto Strafe", new autoStrafe(1000, 1.0));
-	autonomousModeChooser->AddObject("AutoWideStack", new autoWideStack());
-	autonomousModeChooser->AddObject("AutoThreeTote", new autoThreeTote());
 	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680, 2.0));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
+	// autonomousModeChooser->AddObject("AUTO TEST ONLY THREE TOTE", new autoTestRightThreeTote());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
-	// SmartDashboard::PutNumber("testStrafeValue", testStrafeValue);
 
 //StartUp....................................................................................
 
@@ -114,7 +108,9 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
-	// instantiate the command used for the autonomous period
+	// in case Robot::RobotInit() isn't called
+	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
+
 	Robot::spool->spoolLeftMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 	Robot::spool->spoolRightMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 
@@ -123,6 +119,7 @@ void Robot::AutonomousInit() {
 	Robot::chassis->rightFront->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 	Robot::chassis->rightRear->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 
+	// instantiate the command used for the autonomous period
 	autonomousCommand = (Command*) (autonomousModeChooser->GetSelected());
 
 	if (autonomousCommand != NULL)
@@ -131,13 +128,12 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
-
-	SmartDashboard::PutNumber("Forward Encoder", Robot::chassis->leftRear->GetEncPosition());
-
-	SmartDashboard::PutNumber("Strafing Encoder", Robot::chassis->rightRear->GetEncPosition());
 }
 
 void Robot::TeleopInit() {
+	// in case Robot::RobotInit() isn't called
+	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
+
 	// This makes sure that the autonomous stops running when
 	// teleop starts running. If you want the autonomous to
 	// continue until interrupted by another command, remove
