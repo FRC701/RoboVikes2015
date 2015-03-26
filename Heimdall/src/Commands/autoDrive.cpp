@@ -79,8 +79,8 @@ bool autoDrive::IsFinished() {
 		mTimeForStop.Reset();
 	}
 	return (mTimeForStop.HasPeriodPassed(0.2) ||
-			mTimeout.HasPeriodPassed(Robot::prefs->GetDouble("autoDriveTimeout", 0.0)) ||
-			mTimeoutForEncoderChange.HasPeriodPassed(0.25));
+			mTimeout.HasPeriodPassed(Robot::prefs->GetDouble("autoDriveTimeout", 0.0)));// ||
+			// mTimeoutForEncoderChange.HasPeriodPassed(0.25));
 	//return Robot::chassis->pidController->OnTarget();
 }
 

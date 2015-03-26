@@ -9,20 +9,26 @@
 // it from being updated in the future.
 
 
+#ifndef AUTOSTRAFEUNTILNOYELLOWTOTE_H
+#define AUTOSTRAFEUNTILNOYELLOWTOTE_H
 
-#ifndef AUTOTHREETOTE_H
-#define AUTOTHREETOTE_H
 
-#include "Commands/CommandGroup.h"
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class autoThreeTote: public CommandGroup {
-public:	
-	autoThreeTote();
+class autoStrafeUntilNoYellowTote: public Command {
+public:
+	autoStrafeUntilNoYellowTote();
+	virtual void Initialize();
+	virtual void Execute();
+	virtual bool IsFinished();
+	virtual void End();
+	virtual void Interrupted();
 };
 
 #endif

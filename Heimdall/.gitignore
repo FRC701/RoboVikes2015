@@ -17,3 +17,7 @@
 /AutonomousCommand.cpp~
 /.project~
 *.cproject~
+/.project
+*.cproject
+*.properties
+*.xml

@@ -9,29 +9,21 @@
 // it from being updated in the future.
 
 
-#ifndef AUTOSTRAFETOTOTERIGHT_H
-#define AUTOSTRAFETOTOTERIGHT_H
 
+#include "autoTestRightThreeTote.h"
+#include "autoDrive.h"
+#include "Delay.h"
+#include "zeroLevel.h"
+#include "autoHaySqueezerOpen.h"
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+autoTestRightThreeTote::autoTestRightThreeTote() {
+	// Push the third yellow Tote into the Auto Zone
+	// While doing so, begin dropping the other two yellow Totes
+	AddParallel(new autoDrive(5500));
 
-/**
- *
- *
- * @author ExampleAuthor
- */
-class autoStrafeToToteRight: public Command {
-public:
-	autoStrafeToToteRight(double timeForStable = 0.0);
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
-private:
-	double timeForStable;
-	Timer* timer;
-};
+	AddSequential(new Delay(0.5));
+	AddSequential(new zeroLevel());
 
-#endif
+	// forfeit contact with the Tote stack
+	AddSequential(new autoHaySqueezerOpen());
+}

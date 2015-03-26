@@ -13,12 +13,13 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/haySqueezerOpen.h"
 #include "Commands/PneIntakeOut.h"
-#include "Commands/autoContainer.h"
 #include "Commands/autoDriveIntoZone.h"
 #include "Commands/autoOneTote.h"
-#include "Commands/autoThreeTote.h"
+#include "Commands/autoContainer.h"
+#include "Commands/autoStrafeRightThreeTote.h"
 #include "Commands/autoStrafe.h"
 #include "Commands/autoDoNothing.h"
+#include "Commands/autoTestRightThreeTote.h"
 #include "PowerDistributionPanel.h"
 
 
@@ -57,15 +58,16 @@ void Robot::RobotInit() {
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
 	accel = new BuiltInAccelerometer(Accelerometer::kRange_4G);
-	// add the multiple autonomous modes to the sendable chooser
+
 //Autos......................................................................................
 	autonomousModeChooser = new SendableChooser();
-	autonomousModeChooser->AddDefault("AutoDriveIntoZone", new autoDriveIntoZone());
+	autonomousModeChooser->AddDefault("AutoRightThreeToteFacingFront", new autoStrafeRightThreeTote());
+	autonomousModeChooser->AddObject("AutoDriveIntoZone", new autoDriveIntoZone());
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
-	autonomousModeChooser->AddObject("AutoThreeTote", new autoThreeTote());
 	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680, 2.0));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
+	// autonomousModeChooser->AddObject("AUTO TEST ONLY THREE TOTE", new autoTestRightThreeTote());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
 
@@ -106,7 +108,9 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
-	// instantiate the command used for the autonomous period
+	// in case Robot::RobotInit() isn't called
+	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
+
 	Robot::spool->spoolLeftMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 	Robot::spool->spoolRightMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 
@@ -115,6 +119,7 @@ void Robot::AutonomousInit() {
 	Robot::chassis->rightFront->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 	Robot::chassis->rightRear->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 
+	// instantiate the command used for the autonomous period
 	autonomousCommand = (Command*) (autonomousModeChooser->GetSelected());
 
 	if (autonomousCommand != NULL)
@@ -123,13 +128,12 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
-
-	SmartDashboard::PutNumber("Forward Encoder", Robot::chassis->leftRear->GetEncPosition());
-
-	SmartDashboard::PutNumber("Strafing Encoder", Robot::chassis->rightRear->GetEncPosition());
 }
 
 void Robot::TeleopInit() {
+	// in case Robot::RobotInit() isn't called
+	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
+
 	// This makes sure that the autonomous stops running when
 	// teleop starts running. If you want the autonomous to
 	// continue until interrupted by another command, remove
@@ -153,9 +157,9 @@ void Robot::TeleopPeriodic() {
 	if(Robot::prefs->GetBoolean("debug", false))
 	{
 
-		SmartDashboard::PutNumber("Accelerometer: X", accel->GetX());
-		SmartDashboard::PutNumber("Accelerometer: Y", accel->GetY());
-		SmartDashboard::PutNumber("Accelerometer: Z", accel->GetZ());
+		// SmartDashboard::PutNumber("Accelerometer: X", accel->GetX());
+		// SmartDashboard::PutNumber("Accelerometer: Y", accel->GetY());
+		// SmartDashboard::PutNumber("Accelerometer: Z", accel->GetZ());
 		/*
 		SmartDashboard::PutNumber("Acceleration X", 	chassis->accelerometerX->getAcceleration());
 		SmartDashboard::PutNumber("Velocity X", 	chassis->accelerometerX->getVelocity());
@@ -191,6 +195,7 @@ void Robot::TeleopPeriodic() {
 	}
 //JoySticks.............................................................................................
 	SmartDashboard::PutNumber("Joystick 4 Value", Robot::oi->getcoDriver()->GetRawAxis(4));
+	SmartDashboard::PutNumber("Joystick 1 Value", Robot::oi->getdriver()->GetRawAxis(1));
 
 //Encoder...............................................................................................
 	SmartDashboard::PutNumber("Elevator Encoder", Robot::spool->spoolRightMotor->GetEncPosition());
@@ -211,6 +216,11 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutBoolean("Right HaySqueezer", Robot::haySqueezer->rightPneSensor->Get());
 
 	SmartDashboard::PutBoolean("UserButton", GetUserButton());
+
+	//Robot::chassis->leftFront->SetVoltageRampRate(0.01);
+	//Robot::chassis->leftRear->SetVoltageRampRate(0.01);
+	//Robot::chassis->rightFront->SetVoltageRampRate(0.01);
+	//Robot::chassis->rightRear->SetVoltageRampRate(0.01);
 
 }
 
