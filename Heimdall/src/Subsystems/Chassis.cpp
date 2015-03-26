@@ -39,8 +39,8 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	rightRear = RobotMap::chassisrightRearMotor;
 	robotDrive = RobotMap::chassisRobotDrive;
 //Forward.....................................................................................
-	pidInput = new CANTalonEncoderPIDSource(leftRear);
-	pidOutput = new RobotDrivePIDOutput(robotDrive);
+	pidInput = new CANTalonEncoderPIDSource(leftRear, false);
+	pidOutput = new RobotDrivePIDOutput(robotDrive, false, 0.0, false);
 	pidController = new PIDController(kP, kI, kD, pidInput, pidOutput);
 	pidController->SetInputRange(-100000.0, 1000000.0);
 	pidController->SetOutputRange(-0.5, 0.5);
@@ -53,7 +53,7 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	pidStrafeController->SetOutputRange(-0.75, 0.75);
 	pidStrafeController->SetAbsoluteTolerance(150);
 //Strafing Wall...............................................................................
-	pidStrafeWallOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe, 0.15);
+	pidStrafeWallOutput = new RobotDrivePIDOutput(robotDrive, RobotDrivePIDOutput::kStrafe, 0.15, false);
 	pidStrafeWallController = new PIDController(kPS, kIS, kDS, pidStrafeInput, pidStrafeWallOutput);
 	pidStrafeWallController->SetInputRange(-100000.0, 1000000.0);
 	pidStrafeWallController->SetOutputRange(-0.75, 0.75);
