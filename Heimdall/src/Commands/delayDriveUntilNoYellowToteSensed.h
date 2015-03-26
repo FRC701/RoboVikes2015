@@ -9,21 +9,26 @@
 // it from being updated in the future.
 
 
+#ifndef DELAYDRIVEUNTILNOYELLOWTOTESENSED_H
+#define DELAYDRIVEUNTILNOYELLOWTOTESENSED_H
 
-#ifndef AUTOSTRAFERIGHTTHREETOTE_H
-#define AUTOSTRAFERIGHTTHREETOTE_H
 
-#include "Commands/CommandGroup.h"
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class autoStrafeRightThreeTote: public CommandGroup {
-public:	
-	autoStrafeRightThreeTote();
-	void pickUpToteAndGoToNextOne();
+class delayDriveUntilNoYellowToteSensed: public Command {
+public:
+	delayDriveUntilNoYellowToteSensed();
+	virtual void Initialize();
+	virtual void Execute();
+	virtual bool IsFinished();
+	virtual void End();
+	virtual void Interrupted();
 };
 
 #endif

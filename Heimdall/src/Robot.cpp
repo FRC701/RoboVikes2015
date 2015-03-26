@@ -19,6 +19,7 @@
 #include "Commands/autoStrafeRightThreeTote.h"
 #include "Commands/autoStrafe.h"
 #include "Commands/autoDoNothing.h"
+#include "Commands/autoTestRightThreeTote.h"
 #include "PowerDistributionPanel.h"
 
 
@@ -60,12 +61,13 @@ void Robot::RobotInit() {
 
 //Autos......................................................................................
 	autonomousModeChooser = new SendableChooser();
-	autonomousModeChooser->AddDefault("AutoDriveIntoZone", new autoDriveIntoZone());
+	autonomousModeChooser->AddDefault("AutoRightThreeToteFacingFront", new autoStrafeRightThreeTote());
+	autonomousModeChooser->AddObject("AutoDriveIntoZone", new autoDriveIntoZone());
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
-	autonomousModeChooser->AddObject("AutoRightThreeToteFacingFront", new autoStrafeRightThreeTote());
 	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680, 2.0));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
+	// autonomousModeChooser->AddObject("AUTO TEST ONLY THREE TOTE", new autoTestRightThreeTote());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
 
@@ -106,6 +108,9 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
+	// in case Robot::RobotInit() isn't called
+	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
+
 	Robot::spool->spoolLeftMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 	Robot::spool->spoolRightMotor->ConfigNeutralMode(CANSpeedController::kNeutralMode_Brake);
 
@@ -126,6 +131,9 @@ void Robot::AutonomousPeriodic() {
 }
 
 void Robot::TeleopInit() {
+	// in case Robot::RobotInit() isn't called
+	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
+
 	// This makes sure that the autonomous stops running when
 	// teleop starts running. If you want the autonomous to
 	// continue until interrupted by another command, remove

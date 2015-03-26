@@ -37,11 +37,11 @@ bool autoLightStrafeRight::IsFinished() {
 
 // Called once after isFinished returns true
 void autoLightStrafeRight::End() {
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
+	// Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void autoLightStrafeRight::Interrupted() {
-	Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
+	// Robot::chassis->robotDrive->MecanumDrive_Cartesian(0.0, 0.0, 0.0);
 }

@@ -49,8 +49,8 @@ void intakeOff::Execute() {
 */
 //Box....................................................................................
 ///*
-	Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1)); //* 0.5);
-	Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1)); //* -0.5);
+	Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * -0.75);
+	Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * 0.75);
 //*/
 }
 
