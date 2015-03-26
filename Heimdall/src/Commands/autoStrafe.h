@@ -23,29 +23,34 @@
  */
 class autoStrafe: public Command {
 public:
+	enum Purpose
+	{
+		noneSpecified, // indicates error
+		rightToAvoidContainer,
+		leftToAvoidYellowTote,
+		leftFromLandfillZone,
+	};
+public:
 	autoStrafe();
-	autoStrafe(bool distanceBased, bool timerBased, bool encoderSafety);
+	autoStrafe(Purpose purpose, bool distanceBased,
+				bool timerBased, bool encoderSafety);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-public:
-	enum Purpose
-	{
-		noneSpecified, // indicates error
-		rightToAvoidContainerBeforeDrivingForward,
-		leftToAvoidYellowToteBeforeDrivingForward,
-		leftFromLandfillZone,
-		rightToAvoidContainerBeforeElevatorRises,
-	};
 private:
+	Purpose mPurpose;
+
 	bool mDistanceBased;
 	bool mTimerBased;
 	bool mEncoderSafety;
 
+	int mDriveDistance;
+
 	// Handles timeout for the entire command
 	Timer mTimeoutTimer;
+	double mTimeout;
 
 	// Handles timeout for change in encoder values
 	Timer mTimeoutForEncoderChange;
