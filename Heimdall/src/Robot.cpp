@@ -19,7 +19,6 @@
 #include "Commands/autoStrafeRightThreeTote.h"
 #include "Commands/autoStrafe.h"
 #include "Commands/autoDoNothing.h"
-#include "Commands/autoTestRightThreeTote.h"
 #include "PowerDistributionPanel.h"
 
 
@@ -70,7 +69,6 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("AutoStrafeFromLandfill",
 		new autoStrafe(autoStrafe::Purpose::leftFromLandfillZone, false, true, false));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
-	// autonomousModeChooser->AddObject("AUTO TEST ONLY THREE TOTE", new autoTestRightThreeTote());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
 
