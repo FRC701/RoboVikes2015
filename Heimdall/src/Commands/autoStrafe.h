@@ -50,11 +50,11 @@ private:
 
 	// Handles timeout for the entire command
 	Timer mCommandTimeoutTimer;
-	double mCommandTimeoutAmount; // amount of time to time out
+	double mCommandTimeoutAmount; // required time before timing out
 
-	// Handles timeout for change in encoder values
+	// Handles timeout for change in encoder value
 	Timer mTimeoutForEncoderChangeTimer;
-	double mPreviousEncoderReading;
+	int mPreviousEncoderReading;
 };
 
 #endif

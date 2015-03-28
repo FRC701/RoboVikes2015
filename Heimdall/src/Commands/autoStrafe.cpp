@@ -23,7 +23,7 @@ autoStrafe::autoStrafe()
 	mCommandTimeoutTimer(),
 	mCommandTimeoutAmount(0.0),
 	mTimeoutForEncoderChangeTimer(),
-	mPreviousEncoderReading(0.0)
+	mPreviousEncoderReading(0)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -43,7 +43,7 @@ autoStrafe::autoStrafe(Purpose purpose, bool distanceBased,
 	mCommandTimeoutTimer(),
 	mCommandTimeoutAmount(0.0),
 	mTimeoutForEncoderChangeTimer(),
-	mPreviousEncoderReading(0.0)
+	mPreviousEncoderReading(0)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -87,14 +87,14 @@ void autoStrafe::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void autoStrafe::Execute() {
-
 	Robot::chassis->pidStrafeWallController->Enable();
 
 	if (mEncoderSafety)
 	{
 		// Check if encoder enough to show progress
-		if ((std::abs(Robot::chassis->rightRear->GetEncPosition()) - mPreviousEncoderReading)
-				< Robot::prefs->GetInt("autoStrafeRequiredEncoderProgress", 0))
+		if ((std::abs(Robot::chassis->rightRear->GetEncPosition())
+		     - mPreviousEncoderReading)
+			 < Robot::prefs->GetInt("autoStrafeRequiredEncoderProgress", 0))
 		{
 			mTimeoutForEncoderChangeTimer.Start();
 		}
@@ -110,9 +110,12 @@ void autoStrafe::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool autoStrafe::IsFinished() {
-	return ((mDistanceBased && Robot::chassis->pidStrafeWallController->OnTarget()) ||
-			(mTimerBased && mCommandTimeoutTimer.HasPeriodPassed(mCommandTimeoutAmount)) ||
-			(mEncoderSafety && mTimeoutForEncoderChangeTimer.HasPeriodPassed(0.25)));
+	return ((mDistanceBased &&
+			 Robot::chassis->pidStrafeWallController->OnTarget()) ||
+			(mTimerBased &&
+			 mCommandTimeoutTimer.HasPeriodPassed(mCommandTimeoutAmount)) ||
+			(mEncoderSafety &&
+			 mTimeoutForEncoderChangeTimer.HasPeriodPassed(0.25)));
 }
 
 // Called once after isFinished returns true
