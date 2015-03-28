@@ -18,7 +18,6 @@
 #include "Delay.h"
 #include "autoDrive.h"
 #include "zeroLevel.h"
-#include "goToyPosition.h"
 #include "autoStrafe.h"
 #include "chassisStopMoving.h"
 
@@ -39,9 +38,8 @@ autoContainer::autoContainer() {
 	AddSequential(new twoLevel());
 
 	// Slightly strafe left to avoid hitting the yellow tote
-	AddSequential(new autoStrafe(-500, 0.5));
-
-	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
+	AddSequential(new autoStrafe(autoStrafe::Purpose::leftToAvoidYellowTote,
+		false, true, false));
 
 	// Drive into the auto zone
 	AddSequential(new autoDrive(7300));
@@ -55,7 +53,6 @@ autoContainer::autoContainer() {
 	// abandon contact with the container
 	// AddSequential(new zeroLevel());
 	// AddSequential(new autoHaySqueezerOpen());
-	// AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!
 	// AddSequential(new autoDrive(-300));
 
 	// To run multiple commands at the same time,

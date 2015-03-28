@@ -192,7 +192,8 @@ OI::OI() {
 
 //Auto Testing.......................................................
 	SmartDashboard::PutData("autoDrive X", new autoDrive(1000.0));
-	SmartDashboard::PutData("autoStrafe X", new autoStrafe(1000.0, 5.0));
+	SmartDashboard::PutData("autoStrafe X", new autoStrafe(
+		autoStrafe::Purpose::rightToAvoidContainer, false, true, false));
 
 //Guitar..........................................................
 /*

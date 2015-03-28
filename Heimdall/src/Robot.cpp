@@ -61,11 +61,14 @@ void Robot::RobotInit() {
 
 //Autos......................................................................................
 	autonomousModeChooser = new SendableChooser();
-	autonomousModeChooser->AddDefault("AutoRightThreeToteFacingFront", new autoStrafeRightThreeTote());
+
+	autonomousModeChooser->AddDefault("AutoRightThreeToteFacingFront",
+		new autoStrafeRightThreeTote());
 	autonomousModeChooser->AddObject("AutoDriveIntoZone", new autoDriveIntoZone());
 	autonomousModeChooser->AddObject("AutoOneTote", new autoOneTote());
 	autonomousModeChooser->AddObject("AutoContainer", new autoContainer());
-	autonomousModeChooser->AddObject("AutoStrafeFromLandfill", new autoStrafe(-680, 2.0));
+	autonomousModeChooser->AddObject("AutoStrafeFromLandfill",
+		new autoStrafe(autoStrafe::Purpose::leftFromLandfillZone, false, true, false));
 	autonomousModeChooser->AddObject("AutoDoNothing", new AutoDoNothing());
 	// autonomousModeChooser->AddObject("AUTO TEST ONLY THREE TOTE", new autoTestRightThreeTote());
 

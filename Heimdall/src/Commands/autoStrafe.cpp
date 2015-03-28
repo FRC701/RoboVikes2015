@@ -58,16 +58,16 @@ void autoStrafe::Initialize() {
 	switch (mPurpose)
 	{
 	case rightToAvoidContainer:
-		mDriveDistance = 0;
-		mTimeout = 0;
+		mDriveDistance = 500;
+		mTimeout = 0.5;
 		break;
 	case leftToAvoidYellowTote:
-		mDriveDistance = 0;
-		mTimeout = 0;
+		mDriveDistance = -500;
+		mTimeout = 0.5;
 		break;
 	case leftFromLandfillZone:
-		mDriveDistance = 0;
-		mTimeout = 0;
+		mDriveDistance = -680;
+		mTimeout = 2.0;
 		break;
 	default:
 		mDriveDistance = 0;
@@ -101,17 +101,15 @@ void autoStrafe::Execute() {
 			mTimeoutForEncoderChange.Stop();
 			mTimeoutForEncoderChange.Reset();
 		}
-	}
 
-	mPreviousEncoderReading = Robot::chassis->rightRear->GetEncPosition();
+		mPreviousEncoderReading = Robot::chassis->rightRear->GetEncPosition();
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool autoStrafe::IsFinished() {
-	return (Robot::chassis->pidStrafeWallController->OnTarget() ||
-			// mTimeoutTimer.HasPeriodPassed(Robot::prefs->GetDouble("autoStrafeTimeout", 0.0)) ||
-			mTimeoutTimer.HasPeriodPassed(mTimeout)); // ||
-			// mTimeoutForEncoderChange.HasPeriodPassed(0.25));
+	return ((mDistanceBased && Robot::chassis->pidStrafeWallController->OnTarget()) ||
+			(mTimerBased && mTimeoutTimer.HasPeriodPassed(mTimeout)));
 }
 
 // Called once after isFinished returns true
