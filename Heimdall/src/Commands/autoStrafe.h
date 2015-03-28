@@ -49,11 +49,11 @@ private:
 	int mDriveDistance;
 
 	// Handles timeout for the entire command
-	Timer mTimeoutTimer;
-	double mTimeout;
+	Timer mCommandTimeoutTimer;
+	double mCommandTimeoutAmount; // amount of time to time out
 
 	// Handles timeout for change in encoder values
-	Timer mTimeoutForEncoderChange;
+	Timer mTimeoutForEncoderChangeTimer;
 	double mPreviousEncoderReading;
 };
 

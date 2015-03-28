@@ -20,9 +20,9 @@ autoStrafe::autoStrafe()
 	mTimerBased(true),
 	mEncoderSafety(true),
 	mDriveDistance(0),
-	mTimeoutTimer(),
-	mTimeout(0.0),
-	mTimeoutForEncoderChange(),
+	mCommandTimeoutTimer(),
+	mCommandTimeoutAmount(0.0),
+	mTimeoutForEncoderChangeTimer(),
 	mPreviousEncoderReading(0.0)
 {
 	// Use requires() here to declare subsystem dependencies
@@ -40,9 +40,9 @@ autoStrafe::autoStrafe(Purpose purpose, bool distanceBased,
 	mTimerBased(timerBased),
 	mEncoderSafety(encoderSafety),
 	mDriveDistance(0),
-	mTimeoutTimer(),
-	mTimeout(0.0),
-	mTimeoutForEncoderChange(),
+	mCommandTimeoutTimer(),
+	mCommandTimeoutAmount(0.0),
+	mTimeoutForEncoderChangeTimer(),
 	mPreviousEncoderReading(0.0)
 {
 	// Use requires() here to declare subsystem dependencies
@@ -59,27 +59,29 @@ void autoStrafe::Initialize() {
 	{
 	case rightToAvoidContainer:
 		mDriveDistance = 500;
-		mTimeout = 0.5;
+		mCommandTimeoutAmount = 0.5;
 		break;
 	case leftToAvoidYellowTote:
 		mDriveDistance = -500;
-		mTimeout = 0.5;
+		mCommandTimeoutAmount = 0.5;
 		break;
 	case leftFromLandfillZone:
 		mDriveDistance = -680;
-		mTimeout = 2.0;
+		mCommandTimeoutAmount = 2.0;
 		break;
 	default:
 		mDriveDistance = 0;
-		mTimeout = 0;
+		mCommandTimeoutAmount = 0;
 		break;
 	}
 
+	// Tell the robot where it's going
 	int setPoint = Robot::chassis->rightRear->GetEncPosition();
 	setPoint += mDriveDistance;
 	Robot::chassis->pidStrafeWallController->SetSetpoint(setPoint);
 
-	mTimeoutTimer.Start();
+	mCommandTimeoutTimer.Start();
+
 	mPreviousEncoderReading = Robot::chassis->rightRear->GetEncPosition();
 }
 
@@ -94,12 +96,12 @@ void autoStrafe::Execute() {
 		if ((std::abs(Robot::chassis->rightRear->GetEncPosition()) - mPreviousEncoderReading)
 				< Robot::prefs->GetInt("autoStrafeRequiredEncoderProgress", 0))
 		{
-			mTimeoutForEncoderChange.Start();
+			mTimeoutForEncoderChangeTimer.Start();
 		}
 		else
 		{
-			mTimeoutForEncoderChange.Stop();
-			mTimeoutForEncoderChange.Reset();
+			mTimeoutForEncoderChangeTimer.Stop();
+			mTimeoutForEncoderChangeTimer.Reset();
 		}
 
 		mPreviousEncoderReading = Robot::chassis->rightRear->GetEncPosition();
@@ -109,24 +111,25 @@ void autoStrafe::Execute() {
 // Make this return true when this Command no longer needs to run execute()
 bool autoStrafe::IsFinished() {
 	return ((mDistanceBased && Robot::chassis->pidStrafeWallController->OnTarget()) ||
-			(mTimerBased && mTimeoutTimer.HasPeriodPassed(mTimeout)));
+			(mTimerBased && mCommandTimeoutTimer.HasPeriodPassed(mCommandTimeoutAmount)) ||
+			(mEncoderSafety && mTimeoutForEncoderChangeTimer.HasPeriodPassed(0.25)));
 }
 
 // Called once after isFinished returns true
 void autoStrafe::End() {
-	mTimeoutTimer.Stop();
-	mTimeoutTimer.Reset();
-	mTimeoutForEncoderChange.Stop();
-	mTimeoutForEncoderChange.Reset();
+	mCommandTimeoutTimer.Stop();
+	mCommandTimeoutTimer.Reset();
+	mTimeoutForEncoderChangeTimer.Stop();
+	mTimeoutForEncoderChangeTimer.Reset();
 	Robot::chassis->pidStrafeWallController->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void autoStrafe::Interrupted() {
-	mTimeoutTimer.Stop();
-	mTimeoutTimer.Reset();
-	mTimeoutForEncoderChange.Stop();
-	mTimeoutForEncoderChange.Reset();
+	mCommandTimeoutTimer.Stop();
+	mCommandTimeoutTimer.Reset();
+	mTimeoutForEncoderChangeTimer.Stop();
+	mTimeoutForEncoderChangeTimer.Reset();
 	Robot::chassis->pidStrafeWallController->Disable();
 }
