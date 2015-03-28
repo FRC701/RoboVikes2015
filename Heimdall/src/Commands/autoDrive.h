@@ -26,7 +26,8 @@ public:
 	enum Purpose
 	{
 		noneSpecified, // indicates error
-
+		goToAutoZone,
+		threeToteAuto,
 	};
 public:
 	autoDrive();

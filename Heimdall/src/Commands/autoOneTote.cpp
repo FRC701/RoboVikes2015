@@ -38,7 +38,8 @@ autoOneTote::autoOneTote() {
 		false, true, false));
 
 	// Drive into the auto zone
-	AddSequential(new autoDrive(7300));
+	AddSequential(new autoDrive(autoDrive::Purpose::goToAutoZone,
+		true, true, false));
 
 	// Stop moving (for debugging purposes)
 	AddSequential(new chassisStopMoving());

@@ -22,11 +22,6 @@
 #include "chassisStopMoving.h"
 
 autoContainer::autoContainer() {
-	// Add Commands here:
-	// e.g. AddSequential(new Command1());
-	//      AddSequential(new Command2());
-	// these will run in order.
-
 	// Drop the elevator down and pick up the container
 	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new containerLevel());
@@ -42,7 +37,8 @@ autoContainer::autoContainer() {
 		false, true, false));
 
 	// Drive into the auto zone
-	AddSequential(new autoDrive(7300));
+	AddSequential(new autoDrive(autoDrive::Purpose::goToAutoZone,
+		true, true, false));
 
 	// Stop moving (for debugging purposes)
 	AddSequential(new chassisStopMoving());
@@ -54,16 +50,4 @@ autoContainer::autoContainer() {
 	// AddSequential(new zeroLevel());
 	// AddSequential(new autoHaySqueezerOpen());
 	// AddSequential(new autoDrive(-300));
-
-	// To run multiple commands at the same time,
-	// use AddParallel()
-	// e.g. AddParallel(new Command1());
-	//      AddSequential(new Command2());
-	// Command1 and Command2 will run in parallel.
-
-	// A command group will require all of the subsystems that each member
-	// would require.
-	// e.g. if Command1 requires chassis, and Command2 requires arm,
-	// a CommandGroup containing them would require both the chassis and the
-	// arm.
 }
