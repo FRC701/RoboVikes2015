@@ -93,8 +93,7 @@ void autoStrafe::Execute() {
 	{
 		// Check if encoder enough to show progress
 		if ((std::abs(Robot::chassis->rightRear->GetEncPosition())
-		     - mPreviousEncoderReading)
-			 < Robot::prefs->GetInt("autoStrafeRequiredEncoderProgress", 0))
+		     - mPreviousEncoderReading) < 50)
 		{
 			mTimeoutForEncoderChangeTimer.Start();
 		}
