@@ -68,6 +68,12 @@ void autoDrive::Initialize() {
 		mCommandTimeoutAmount =
 			Robot::prefs->GetDouble("autoDriveThreeToteTimeout", 4.5);
 		break;
+	case pullTwoContainers:
+		mDriveDistance =
+			Robot::prefs->GetInt("autoDrivePullTwoContainers", 1000);
+		mCommandTimeoutAmount =
+			Robot::prefs->GetDouble("autoDrivePullTwoContainersTimeout", 1.5);
+		break;
 	default:
 		mDriveDistance = 0;
 		mCommandTimeoutAmount = 0;

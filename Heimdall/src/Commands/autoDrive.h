@@ -28,6 +28,7 @@ public:
 		noneSpecified, // indicates error
 		goToAutoZone,
 		threeToteAuto,
+		pullTwoContainers,
 	};
 public:
 	autoDrive();
