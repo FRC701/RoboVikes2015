@@ -19,6 +19,7 @@
 #include "Commands/autoStrafeRightThreeTote.h"
 #include "Commands/autoStrafe.h"
 #include "Commands/autoDoNothing.h"
+#include "Commands/autoGrabTwoContainers.h"
 #include "PowerDistributionPanel.h"
 
 
@@ -69,6 +70,7 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("AutoStrafeFromLandfill",
 		new autoStrafe(autoStrafe::Purpose::leftFromLandfillZone, false, true, false));
 	autonomousModeChooser->AddObject("AutoRightThreeToteFacingFront", new autoStrafeRightThreeTote());
+	autonomousModeChooser->AddObject("AutoGrabTwoContainers", new autoGrabTwoContainers());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
 
