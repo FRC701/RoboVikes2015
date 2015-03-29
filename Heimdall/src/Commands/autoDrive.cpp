@@ -59,12 +59,14 @@ void autoDrive::Initialize() {
 	switch (mPurpose)
 	{
 	case goToAutoZone:
-		mDriveDistance = 7300;
-		mCommandTimeoutAmount = 4.5;
+		mDriveDistance = Robot::prefs->GetInt("autoDrive", 7300);
+		mCommandTimeoutAmount =
+			Robot::prefs->GetDouble("autoDriveTimeout", 4.5);
 		break;
 	case threeToteAuto:
-		mDriveDistance = 4200;
-		mCommandTimeoutAmount = 4.5;
+		mDriveDistance = Robot::prefs->GetInt("autoDriveThreeTote", 4200);
+		mCommandTimeoutAmount =
+			Robot::prefs->GetDouble("autoDriveThreeToteTimeout", 4.5);
 		break;
 	default:
 		mDriveDistance = 0;
