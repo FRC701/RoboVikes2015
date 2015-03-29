@@ -40,6 +40,8 @@ void Robot::RobotInit() {
 	prefs = Preferences::GetInstance();
 
 	// Fill up the preferences table
+	// The call of ContainsKey is necessary to avoid overriding
+	// already-existing preferences' values
 	if (!Robot::prefs->ContainsKey("intakeLeftJoystickMultiplier"))
 		Robot::prefs->PutDouble("intakeLeftJoystickMultiplier", -0.75);
 	if (!Robot::prefs->ContainsKey("intakeRightJoystickMultiplier"))
