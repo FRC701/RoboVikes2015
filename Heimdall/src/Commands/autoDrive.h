@@ -23,37 +23,22 @@
  */
 class autoDrive: public Command {
 public:
-	enum Purpose
-	{
-		noneSpecified, // indicates error
-		goToAutoZone,
-		threeToteAuto,
-	};
-public:
 	autoDrive();
-	autoDrive(Purpose purpose, bool distanceBased,
-			   bool timerBased, bool encoderSafety);
+	autoDrive(double setPoint);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
 private:
-	Purpose mPurpose;
-
-	bool mDistanceBased;
-	bool mTimerBased;
-	bool mEncoderSafety;
-
-	int mDriveDistance;
-
-	// Handles timeout for the entire command
-	Timer mCommandTimeoutTimer;
-	double mCommandTimeoutAmount; // required time before timing out
-
-	// Handles timeout for change in encoder value
-	Timer mTimeoutForEncoderChangeTimer;
-	int mPreviousEncoderReading;
+	double mDistance;
+	Timer mTimeout; // checks if this command has been running
+	                // for too long
+	Timer mTimeoutForEncoderChange; // checks how long the encoder
+	                                // has gone without changing within
+	                                // a tolerance range
+	int mPreviousEncoderReading; // for checking encoder change
+	Timer mTimeForStop;
 };
 
 #endif

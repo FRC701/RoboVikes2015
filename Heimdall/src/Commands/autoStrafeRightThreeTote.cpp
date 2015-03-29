@@ -57,8 +57,7 @@ autoStrafeRightThreeTote::autoStrafeRightThreeTote() {
 
 	// Push the third yellow Tote into the Auto Zone
 	// While doing so, begin dropping the other two yellow Totes
-	AddParallel(new autoDrive(autoDrive::Purpose::threeToteAuto,
-			true, true, false));
+	AddParallel(new autoDrive(4200));
 
 	AddSequential(new Delay(0.5));
 	AddSequential(new zeroLevel());

@@ -48,12 +48,10 @@ void intakeOff::Execute() {
 	}
 */
 //Box....................................................................................
-	Robot::intake->intakeLeftMotor->Set(
-		Robot::oi->getcoDriver()->GetRawAxis(1) *
-		Robot::prefs->GetDouble("intakeLeftJoystickMultiplier", -0.75));
-	Robot::intake->intakeRightMotor->Set(
-		Robot::oi->getcoDriver()->GetRawAxis(1) *
-		Robot::prefs->GetDouble("intakeRightJoystickMultiplier", 0.75));
+///*
+	Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * -0.75);
+	Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * 0.75);
+//*/
 }
 
 // Make this return true when this Command no longer needs to run execute()

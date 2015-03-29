@@ -14,15 +14,8 @@
 #include <cmath>
 
 autoDrive::autoDrive()
-:	mPurpose(Purpose::noneSpecified),
-	mDistanceBased(true),
-	mTimerBased(true),
-	mEncoderSafety(true),
-	mDriveDistance(0),
-	mCommandTimeoutTimer(),
-	mCommandTimeoutAmount(0.0),
-	mTimeoutForEncoderChangeTimer(),
-	mPreviousEncoderReading(0)
+:	mDistance(0), mTimeout(), mTimeoutForEncoderChange(),
+	mPreviousEncoderReading(0), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -33,17 +26,9 @@ autoDrive::autoDrive()
 }
 
 
-autoDrive::autoDrive(Purpose purpose, bool distanceBased,
-		bool timerBased, bool encoderSafety)
-:	mPurpose(purpose),
-	mDistanceBased(distanceBased),
-	mTimerBased(timerBased),
-	mEncoderSafety(encoderSafety),
-	mDriveDistance(0),
-	mCommandTimeoutTimer(),
-	mCommandTimeoutAmount(0.0),
-	mTimeoutForEncoderChangeTimer(),
-	mPreviousEncoderReading(0)
+autoDrive::autoDrive(double setPoint)
+:	mDistance(setPoint), mTimeout(), mTimeoutForEncoderChange(),
+	mPreviousEncoderReading(0), mTimeForStop()
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -55,82 +40,69 @@ autoDrive::autoDrive(Purpose purpose, bool distanceBased,
 
 // Called just before this Command runs the first time
 void autoDrive::Initialize() {
-
-	switch (mPurpose)
-	{
-	case goToAutoZone:
-		mDriveDistance = Robot::prefs->GetInt("autoDrive", 7300);
-		mCommandTimeoutAmount =
-			Robot::prefs->GetDouble("autoDriveTimeout", 4.5);
-		break;
-	case threeToteAuto:
-		mDriveDistance = Robot::prefs->GetInt("autoDriveThreeTote", 4200);
-		mCommandTimeoutAmount =
-			Robot::prefs->GetDouble("autoDriveThreeToteTimeout", 4.5);
-		break;
-	default:
-		mDriveDistance = 0;
-		mCommandTimeoutAmount = 0;
-		break;
-	}
-
-	// Tell the robot where it's going
 	float setPoint = Robot::chassis->leftRear->GetEncPosition();
-	setPoint += mDriveDistance;
+	setPoint += mDistance;
+	// SmartDashboard::PutNumber("setPoint", setPoint);
 	Robot::chassis->pidController->SetSetpoint(setPoint);
 
-	mCommandTimeoutTimer.Start();
-
-	mPreviousEncoderReading = Robot::chassis->leftRear->GetEncPosition();
+	mTimeout.Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void autoDrive::Execute() {
 	Robot::chassis->pidController->Enable();
 
-	if (mEncoderSafety)
+	// Check if encoder enough to show progress
+	if ((std::abs(Robot::chassis->leftRear->GetEncPosition())
+	     - mPreviousEncoderReading)
+		 < Robot::prefs->GetInt("autoDriveRequiredEncoderProgress", 0))
 	{
-		// Check if encoder enough to show progress
-		if ((std::abs(Robot::chassis->leftRear->GetEncPosition())
-			 - mPreviousEncoderReading) < 50)
-		{
-			mTimeoutForEncoderChangeTimer.Start();
-		}
-		else
-		{
-			mTimeoutForEncoderChangeTimer.Stop();
-			mTimeoutForEncoderChangeTimer.Reset();
-		}
-
-		mPreviousEncoderReading = Robot::chassis->leftRear->GetEncPosition();
+		mTimeoutForEncoderChange.Start();
 	}
+	else
+	{
+		mTimeoutForEncoderChange.Stop();
+		mTimeoutForEncoderChange.Reset();
+	}
+
+	mPreviousEncoderReading = Robot::chassis->leftRear->GetEncPosition();
+	// SmartDashboard::PutNumber("Auto Drive Set Point", Robot::chassis->pidController->GetSetpoint());
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool autoDrive::IsFinished() {
-	return ((mDistanceBased &&
-			 Robot::chassis->pidController->OnTarget()) ||
-			(mTimerBased &&
-			 mCommandTimeoutTimer.HasPeriodPassed(mCommandTimeoutAmount)) ||
-			(mEncoderSafety &&
-			 mTimeoutForEncoderChangeTimer.HasPeriodPassed(0.25)));
+	if(Robot::chassis->pidController->OnTarget())
+		mTimeForStop.Start();
+	else
+	{
+		mTimeForStop.Stop();
+		mTimeForStop.Reset();
+	}
+	return (mTimeForStop.HasPeriodPassed(0.2) ||
+			mTimeout.HasPeriodPassed(Robot::prefs->GetDouble("autoDriveTimeout", 0.0)));// ||
+			// mTimeoutForEncoderChange.HasPeriodPassed(0.25));
+	//return Robot::chassis->pidController->OnTarget();
 }
 
 // Called once after isFinished returns true
 void autoDrive::End() {
-	mCommandTimeoutTimer.Stop();
-	mCommandTimeoutTimer.Reset();
-	mTimeoutForEncoderChangeTimer.Stop();
-	mTimeoutForEncoderChangeTimer.Reset();
+	mTimeout.Stop();
+	mTimeout.Reset();
+	mTimeForStop.Stop();
+	mTimeForStop.Reset();
+	mTimeoutForEncoderChange.Stop();
+	mTimeoutForEncoderChange.Reset();
 	Robot::chassis->pidController->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void autoDrive::Interrupted() {
-	mCommandTimeoutTimer.Stop();
-	mCommandTimeoutTimer.Reset();
-	mTimeoutForEncoderChangeTimer.Stop();
-	mTimeoutForEncoderChangeTimer.Reset();
+	mTimeout.Stop();
+	mTimeout.Reset();
+	mTimeForStop.Stop();
+	mTimeForStop.Reset();
+	mTimeoutForEncoderChange.Stop();
+	mTimeoutForEncoderChange.Reset();
 	Robot::chassis->pidController->Disable();
 }

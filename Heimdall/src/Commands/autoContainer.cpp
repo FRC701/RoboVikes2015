@@ -18,10 +18,16 @@
 #include "Delay.h"
 #include "autoDrive.h"
 #include "zeroLevel.h"
+#include "goToyPosition.h"
 #include "autoStrafe.h"
 #include "chassisStopMoving.h"
 
 autoContainer::autoContainer() {
+	// Add Commands here:
+	// e.g. AddSequential(new Command1());
+	//      AddSequential(new Command2());
+	// these will run in order.
+
 	// Drop the elevator down and pick up the container
 	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new containerLevel());
@@ -33,12 +39,12 @@ autoContainer::autoContainer() {
 	AddSequential(new twoLevel());
 
 	// Slightly strafe left to avoid hitting the yellow tote
-	AddSequential(new autoStrafe(autoStrafe::Purpose::leftToAvoidYellowTote,
-		false, true, false));
+	AddSequential(new autoStrafe(-500, 0.5));
+
+	//AddSequential(new goToYPosition());			//REMEMBER TO REMOVE!!!
 
 	// Drive into the auto zone
-	AddSequential(new autoDrive(autoDrive::Purpose::goToAutoZone,
-		true, true, false));
+	AddSequential(new autoDrive(7300));
 
 	// Stop moving (for debugging purposes)
 	AddSequential(new chassisStopMoving());
@@ -49,5 +55,18 @@ autoContainer::autoContainer() {
 	// abandon contact with the container
 	// AddSequential(new zeroLevel());
 	// AddSequential(new autoHaySqueezerOpen());
+	// AddSequential(new goToYPosition());			//AND REMOVE THIS!!!!
 	// AddSequential(new autoDrive(-300));
+
+	// To run multiple commands at the same time,
+	// use AddParallel()
+	// e.g. AddParallel(new Command1());
+	//      AddSequential(new Command2());
+	// Command1 and Command2 will run in parallel.
+
+	// A command group will require all of the subsystems that each member
+	// would require.
+	// e.g. if Command1 requires chassis, and Command2 requires arm,
+	// a CommandGroup containing them would require both the chassis and the
+	// arm.
 }

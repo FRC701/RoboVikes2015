@@ -23,7 +23,7 @@ zeroLevel::zeroLevel() {
 // Called just before this Command runs the first time
 void zeroLevel::Initialize() {
 	Robot::spool->pidController->SetSetpoint(
-			Robot::prefs->GetDouble("zeroLevel", 20.0));
+			Robot::prefs->GetDouble("zeroLevel", 0.0));
 }
 
 // Called repeatedly when this Command is scheduled to run

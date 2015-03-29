@@ -21,8 +21,7 @@ goToTop::goToTop() {
 
 // Called just before this Command runs the first time
 void goToTop::Initialize() {
-	Robot::spool->pidController->SetSetpoint(
-		Robot::prefs->GetDouble("setpointTop", 3000.0));
+	Robot::spool->pidController->SetSetpoint(Robot::prefs->GetDouble("setpointTop"));
 }
 
 // Called repeatedly when this Command is scheduled to run

@@ -31,8 +31,7 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 	//delay
 	AddSequential(new Delay(0.5));
 	// strafe right to avoid hitting the container
-	AddSequential(new autoStrafe(autoStrafe::Purpose::rightToAvoidContainer,
-		false, true, false));
+	AddSequential(new autoStrafe(Robot::prefs->GetDouble("setpointStrafeRightAvoidContainer", 0.0), 5.0));
 	//Go above the container
 	AddSequential(new twoLevel());
 
