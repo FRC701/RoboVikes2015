@@ -69,7 +69,6 @@ void Robot::RobotInit() {
 	autonomousModeChooser->AddObject("AutoStrafeFromLandfill",
 		new autoStrafe(autoStrafe::Purpose::leftFromLandfillZone, false, true, false));
 	autonomousModeChooser->AddObject("AutoRightThreeToteFacingFront", new autoStrafeRightThreeTote());
-	// autonomousModeChooser->AddObject("AUTO TEST ONLY THREE TOTE", new autoTestRightThreeTote());
 
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
 
@@ -148,6 +147,10 @@ void Robot::TeleopInit() {
 		Robot::prefs->PutInt("autoDriveThreeTote", 4200);
 	if (!Robot::prefs->ContainsKey("autoDriveThreeToteTimeout"))
 		Robot::prefs->PutDouble("autoDriveThreeToteTimeout", 4.5);
+	if (!Robot::prefs->ContainsKey("autoDrivePullTwoContainers"))
+		Robot::prefs->PutInt("autoDrivePullTwoContainers", 4200);
+	if (!Robot::prefs->ContainsKey("autoDrivePullTwoContainersTimeout"))
+		Robot::prefs->PutDouble("autoDrivePullTwoContainersTimeout", 4.5);
 	if (!Robot::prefs->ContainsKey("zeroLevel"))
 		Robot::prefs->PutDouble("zeroLevel", 20.0);
 	if (!Robot::prefs->ContainsKey("icePickLevel"))
