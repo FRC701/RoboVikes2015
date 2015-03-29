@@ -70,9 +70,9 @@ void autoDrive::Initialize() {
 		break;
 	case pullTwoContainers:
 		mDriveDistance =
-			Robot::prefs->GetInt("autoDrivePullTwoContainers", 1000);
+			Robot::prefs->GetInt("autoDrivePullTwoContainers", 0);
 		mCommandTimeoutAmount =
-			Robot::prefs->GetDouble("autoDrivePullTwoContainersTimeout", 1.5);
+			Robot::prefs->GetDouble("autoDrivePullTwoContainersTimeout", 0.0);
 		break;
 	default:
 		mDriveDistance = 0;
