@@ -23,7 +23,7 @@ maxLevel::maxLevel() {
 // Called just before this Command runs the first time
 void maxLevel::Initialize() {
 	Robot::spool->pidController->SetSetpoint(
-		Robot::prefs->GetDouble("maxLevel", 0.0));
+		Robot::prefs->GetDouble("maxLevel", 3050.0));
 }
 
 // Called repeatedly when this Command is scheduled to run

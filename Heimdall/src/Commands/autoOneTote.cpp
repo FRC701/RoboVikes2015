@@ -23,11 +23,6 @@
 
 
 autoOneTote::autoOneTote() {
-	// Add Commands here:
-	// e.g. AddSequential(new Command1());
-	//      AddSequential(new Command2());
-	// these will run in order.
-
 	// Drop the elevator down and pick up the yellow tote
 	AddSequential(new autoHaySqueezerOpen());
 	AddSequential(new zeroLevel());
@@ -39,10 +34,12 @@ autoOneTote::autoOneTote() {
 	AddSequential(new oneLevel());
 
 	// Slightly strafe to the right to avoid hitting the container
-	AddSequential(new autoStrafe(500, 0.5));
+	AddSequential(new autoStrafe(autoStrafe::Purpose::rightToAvoidContainer,
+		false, true, false));
 
 	// Drive into the auto zone
-	AddSequential(new autoDrive(7300));
+	AddSequential(new autoDrive(autoDrive::Purpose::goToAutoZone,
+		true, true, false));
 
 	// Stop moving (for debugging purposes)
 	AddSequential(new chassisStopMoving());
@@ -55,16 +52,4 @@ autoOneTote::autoOneTote() {
 	// AddSequential(new autoHaySqueezerOpen());
 	// AddSequential(new twoLevel());
 	// AddSequential(new autoDrive(-500));
-
-	// To run multiple commands at the same time,
-	// use AddParallel()
-	// e.g. AddParallel(new Command1());
-	//      AddSequential(new Command2());
-	// Command1 and Command2 will run in parallel.
-
-	// A command group will require all of the subsystems that each member
-	// would require.
-	// e.g. if Command1 requires chassis, and Command2 requires arm,
-	// a CommandGroup containing them would require both the chassis and the
-	// arm.
 }

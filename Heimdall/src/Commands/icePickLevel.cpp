@@ -23,7 +23,7 @@ icePickLevel::icePickLevel() {
 // Called just before this Command runs the first time
 void icePickLevel::Initialize() {
 	Robot::spool->pidController->SetSetpoint(
-		Robot::prefs->GetDouble("icePickLevel", 0.0));
+		Robot::prefs->GetDouble("icePickLevel", 600.0));
 }
 
 // Called repeatedly when this Command is scheduled to run
