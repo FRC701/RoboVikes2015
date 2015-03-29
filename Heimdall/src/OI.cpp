@@ -230,7 +230,7 @@ OI::OI() {
 	cGreen->WhenReleased(new haySqueezerToggle());
 
 	cBlue = new JoystickButton(coDriver, 9);
-	cBlue->WhenReleased(new chuteStack());
+	cBlue->WhenReleased(new canGrabberToggle());
 	cWhite = new JoystickButton(coDriver, 13);
 	cWhite->WhenReleased(new twoLevel());
 	cBlack = new JoystickButton(coDriver, 8);
