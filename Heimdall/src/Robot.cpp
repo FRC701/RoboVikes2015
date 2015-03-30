@@ -150,9 +150,9 @@ void Robot::TeleopInit() {
 	if (!Robot::prefs->ContainsKey("autoDriveThreeToteTimeout"))
 		Robot::prefs->PutDouble("autoDriveThreeToteTimeout", 4.5);
 	if (!Robot::prefs->ContainsKey("autoDrivePullTwoContainers"))
-		Robot::prefs->PutInt("autoDrivePullTwoContainers", 4200);
+		Robot::prefs->PutInt("autoDrivePullTwoContainers", 0);
 	if (!Robot::prefs->ContainsKey("autoDrivePullTwoContainersTimeout"))
-		Robot::prefs->PutDouble("autoDrivePullTwoContainersTimeout", 4.5);
+		Robot::prefs->PutDouble("autoDrivePullTwoContainersTimeout", 0);
 	if (!Robot::prefs->ContainsKey("zeroLevel"))
 		Robot::prefs->PutDouble("zeroLevel", 20.0);
 	if (!Robot::prefs->ContainsKey("icePickLevel"))
