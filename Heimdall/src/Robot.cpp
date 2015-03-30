@@ -159,6 +159,12 @@ void Robot::TeleopInit() {
 		Robot::prefs->PutDouble("icePickLevel", 600.0);
 	if (!Robot::prefs->ContainsKey("maxLevel"))
 		Robot::prefs->PutDouble("maxLevel", 3050.0);
+	if (!Robot::prefs->ContainsKey("oneLevel"))
+		Robot::prefs->PutDouble("oneLevel", 1445.0);
+	if (!Robot::prefs->ContainsKey("twoLevel"))
+		Robot::prefs->PutDouble("twoLevel", 2500.0);
+	if (!Robot::prefs->ContainsKey("containerHeight"))
+		Robot::prefs->PutDouble("containerLevel", 945.0);
 
 	// in case Robot::RobotInit() isn't called
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);

@@ -22,7 +22,8 @@ containerLevel::containerLevel() {
 
 // Called just before this Command runs the first time
 void containerLevel::Initialize() {
-	Robot::spool->pidController->SetSetpoint(945);
+	Robot::spool->pidController->SetSetpoint(
+		Robot::prefs->GetDouble("containerLevel", 945.0));
 }
 
 // Called repeatedly when this Command is scheduled to run
