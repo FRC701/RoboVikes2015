@@ -19,7 +19,7 @@
 autoGrabTwoContainers::autoGrabTwoContainers() {
 	AddSequential(new canGrabberSetReverse());
 	// AddSequential(new canGrabberSetForward());
-	AddSequential(new Delay(0.3));
+	AddSequential(new Delay(-1.0));
 
 	AddSequential(new autoDrive(autoDrive::Purpose::pullTwoContainers, true, true, false));
 }

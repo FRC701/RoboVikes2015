@@ -11,16 +11,15 @@ Delay::Delay(double delayTime)
 
 void Delay::Initialize()
 {
+	if (mDelayTime < 0.0)
+		mDelayTime = Robot::prefs->GetDouble("autoGrabContainersDelay", 0.3);
+
 	mTimer.Start();
 }
 
 void Delay::Execute()
 {
 	// Do nothing but delay
-
-	// For testing purposes:
-	SmartDashboard::PutNumber("mDelayTime", mDelayTime);
-	SmartDashboard::PutNumber("mTimer", mTimer.Get());
 }
 
 bool Delay::IsFinished()
