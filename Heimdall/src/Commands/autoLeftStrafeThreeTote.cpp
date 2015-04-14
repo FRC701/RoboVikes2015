@@ -17,53 +17,24 @@
 #include "autoDrive.h"
 #include "autoStrafe.h"
 #include "autoWideStack.h"
-#include "autoLightStrafeLeft.h"
+#include "autoLightStrafeRight.h"
+
 #include "autoLeftStrafeThreeTote.h"
-#include "spoolAboveContainer.h"
-#include "autoWideStack.h"
-#include "autoStrafeToToteLeft.h"
-#include "autoStrafeUntilNoYellowTote.h"
-
-void autoLeftStrafeThreeTote::pickUpToteAndGoToNextOne() {
-	AddSequential(new autoHaySqueezerOpen());
-
-	// Lower the elevator and pick up the tote
-	AddSequential(new zeroLevel());
-	AddSequential(new haySqueezerClose());
-	AddSequential(new Delay(0.3)); // to let the hay squeezer close
-
-	// Go above container height
-	AddParallel(new spoolAboveContainer());
-
-	AddSequential(new autoStrafeUntilNoYellowTote());
-
-	//Strafe to the right to the second tote
-	AddSequential(new autoStrafeToToteLeft());
-}
 
 autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
-
-
-	//Strafe slightly left to clear second container
-	AddSequential(new autoLightStrafeLeft());		//Banner Sensor Dependent
-
-	// lower elevator directly above second tote
-	AddSequential(new autoWideStack());
-
-	// move back over second tote
-	AddSequential(new autoStrafeToToteLeft());
-
-	// Push the third yellow Tote into the Auto Zone
-	// While doing so, begin dropping the other two yellow Totes
-	AddParallel(new autoDrive(autoDrive::Purpose::threeToteAuto,
-	true, true, false));
-
-	AddSequential(new Delay(0.5));
-	AddSequential(new zeroLevel());
-
-	// forfeit contact with the Tote stack
+	//Open HaySqueezer
 	AddSequential(new autoHaySqueezerOpen());
-
+	//Go Down
+	AddSequential(new zeroLevel());
+	//close
+	AddSequential(new haySqueezerClose());
+	//delay
+	AddSequential(new Delay(0.5));
+	// strafe right to avoid hitting the container
+	AddSequential(new autoStrafe(autoStrafe::Purpose::rightToAvoidContainer,
+		false, true, false));
+	//Go above the container
+	AddSequential(new twoLevel());
 
 //.............................................................. Second Tote
 
@@ -80,7 +51,7 @@ autoLeftStrafeThreeTote::autoLeftStrafeThreeTote() {
 
 
 	//Strafe to the left to tote
-	//AddSequential(new autoStrafeToToteLeft());
+	AddSequential(new autoStrafeToToteLeft());
 	/*
 	//Strafe slightly right to clear container
 	//AddSequential(new autoStrafe(500));
