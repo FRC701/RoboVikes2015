@@ -167,6 +167,8 @@ void Robot::TeleopInit() {
 		Robot::prefs->PutDouble("twoLevel", 2500.0);
 	if (!Robot::prefs->ContainsKey("containerHeight"))
 		Robot::prefs->PutDouble("containerLevel", 945.0);
+	if(!Robot::prefs->ContainsKey("autoHightThreeTote"))
+		Robot::prefs->PutDouble("autoHightThreeTote", 1000);
 
 	// in case Robot::RobotInit() isn't called
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
