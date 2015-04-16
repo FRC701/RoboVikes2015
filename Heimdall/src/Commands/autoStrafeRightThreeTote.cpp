@@ -22,6 +22,7 @@
 #include "Delay.h"
 #include "oneLevel.h"
 #include "autoStrafeUntilNoYellowTote.h"
+#include "autoHighBeforeParallelThreeTote.h"
 
 void autoStrafeRightThreeTote::pickUpToteAndGoToNextOne() {
 	AddSequential(new autoHaySqueezerOpen());
@@ -30,6 +31,9 @@ void autoStrafeRightThreeTote::pickUpToteAndGoToNextOne() {
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerClose());
 	AddSequential(new Delay(0.3)); // to let the hay squeezer close
+
+	AddSequential(new autoHighBeforeParallelThreeTote());				// !!!! Might need changing,
+																		// Preference: autoHeightThreeTote
 
 	// Go above container height
 	AddParallel(new spoolAboveContainer());

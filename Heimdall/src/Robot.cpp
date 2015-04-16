@@ -165,10 +165,10 @@ void Robot::TeleopInit() {
 		Robot::prefs->PutDouble("oneLevel", 1445.0);
 	if (!Robot::prefs->ContainsKey("twoLevel"))
 		Robot::prefs->PutDouble("twoLevel", 2500.0);
-	if (!Robot::prefs->ContainsKey("containerHeight"))
+	if (!Robot::prefs->ContainsKey("containerLevel"))
 		Robot::prefs->PutDouble("containerLevel", 945.0);
-	if(!Robot::prefs->ContainsKey("autoHightThreeTote"))
-		Robot::prefs->PutDouble("autoHightThreeTote", 1000);
+	if(!Robot::prefs->ContainsKey("autoHeightThreeTote"))
+		Robot::prefs->PutDouble("autoHeightThreeTote", 1000);
 
 	// in case Robot::RobotInit() isn't called
 	SmartDashboard::PutData("Autonomous modes", autonomousModeChooser);
@@ -231,11 +231,11 @@ void Robot::TeleopPeriodic() {
 	//POV................................................................................................
 		SmartDashboard::PutNumber("POV CoDriver", Robot::oi->getcoDriver()->GetPOV());
 		SmartDashboard::PutNumber("POV Driver", Robot::oi->getdriver()->GetPOV());
-	}
-//JoySticks.............................................................................................
-	SmartDashboard::PutNumber("Joystick 4 Value", Robot::oi->getcoDriver()->GetRawAxis(4));
-	SmartDashboard::PutNumber("Joystick 1 Value", Robot::oi->getdriver()->GetRawAxis(1));
 
+	//JoySticks.............................................................................................
+		SmartDashboard::PutNumber("Joystick 4 Value", Robot::oi->getcoDriver()->GetRawAxis(4));
+		SmartDashboard::PutNumber("Joystick 1 Value", Robot::oi->getdriver()->GetRawAxis(1));
+	}
 //Encoder...............................................................................................
 	SmartDashboard::PutNumber("Elevator Encoder", Robot::spool->spoolRightMotor->GetEncPosition());
 
@@ -253,8 +253,6 @@ void Robot::TeleopPeriodic() {
 
 	SmartDashboard::PutBoolean("Left HaySqueezer", Robot::haySqueezer->leftPneSensor->Get());
 	SmartDashboard::PutBoolean("Right HaySqueezer", Robot::haySqueezer->rightPneSensor->Get());
-
-	SmartDashboard::PutBoolean("UserButton", GetUserButton());
 
 	//Robot::chassis->leftFront->SetVoltageRampRate(0.01);
 	//Robot::chassis->leftRear->SetVoltageRampRate(0.01);
