@@ -250,9 +250,11 @@ void Robot::TeleopPeriodic() {
 //LightSensor............................................................................................
 	SmartDashboard::PutBoolean("Left LightSensor", Robot::chassis->leftLightSensor->Get());
 	SmartDashboard::PutBoolean("Right LightSensor", Robot::chassis->rightLightSensor->Get());
-
-	SmartDashboard::PutBoolean("Left HaySqueezer", Robot::haySqueezer->leftPneSensor->Get());
-	SmartDashboard::PutBoolean("Right HaySqueezer", Robot::haySqueezer->rightPneSensor->Get());
+//HaySqueezer............................................................................................
+	//SmartDashboard::PutBoolean("Left HaySqueezer", Robot::haySqueezer->leftPneSensor->Get());
+	//SmartDashboard::PutBoolean("Right HaySqueezer", Robot::haySqueezer->rightPneSensor->Get());
+//UltraSonicSensor.......................................................................................
+	SmartDashboard::PutNumber("Left UltraSonic Sensor", Robot::chassis->leftUltra->GetDistanceUnits());
 
 	//Robot::chassis->leftFront->SetVoltageRampRate(0.01);
 	//Robot::chassis->leftRear->SetVoltageRampRate(0.01);

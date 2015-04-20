@@ -54,10 +54,10 @@ void RobotMap::init() {
 	chassisrightLightSensor = new DigitalInput(1);
 	lw->AddSensor("Chassis", "rightLightSensor", chassisrightLightSensor);
 	
-	chassisrightUltra = new Ultrasonic(4, 5);
+	chassisrightUltra = new Ultrasonic(6, 7);
 	lw->AddSensor("Chassis", "rightUltra", chassisrightUltra);
 	
-	chassisleftUltra = new Ultrasonic(6, 7);
+	chassisleftUltra = new Ultrasonic(4, 5);
 	lw->AddSensor("Chassis", "leftUltra", chassisleftUltra);
 	
 	pneIntakeintakeSolenoid = new DoubleSolenoid(0, 0, 7);      
