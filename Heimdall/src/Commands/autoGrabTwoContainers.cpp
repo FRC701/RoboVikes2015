@@ -9,26 +9,17 @@
 // it from being updated in the future.
 
 
-#ifndef DELAYDRIVEUNTILNOYELLOWTOTESENSED_H
-#define DELAYDRIVEUNTILNOYELLOWTOTESENSED_H
 
+#include "autoGrabTwoContainers.h"
+#include "canGrabberSetReverse.h"
+// #include "canGrabberSetForward.h"
+#include "Delay.h"
+#include "autoDrive.h"
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+autoGrabTwoContainers::autoGrabTwoContainers() {
+	AddSequential(new canGrabberSetReverse());
+	// AddSequential(new canGrabberSetForward());
+	AddSequential(new Delay(-1.0));
 
-/**
- *
- *
- * @author ExampleAuthor
- */
-class delayDriveUntilNoYellowToteSensed: public Command {
-public:
-	delayDriveUntilNoYellowToteSensed();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
-};
-
-#endif
+	AddSequential(new autoDrive(autoDrive::Purpose::pullTwoContainers, true, true, false));
+}

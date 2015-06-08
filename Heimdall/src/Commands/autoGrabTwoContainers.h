@@ -10,20 +10,19 @@
 
 
 
-#include "autoTestRightThreeTote.h"
-#include "autoDrive.h"
-#include "Delay.h"
-#include "zeroLevel.h"
-#include "autoHaySqueezerOpen.h"
+#ifndef AUTOGRABTWOCONTAINERS_H
+#define AUTOGRABTWOCONTAINERS_H
 
-autoTestRightThreeTote::autoTestRightThreeTote() {
-	// Push the third yellow Tote into the Auto Zone
-	// While doing so, begin dropping the other two yellow Totes
-	AddParallel(new autoDrive(5500));
+#include "Commands/CommandGroup.h"
 
-	AddSequential(new Delay(0.5));
-	AddSequential(new zeroLevel());
+/**
+ *
+ *
+ * @author ExampleAuthor
+ */
+class autoGrabTwoContainers: public CommandGroup {
+public:	
+	autoGrabTwoContainers();
+};
 
-	// forfeit contact with the Tote stack
-	AddSequential(new autoHaySqueezerOpen());
-}
+#endif

@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef AUTOSTRAFE_H
-#define AUTOSTRAFE_H
+#ifndef CANGRABBERTOGGLE_H
+#define CANGRABBERTOGGLE_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,40 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class autoStrafe: public Command {
+class canGrabberToggle: public Command {
 public:
-	enum Purpose
-	{
-		noneSpecified, // indicates error
-		rightToAvoidContainer,
-		leftToAvoidYellowTote,
-		leftFromLandfillZone,
-	};
-public:
-	autoStrafe();
-	autoStrafe(Purpose purpose, bool distanceBased,
-				bool timerBased, bool encoderSafety);
+	canGrabberToggle();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-private:
-	Purpose mPurpose;
-
-	bool mDistanceBased;
-	bool mTimerBased;
-	bool mEncoderSafety;
-
-	int mDriveDistance;
-
-	// Handles timeout for the entire command
-	Timer mCommandTimeoutTimer;
-	double mCommandTimeoutAmount; // required time before timing out
-
-	// Handles timeout for change in encoder value
-	Timer mTimeoutForEncoderChangeTimer;
-	int mPreviousEncoderReading;
 };
 
 #endif

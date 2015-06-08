@@ -22,7 +22,8 @@ oneLevel::oneLevel() {
 
 // Called just before this Command runs the first time
 void oneLevel::Initialize() {
-	Robot::spool->pidController->SetSetpoint(1445);
+	Robot::spool->pidController->SetSetpoint(
+		Robot::prefs->GetDouble("oneLevel", 1445.0));
 }
 
 // Called repeatedly when this Command is scheduled to run
