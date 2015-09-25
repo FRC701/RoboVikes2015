@@ -11,6 +11,16 @@
 
 
 #include "autoThreeToteL.h"
+#include "zeroLevel.h"
+#include "oneLevel.h"
+#include "Drive.h"
+#include "PneIntakeOut.h"
+#include "pneIntakeIn.h"
+#include "intakeIn.h"
+#include "Delay.h"
+#include "intakeOff.h"
+#include "autoStrafe.h"
+#include "haySqueezerOpen.h"
 
 autoThreeToteL::autoThreeToteL() {
 	// Add Commands here:
