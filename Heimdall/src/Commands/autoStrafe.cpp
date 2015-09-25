@@ -55,6 +55,7 @@ autoStrafe::autoStrafe(Purpose purpose, bool distanceBased,
 // Called just before this Command runs the first time
 void autoStrafe::Initialize() {
 
+
 	switch (mPurpose)
 	{
 	case rightToAvoidContainer:
