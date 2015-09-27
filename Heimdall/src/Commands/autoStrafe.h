@@ -29,6 +29,7 @@ public:
 		rightToAvoidContainer,
 		leftToAvoidYellowTote,
 		leftFromLandfillZone,
+		rightToAutoZone,
 	};
 public:
 	autoStrafe();

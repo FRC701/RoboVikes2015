@@ -29,6 +29,8 @@ public:
 		goToAutoZone,
 		threeToteAuto,
 		pullTwoContainers,
+		drivePastSecondTote,
+		drivePastThirdTote,
 	};
 public:
 	autoDrive();

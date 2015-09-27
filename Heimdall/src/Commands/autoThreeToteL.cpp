@@ -21,6 +21,7 @@
 #include "intakeOff.h"
 #include "autoStrafe.h"
 #include "haySqueezerOpen.h"
+#include "autoDrive.h"
 
 autoThreeToteL::autoThreeToteL() {
 	// Add Commands here:
@@ -30,8 +31,8 @@ autoThreeToteL::autoThreeToteL() {
 
 	AddSequential(new zeroLevel());
 	AddSequential(new oneLevel());
-	AddSequential(new Drive());
-	AddSequential(new PneIntakeOut());
+	AddSequential(new autoDrive(autoDrive::Purpose::drivePastSecondTote, false, true, false));
+/*	AddSequential(new PneIntakeOut());
 	AddSequential(new pneIntakeIn());
 	AddSequential(new intakeIn());
 	AddSequential(new Delay(1));
@@ -41,11 +42,11 @@ autoThreeToteL::autoThreeToteL() {
 	AddSequential(new Drive());
 	AddSequential(new pneIntakeIn());
 	AddSequential(new intakeIn());
-	AddSequential(new autoStrafe());
+	AddSequential(new autoStrafe());					//TODO: SortOut
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerOpen());
 	AddSequential(new PneIntakeOut());
-	AddSequential(new Drive());
+	AddSequential(new Drive()); */
 
 	// To run multiple commands at the same time,
 	// use AddParallel()

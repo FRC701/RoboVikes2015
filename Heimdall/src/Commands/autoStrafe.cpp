@@ -70,6 +70,10 @@ void autoStrafe::Initialize() {
 		mDriveDistance = -680;
 		mCommandTimeoutAmount = 2.0;
 		break;
+	case rightToAutoZone:
+		mDriveDistance = 1500;
+		mCommandTimeoutAmount = 3.0;
+		break;
 	default:
 		mDriveDistance = 0;
 		mCommandTimeoutAmount = 0;
@@ -88,6 +92,7 @@ void autoStrafe::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void autoStrafe::Execute() {
+
 	Robot::chassis->pidStrafeWallController->Enable();
 
 	if (mEncoderSafety)
