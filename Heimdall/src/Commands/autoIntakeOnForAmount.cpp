@@ -44,6 +44,8 @@ bool autoIntakeOnForAmount::IsFinished() {
 // Called once after isFinished returns true
 void autoIntakeOnForAmount::End() {
 	
+	Robot::intake->intakeLeftMotor->Set(0.0);
+	Robot::intake->intakeRightMotor->Set(0.0);
 	intakeTimer.Stop();
 	intakeTimer.Reset();
 }
@@ -52,6 +54,8 @@ void autoIntakeOnForAmount::End() {
 // subsystems is scheduled to run
 void autoIntakeOnForAmount::Interrupted() {
 
+	Robot::intake->intakeLeftMotor->Set(0.0);
+	Robot::intake->intakeRightMotor->Set(0.0);
 	intakeTimer.Stop();
 	intakeTimer.Reset();
 }
