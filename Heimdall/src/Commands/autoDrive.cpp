@@ -75,7 +75,7 @@ void autoDrive::Initialize() {
 		break;
 	case drivePastSecondTote:
 		mDriveDistance = 4000;
-		mCommandTimeoutAmount = 3.0;
+		mCommandTimeoutAmount = 1.75;
 		break;
 	case drivePastThirdTote:
 		mDriveDistance = 2000;

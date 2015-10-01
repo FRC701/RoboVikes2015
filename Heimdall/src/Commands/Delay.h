@@ -18,7 +18,8 @@ public:
 	virtual void Interrupted();
 	
 private:
-	double 		mDelayTime;
+	int 		mDelayTime;
+	int 		counter;
 	Timer 		mTimer;
 };
 

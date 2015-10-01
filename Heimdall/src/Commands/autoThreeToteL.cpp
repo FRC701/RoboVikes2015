@@ -22,6 +22,8 @@
 #include "autoStrafe.h"
 #include "haySqueezerOpen.h"
 #include "autoDrive.h"
+#include "icePickLevel.h"
+#include "twoLevel.h"
 
 autoThreeToteL::autoThreeToteL() {
 	// Add Commands here:
@@ -30,16 +32,17 @@ autoThreeToteL::autoThreeToteL() {
 	// these will run in order.
 
 	AddSequential(new zeroLevel());
-	AddSequential(new oneLevel());
+	AddSequential(new twoLevel());
+	AddSequential(new PneIntakeOut());
 	AddSequential(new autoDrive(autoDrive::Purpose::drivePastSecondTote, false, true, false));
-/*	AddSequential(new PneIntakeOut());
 	AddSequential(new pneIntakeIn());
 	AddSequential(new intakeIn());
-	AddSequential(new Delay(1));
+	AddSequential(new Delay(5));
 	AddSequential(new intakeOff());
 	AddSequential(new zeroLevel());
 	AddSequential(new PneIntakeOut());
-	AddSequential(new Drive());
+	AddSequential(new twoLevel());
+/*	AddSequential(new Drive());
 	AddSequential(new pneIntakeIn());
 	AddSequential(new intakeIn());
 	AddSequential(new autoStrafe());					//TODO: SortOut

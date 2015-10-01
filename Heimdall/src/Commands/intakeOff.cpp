@@ -23,6 +23,8 @@ intakeOff::intakeOff() {
 
 // Called just before this Command runs the first time
 void intakeOff::Initialize() {
+	Robot::intake->intakeLeftMotor->Set(0.0);
+	Robot::intake->intakeRightMotor->Set(0.0);
 
 }
 
