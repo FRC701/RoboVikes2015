@@ -81,6 +81,14 @@ void autoDrive::Initialize() {
 		mDriveDistance = 2000;
 		mCommandTimeoutAmount = 2.0;
 		break;
+	case driveIntoAutoZoneTimeBased:
+		mDriveDistance = 5000;
+		mCommandTimeoutAmount = 2.34;
+		break;
+	case driveBackwardsToLeaveThreeTotes:
+		mDriveDistance = -1000;
+		mCommandTimeoutAmount = 1.0;
+		break;
 	default:
 		mDriveDistance = 0;
 		mCommandTimeoutAmount = 0;

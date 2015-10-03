@@ -14,6 +14,7 @@
 #include "autoDrive.h"
 
 autoDriveIntoZone::autoDriveIntoZone() {
-	AddSequential(new autoDrive(autoDrive::Purpose::goToAutoZone,
-		true, true, false));
+
+	AddSequential(new autoDrive(autoDrive::Purpose::driveIntoAutoZoneTimeBased, false, true, false ));
+
 }

@@ -31,6 +31,8 @@ public:
 		pullTwoContainers,
 		drivePastSecondTote,
 		drivePastThirdTote,
+		driveIntoAutoZoneTimeBased,
+		driveBackwardsToLeaveThreeTotes,
 	};
 public:
 	autoDrive();

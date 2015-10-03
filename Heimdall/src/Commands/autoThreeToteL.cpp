@@ -24,6 +24,7 @@
 #include "autoDrive.h"
 #include "icePickLevel.h"
 #include "twoLevel.h"
+#include "autoIntakeOnForAmount.h"
 
 autoThreeToteL::autoThreeToteL() {
 	// Add Commands here:
@@ -31,25 +32,24 @@ autoThreeToteL::autoThreeToteL() {
 	//      AddSequential(new Command2());
 	// these will run in order.
 
+
 	AddSequential(new zeroLevel());
 	AddSequential(new twoLevel());
 	AddSequential(new PneIntakeOut());
 	AddSequential(new autoDrive(autoDrive::Purpose::drivePastSecondTote, false, true, false));
 	AddSequential(new pneIntakeIn());
-	AddSequential(new intakeIn());
-	AddSequential(new Delay(5));
-	AddSequential(new intakeOff());
-	AddSequential(new zeroLevel());
+	AddSequential(new autoIntakeOnForAmount(0.3));
 	AddSequential(new PneIntakeOut());
+	AddSequential(new zeroLevel());
 	AddSequential(new twoLevel());
-/*	AddSequential(new Drive());
+	AddSequential(new autoDrive(autoDrive::Purpose::drivePastThirdTote, false, true, false));
 	AddSequential(new pneIntakeIn());
-	AddSequential(new intakeIn());
-	AddSequential(new autoStrafe());					//TODO: SortOut
+	AddSequential(new autoIntakeOnForAmount(0.3));
+	AddSequential(new autoStrafe(autoStrafe::Purpose::rightToAutoZone, false, true, false));					//TODO: SortOut
 	AddSequential(new zeroLevel());
 	AddSequential(new haySqueezerOpen());
 	AddSequential(new PneIntakeOut());
-	AddSequential(new Drive()); */
+	AddSequential(new autoDrive(autoDrive::Purpose::driveBackwardsToLeaveThreeTotes, false, true, false));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()
