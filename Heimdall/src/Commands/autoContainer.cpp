@@ -37,8 +37,8 @@ autoContainer::autoContainer() {
 		false, true, false));
 
 	// Drive into the auto zone
-	AddSequential(new autoDrive(autoDrive::Purpose::goToAutoZone,
-		true, true, false));
+	AddSequential(new autoDrive(autoDrive::Purpose::driveIntoAutoZoneTimeBased,
+		false, true, false));
 
 	// Stop moving (for debugging purposes)
 	AddSequential(new chassisStopMoving());

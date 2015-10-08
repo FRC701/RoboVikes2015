@@ -21,10 +21,12 @@
 #include "intakeOff.h"
 #include "autoStrafe.h"
 #include "haySqueezerOpen.h"
+#include "haySqueezerClose.h"
 #include "autoDrive.h"
 #include "icePickLevel.h"
 #include "twoLevel.h"
 #include "autoIntakeOnForAmount.h"
+#include "containerLevel.h"
 
 autoThreeToteL::autoThreeToteL() {
 	// Add Commands here:
@@ -33,12 +35,15 @@ autoThreeToteL::autoThreeToteL() {
 	// these will run in order.
 
 
+//	AddSequential(new haySqueezerClose());
+//	AddSequential(new Delay(0.5));
 	AddSequential(new zeroLevel());
 	AddSequential(new twoLevel());
 	AddSequential(new PneIntakeOut());
 	AddSequential(new autoDrive(autoDrive::Purpose::drivePastSecondTote, false, true, false));
 	AddSequential(new pneIntakeIn());
-	AddSequential(new autoIntakeOnForAmount(0.3));
+	AddSequential(new autoIntakeOnForAmount(0.5));
+	AddSequential(new Delay(1.0));
 	AddSequential(new PneIntakeOut());
 	AddSequential(new zeroLevel());
 	AddSequential(new twoLevel());
