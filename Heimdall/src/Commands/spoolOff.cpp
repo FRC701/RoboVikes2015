@@ -30,7 +30,14 @@ void spoolOff::Execute() {
 	//Robot::spool->spoolLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
 	//Robot::spool->spoolRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
 
-	Robot::spool->pidOutput->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
+	//CoDriver axis..........................................................
+	//Robot::spool->pidOutput->Set(Robot::oi->getcoDriver()->GetRawAxis(4));
+
+	//CoDriver Xbox Controller..............................................
+	Robot::spool->pidOutput->Set(Robot::oi->getcoDriver()->GetRawAxis(5) * -1.0);
+
+	//Single Controller Opertated............................................................
+	//Robot::spool->pidOutput->Set(Robot::oi->getdriver()->GetRawAxis(5) * -1.0);
 
 }
 

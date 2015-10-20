@@ -237,7 +237,7 @@ OI::OI() {
 */
 
 //Box Code.........................................................
-///*
+/*
 	cYellow = new JoystickButton(coDriver, 2);
 	cYellow->WhenReleased(new pneIntakeToggle());
 	cSmallRed = new JoystickButton(coDriver, 1);
@@ -257,31 +257,64 @@ OI::OI() {
 	cRed->WhenReleased(new zeroLevel());
 	cGreenLeft = new JoystickButton(coDriver, 15);
 	cGreenLeft->WhenReleased(new icePickLevel());
-//*/
+*/
 
 //coDriver Xbox Controller................................................................
-/*
+///*
 	coButtonA = new JoystickButton(coDriver, 1);
-	coButtonA->WhileHeld(new intakeIn());
+		coButtonA->WhileHeld(new intakeIn());
 	coButtonB = new JoystickButton(coDriver, 2);
-	coButtonB->WhileHeld(new intakeOut());
+		coButtonB->WhileHeld(new intakeOut());
 	coButtonX = new JoystickButton(coDriver, 3);
-	coButtonX->WhenReleased(new pneIntakeToggle());
+		coButtonX->WhenReleased(new pneIntakeToggle());
 	coButtonLB = new JoystickButton(coDriver, 5);
-	coButtonLB->WhenReleased(new haySqueezerToggle());
+		coButtonLB->WhenReleased(new pneIntakeToggle());
 	coButtonRB = new JoystickButton(coDriver, 6);
-	coButtonRB->WhenReleased(new breakToggle());
-*/
+		coButtonRB->WhenReleased(new haySqueezerToggle());
+//*/
 
 //Not really being used any more......................................
 	dButtonRB = new JoystickButton(driver, 6);
+		dButtonRB->WhenReleased(new canGrabberToggle());
 	dButtonLB = new JoystickButton(driver, 5);
+
+//One Controller Operation..........................................................
+	dButtonA = new JoystickButton(driver, 1);
+		dButtonA->WhenReleased(new pneIntakeToggle());
+	dButtonX = new JoystickButton(driver, 3);
+		dButtonX->WhileHeld(new intakeIn());
+	dButtonB = new JoystickButton(driver, 2);
+		dButtonB->WhenReleased(new haySqueezerToggle());
+	dButtonY = new JoystickButton(driver, 4);
+		dButtonY->WhileHeld(new intakeOut());
 //....................................................................
 
 	dButtonL3 = new JoystickButton(driver, 9);
 	dButtonL3->WhenReleased(new rumble);;
 
 }
+
+//One Controller Operation................................................................
+
+JoystickButton* OI::getdButtonA()
+{
+	return dButtonA;
+}
+
+JoystickButton* OI::getdButtonX()
+{
+	return dButtonX;
+}
+JoystickButton* OI::getdButtonB()
+{
+	return dButtonB;
+}
+JoystickButton* OI::getdButtonY()
+{
+	return dButtonY;
+}
+
+//................................................................................
 
 JoystickButton* OI::getdButtonRB()
 {
