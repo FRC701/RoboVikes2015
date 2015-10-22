@@ -92,23 +92,23 @@ OI::OI() {
      
 
         // SmartDashboard Buttons
-	SmartDashboard::PutData("autoLeftStrafeThreeTote", new autoLeftStrafeThreeTote());
+//	SmartDashboard::PutData("autoLeftStrafeThreeTote", new autoLeftStrafeThreeTote());
 
-	SmartDashboard::PutData("autoDriveIntoZone", new autoDriveIntoZone());
+//	SmartDashboard::PutData("autoDriveIntoZone", new autoDriveIntoZone());
 
-	SmartDashboard::PutData("autoContainer", new autoContainer());
+//	SmartDashboard::PutData("autoContainer", new autoContainer());
 
-	SmartDashboard::PutData("AutoDoNothing", new AutoDoNothing());
+//	SmartDashboard::PutData("AutoDoNothing", new AutoDoNothing());
 
-	SmartDashboard::PutData("autoOneTote", new autoOneTote());
+//	SmartDashboard::PutData("autoOneTote", new autoOneTote());
 
-	SmartDashboard::PutData("autoStrafeToToteRight", new autoStrafeToToteRight());
+//	SmartDashboard::PutData("autoStrafeToToteRight", new autoStrafeToToteRight());
 
-	SmartDashboard::PutData("autoDrive", new autoDrive());
+//	SmartDashboard::PutData("autoDrive", new autoDrive());
 
 	SmartDashboard::PutData("intakeIn", new intakeIn());
 
-	SmartDashboard::PutData("Drive", new Drive());
+//	SmartDashboard::PutData("Drive", new Drive());
 
 	SmartDashboard::PutData("intakeOut", new intakeOut());
 
@@ -118,9 +118,9 @@ OI::OI() {
 
 	SmartDashboard::PutData("spoolOff", new spoolOff());
 
-	SmartDashboard::PutData("spoolClockwise", new spoolClockwise());
+//	SmartDashboard::PutData("spoolClockwise", new spoolClockwise());
 
-	SmartDashboard::PutData("spoolCounterClockwise", new spoolCounterClockwise());
+//	SmartDashboard::PutData("spoolCounterClockwise", new spoolCounterClockwise());
 
 	SmartDashboard::PutData("haySqueezerClose", new haySqueezerClose());
 
@@ -134,7 +134,7 @@ OI::OI() {
 
 	SmartDashboard::PutData("PneIntakeOut", new PneIntakeOut());
 
-	SmartDashboard::PutData("rumble", new rumble());
+//	SmartDashboard::PutData("rumble", new rumble());
 
 	SmartDashboard::PutData("oneLevel", new oneLevel());
 
@@ -150,9 +150,9 @@ OI::OI() {
 
 	SmartDashboard::PutData("breakToggle", new breakToggle());
 
-	SmartDashboard::PutData("goToYPosition", new goToYPosition());
+//	SmartDashboard::PutData("goToYPosition", new goToYPosition());
 
-	SmartDashboard::PutData("autoStrafe", new autoStrafe());
+//	SmartDashboard::PutData("autoStrafe", new autoStrafe());
 
 	SmartDashboard::PutData("chuteStack", new chuteStack());
 
@@ -160,35 +160,35 @@ OI::OI() {
 
 	SmartDashboard::PutData("chuteHight", new chuteHight());
 
-	SmartDashboard::PutData("oneLevelOpenIntake", new oneLevelOpenIntake());
+//	SmartDashboard::PutData("oneLevelOpenIntake", new oneLevelOpenIntake());
 
 	SmartDashboard::PutData("haySqueezerDefault", new haySqueezerDefault());
 
-	SmartDashboard::PutData("lightsOn", new lightsOn());
+//	SmartDashboard::PutData("lightsOn", new lightsOn());
 
-	SmartDashboard::PutData("lightsOff", new lightsOff());
+//	SmartDashboard::PutData("lightsOff", new lightsOff());
 
-	SmartDashboard::PutData("lightsDefault", new lightsDefault());
+//	SmartDashboard::PutData("lightsDefault", new lightsDefault());
 
-	SmartDashboard::PutData("autoHaySqueezerOpen", new autoHaySqueezerOpen());
+//	SmartDashboard::PutData("autoHaySqueezerOpen", new autoHaySqueezerOpen());
 
-	SmartDashboard::PutData("autoStrafeToToteLeft", new autoStrafeToToteLeft());
+//	SmartDashboard::PutData("autoStrafeToToteLeft", new autoStrafeToToteLeft());
 
-	SmartDashboard::PutData("autoStrafeRightThreeTote", new autoStrafeRightThreeTote());
+//	SmartDashboard::PutData("autoStrafeRightThreeTote", new autoStrafeRightThreeTote());
 
-	SmartDashboard::PutData("autoWideStack", new autoWideStack());
+//	SmartDashboard::PutData("autoWideStack", new autoWideStack());
 
-	SmartDashboard::PutData("autoLightStrafeRight", new autoLightStrafeRight());
+//	SmartDashboard::PutData("autoLightStrafeRight", new autoLightStrafeRight());
 
-	SmartDashboard::PutData("autoLightStrafeLeft", new autoLightStrafeLeft());
+//	SmartDashboard::PutData("autoLightStrafeLeft", new autoLightStrafeLeft());
 
-	SmartDashboard::PutData("chassisStopMoving", new chassisStopMoving());
+//	SmartDashboard::PutData("chassisStopMoving", new chassisStopMoving());
 
 	SmartDashboard::PutData("icePickLevel", new icePickLevel());
 
 	SmartDashboard::PutData("spoolAboveContainer", new spoolAboveContainer());
 
-	SmartDashboard::PutData("autoStrafeUntilNoYellowTote", new autoStrafeUntilNoYellowTote());
+//	SmartDashboard::PutData("autoStrafeUntilNoYellowTote", new autoStrafeUntilNoYellowTote());
 
 	SmartDashboard::PutData("canGrabberSetForward", new canGrabberSetForward());
 
@@ -196,17 +196,17 @@ OI::OI() {
 
 	SmartDashboard::PutData("canGrabberToggle", new canGrabberToggle());
 
-	SmartDashboard::PutData("autoGrabTwoContainers", new autoGrabTwoContainers());
+//	SmartDashboard::PutData("autoGrabTwoContainers", new autoGrabTwoContainers());
 
-	SmartDashboard::PutData("autoHighBeforeParallelThreeTote", new autoHighBeforeParallelThreeTote());
+//	SmartDashboard::PutData("autoHighBeforeParallelThreeTote", new autoHighBeforeParallelThreeTote());
 
-	SmartDashboard::PutData("autoForwardThreeTote", new autoForwardThreeTote());
+//	SmartDashboard::PutData("autoForwardThreeTote", new autoForwardThreeTote());
 
-	SmartDashboard::PutData("autoThreeToteL", new autoThreeToteL());
+//	SmartDashboard::PutData("autoThreeToteL", new autoThreeToteL());
 
-	SmartDashboard::PutData("openIntakeAndClose", new openIntakeAndClose());
+//	SmartDashboard::PutData("openIntakeAndClose", new openIntakeAndClose());
 
-	SmartDashboard::PutData("autoIntakeOnForAmount", new autoIntakeOnForAmount(3));
+//	SmartDashboard::PutData("autoIntakeOnForAmount", new autoIntakeOnForAmount(3));
 
 
     // END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS
@@ -261,6 +261,8 @@ OI::OI() {
 
 //coDriver Xbox Controller................................................................
 ///*
+	coButtonY = new JoystickButton(coDriver, 4);
+		coButtonY->WhileHeld(new intakeIn());
 	coButtonA = new JoystickButton(coDriver, 1);
 		coButtonA->WhileHeld(new intakeIn());
 	coButtonB = new JoystickButton(coDriver, 2);
@@ -279,6 +281,7 @@ OI::OI() {
 	dButtonLB = new JoystickButton(driver, 5);
 
 //One Controller Operation..........................................................
+	/*
 	dButtonA = new JoystickButton(driver, 1);
 		dButtonA->WhenReleased(new pneIntakeToggle());
 	dButtonX = new JoystickButton(driver, 3);
@@ -287,6 +290,7 @@ OI::OI() {
 		dButtonB->WhenReleased(new haySqueezerToggle());
 	dButtonY = new JoystickButton(driver, 4);
 		dButtonY->WhileHeld(new intakeOut());
+		*/
 //....................................................................
 
 	dButtonL3 = new JoystickButton(driver, 9);
@@ -295,7 +299,7 @@ OI::OI() {
 }
 
 //One Controller Operation................................................................
-
+/*
 JoystickButton* OI::getdButtonA()
 {
 	return dButtonA;
@@ -313,7 +317,7 @@ JoystickButton* OI::getdButtonY()
 {
 	return dButtonY;
 }
-
+*/
 //................................................................................
 
 JoystickButton* OI::getdButtonRB()

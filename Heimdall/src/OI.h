@@ -26,7 +26,7 @@ private:
 	JoystickButton* dButtonX;
 	JoystickButton* dButtonB;
 	JoystickButton* dButtonY;
-
+*/
 //coDriver Controller............................................................
 	JoystickButton* coButtonA;
 	JoystickButton* coButtonX;
@@ -34,9 +34,9 @@ private:
 	JoystickButton* coButtonY;
 	JoystickButton* coButtonRB;
 	JoystickButton* coButtonLB;
-*/
-//CoDriver Box Buttons............................................................
 
+//CoDriver Box Buttons............................................................
+/*
 	JoystickButton* cYellow;
 	JoystickButton* cSmallRed;
 	JoystickButton* cSmallBlack;
@@ -47,6 +47,8 @@ private:
 	JoystickButton* cBlack;
 	JoystickButton* cRed;
 	JoystickButton* cGreenLeft;
+
+	*/
 
 //Guitar......................................................................
 /*
