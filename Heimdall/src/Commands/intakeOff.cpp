@@ -51,14 +51,22 @@ void intakeOff::Execute() {
 */
 //Box....................................................................................
 
-	Robot::intake->intakeLeftMotor->Set(
-		Robot::oi->getcoDriver()->GetRawAxis(1) *
-		Robot::prefs->GetDouble("intakeLeftJoystickMultiplier", -0.75));
-	Robot::intake->intakeRightMotor->Set(
-		Robot::oi->getcoDriver()->GetRawAxis(1) *
-		Robot::prefs->GetDouble("intakeRightJoystickMultiplier", 0.75));
+	//Fix speed intakeSideMovement control.............................
+	Robot::intake->intakeLeftMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * -0.75);
 
+	Robot::intake->intakeRightMotor->Set(Robot::oi->getcoDriver()->GetRawAxis(1) * 0.75);
+
+	//Using Preferences to controll intakeSideMovement speed............................
+	/*
+		Robot::intake->intakeLeftMotor->Set(
+				Robot::oi->getcoDriver()->GetRawAxis(1) *
+				Robot::prefs->GetDouble("intakeLeftJoystickMultiplier", -0.75));
+		Robot::intake->intakeRightMotor->Set(
+				Robot::oi->getcoDriver()->GetRawAxis(1) *
+				Robot::prefs->GetDouble("intakeRightJoystickMultiplier", 0.75));
+	*/
 }
+
 
 // Make this return true when this Command no longer needs to run execute()
 bool intakeOff::IsFinished() {

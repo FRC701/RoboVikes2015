@@ -246,9 +246,9 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("Strafing Encoder", Robot::chassis->rightRear->GetEncPosition());
 
 
-	SmartDashboard::PutNumber("Encoder Vel", Robot::chassis->rightFront->GetEncVel());
-	SmartDashboard::PutNumber("Forward Limit Switch", Robot::chassis->rightFront->IsFwdLimitSwitchClosed());
-	SmartDashboard::PutNumber("Starting Encoder Value", Robot::oi->encoderStartingValue);
+//	SmartDashboard::PutNumber("Encoder Vel", Robot::chassis->rightFront->GetEncVel());
+	//SmartDashboard::PutNumber("Forward Limit Switch", Robot::chassis->rightFront->IsFwdLimitSwitchClosed());
+	//SmartDashboard::PutNumber("Starting Encoder Value", Robot::oi->encoderStartingValue);
 //LightSensor............................................................................................
 	SmartDashboard::PutBoolean("Left LightSensor", Robot::chassis->leftLightSensor->Get());
 	SmartDashboard::PutBoolean("Right LightSensor", Robot::chassis->rightLightSensor->Get());
@@ -256,7 +256,7 @@ void Robot::TeleopPeriodic() {
 	//SmartDashboard::PutBoolean("Left HaySqueezer", Robot::haySqueezer->leftPneSensor->Get());
 	//SmartDashboard::PutBoolean("Right HaySqueezer", Robot::haySqueezer->rightPneSensor->Get());
 //UltraSonicSensor.......................................................................................
-	SmartDashboard::PutNumber("Left UltraSonic Sensor", Robot::chassis->leftUltra->GetDistanceUnits());
+	//SmartDashboard::PutNumber("Left UltraSonic Sensor", Robot::chassis->leftUltra->GetDistanceUnits());
 
 	//Robot::chassis->leftFront->SetVoltageRampRate(0.01);
 	//Robot::chassis->leftRear->SetVoltageRampRate(0.01);

@@ -9,7 +9,7 @@
 // it from being updated in the future.
 
 
-
+#include "canGrabberToggle.h"
 #include "AutoDoNothing.h"
 
 AutoDoNothing::AutoDoNothing() {
@@ -17,7 +17,7 @@ AutoDoNothing::AutoDoNothing() {
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-
+	AddSequential(new canGrabberToggle());
 	// To run multiple commands at the same time,
 	// use AddParallel()
 	// e.g. AddParallel(new Command1());
